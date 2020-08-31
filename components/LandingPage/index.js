@@ -10,10 +10,10 @@ export default function Home() {
     <Layout hideNav={true}>
       <BigTitle>Prem Picks</BigTitle>
       <LandingButtonsContainer>
-        <Link href="/login">
+        <Link href="/user/login">
           <LandingButton>Log In</LandingButton>
         </Link>
-        <Link href="/signup">
+        <Link href="/user/signup">
           <LandingButton className="btn-success">Sign Up</LandingButton>
         </Link>
       </LandingButtonsContainer>
