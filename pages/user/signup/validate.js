@@ -1,11 +1,11 @@
 import * as yup from 'yup';
 
 export const validationSchema = yup.object({
-  fname: yup
+  first_name: yup
     .string()
     .required('First Name is required')
     .max(10),
-  lname: yup
+  last_name: yup
     .string()
     .required('Last Name is required')
     .max(20),

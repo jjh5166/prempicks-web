@@ -1,6 +1,8 @@
+import Router from 'next/router';
+
 export const initialValues = {
-  fname: '',
-  lname: '',
+  first_name: '',
+  last_name: '',
   team_name: '',
   email: '',
   password: '',
@@ -9,12 +11,12 @@ export const initialValues = {
 
 export const signupFields = [
   {
-    name: 'fname',
+    name: 'first_name',
     labelName: 'First Name',
     isPassword: false
   },
   {
-    name: 'lname',
+    name: 'last_name',
     labelName: 'Last Name',
     isPassword: false
   },
@@ -40,6 +42,11 @@ export const signupFields = [
   }
 ];
 
-export const SignupFn = (data, setErrors) => {
-
+export const signupFn = (firebase, data) => {
+  firebase.doCreateUserWithEmailAndPassword(
+    data.email,
+    data.password
+  ).then(res => console.log(res))
+  .catch(err => console.log(err))
+  await Router.push('/mypicks')
 };

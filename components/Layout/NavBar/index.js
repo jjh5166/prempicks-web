@@ -2,6 +2,8 @@ import React from "react";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
+
+import LogoutButton from '../../LogoutButton';
 import { StyledNavBar, StyledBrand } from './styled';
 
 const NavBar = () => {
@@ -22,7 +24,7 @@ const NavBar = () => {
           <Nav className="ml-auto">
             <Nav.Link href="/rules" className="nav-link">Rules</Nav.Link>
             <Nav.Link href="/account" className="nav-link">Account</Nav.Link>
-            <Nav.Link onClick={() => {}}>Logout</Nav.Link>
+            <LogoutButton />
           </Nav>
         </Navbar.Collapse>
       </Container>

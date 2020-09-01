@@ -1,11 +1,12 @@
 import React from "react";
 import { Formik, Form } from 'formik';
 
+import { withFirebase } from '../Firebase';
 import FormFields from './FormFields';
 import Bttn from './Bttn';
 import { FormContainer } from './styled';
 
-const UserForm = ({ name, initialValues, validationSchema, submitFn, fields }) => {
+const UserForm = ({ firebase, name, initialValues, validationSchema, submitFn, fields }) => {
   return(
     <FormContainer>
       <h2>{name}</h2>
@@ -15,7 +16,7 @@ const UserForm = ({ name, initialValues, validationSchema, submitFn, fields }) =
         validationSchema={validationSchema}
         onSubmit={(data, { setSubmitting }) => {
           setSubmitting(true);
-          submitFn(data, setErrors);
+          submitFn(firebase, data);
           setSubmitting(false);
         }}
       >
@@ -30,4 +31,4 @@ const UserForm = ({ name, initialValues, validationSchema, submitFn, fields }) =
   )
 }
 
-export default UserForm;
+export default withFirebase(UserForm);
