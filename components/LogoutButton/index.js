@@ -7,7 +7,7 @@ import { withFirebase } from '../Firebase';
 const LogoutButton = ({ firebase }) => (
   <Nav.Link onClick={
     async () => {
-      await firebase.doSignOut;
+      await firebase.doSignOut();
       await Router.push('/');
       }}>
     Log Out

@@ -42,8 +42,8 @@ export const signupFields = [
   }
 ];
 
-export const signupFn = (firebase, data) => {
-  firebase.doCreateUserWithEmailAndPassword(
+export const signupFn = async (firebase, data) => {
+  await firebase.doCreateUserWithEmailAndPassword(
     data.email,
     data.password
   ).then(res => console.log(res))
