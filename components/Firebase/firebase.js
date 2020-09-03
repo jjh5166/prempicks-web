@@ -21,6 +21,12 @@ class Firebase {
     this.auth = firebase.auth();
   }
 
+  retrieveToken = () => {
+    this.auth.currentUser.getIdToken(true).then( (idToken) => {
+      console.log(idToken)
+    })
+  }
+  
   doCreateUserWithEmailAndPassword = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
 
