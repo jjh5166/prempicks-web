@@ -1,15 +1,21 @@
 import React from "react";
 import { Button } from '@material-ui/core';
 
-const BUTTON_COLORS = {
-  'Login': '#0f8bb8',
-  'Sign Up': '#8943b8',
-};
+function colorButton({type}) {
+  switch (type) {
+    case 'Sign Up':
+      return '#8943b8';
+    case 'Login':
+      return '#0f8bb8';
+    default:
+      return '#0f8bb8';
+  }
+}
 
 const Bttn = ({ text, ...props }) => {
   const buttonStyle = {
     color: '#fff',
-    backgroundColor: BUTTON_COLORS[text]
+    backgroundColor: colorButton(text)
   };
   const { disabled } = props;
   return (
