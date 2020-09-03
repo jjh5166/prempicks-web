@@ -4,6 +4,7 @@ import { Formik, Form } from 'formik';
 import { withFirebase } from '../Firebase';
 import FormFields from './FormFields';
 import Bttn from './Bttn';
+import FormLinks from './FormLinks';
 import { FormContainer } from './styled';
 
 const UserForm = ({ firebase, name, initialValues, validationSchema, submitFn, fields }) => {
@@ -27,6 +28,7 @@ const UserForm = ({ firebase, name, initialValues, validationSchema, submitFn, f
           </Form>
         )}
       </Formik>
+      <FormLinks formType={name}/>
     </FormContainer>
   )
 }
