@@ -1,10 +1,10 @@
 import React from "react";
 import { Formik, Form } from 'formik';
 
-import { withFirebase } from '../Firebase';
-import FormFields from './FormFields';
-import Bttn from './Bttn';
-import FormLinks from './FormLinks';
+import { withFirebase } from '../../Firebase';
+import FormFields from '../elements/FormFields';
+import Bttn from '../elements/Bttn';
+import FormLinks from '../elements/FormLinks';
 import { FormContainer } from './styled';
 
 const UserForm = ({ firebase, name, initialValues, validationSchema, submitFn, fields }) => {
