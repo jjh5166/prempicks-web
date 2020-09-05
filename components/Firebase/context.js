@@ -18,8 +18,8 @@ export function FirebaseProvider({ children }) {
     const unsubscriber = firebase.auth.onAuthStateChanged(async (user) => {
       try {
         if (user) {
-          const { uid } = user;
-          dispatch({ type: "LOGIN", uid: uid})
+          const idToken = await firebase.retrieveToken();
+          dispatch({ type: "UPDATE_AUTH", idToken: idToken})
         } else { 
           dispatch({ type: "LOGOUT" })
         };

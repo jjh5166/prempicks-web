@@ -10,11 +10,11 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'LOGIN':
+    case 'UPDATE_AUTH':
       return {
         ...state,
         authUser: {
-          uid: action.uid
+          idToken: action.idToken
         }
       };
     case 'LOGOUT':
