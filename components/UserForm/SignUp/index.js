@@ -1,12 +1,11 @@
 import React from 'react';
 
-import Layout from '../../../components/Layout';
-import UserForm from '../../../components/UserForm';
+import UserForm from '../Base/';
 import { initialValues, signupFields, signupFn } from './formConfig';
 import { validationSchema } from './validate';
 
-const SignupPage = () => (
-  <Layout title="Sign Up" hideNav={true}>
+export default function SignupForm() {
+  return (
     <UserForm
       name="Sign Up"
       initialValues={initialValues}
@@ -14,7 +13,5 @@ const SignupPage = () => (
       fields={signupFields}
       submitFn={signupFn}
     />
-  </Layout>
-);
-
-export default SignupPage;
+  );
+};
