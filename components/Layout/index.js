@@ -4,7 +4,7 @@ import Head from 'next/head';
 import NavBar from './NavBar';
 import { PageContainer, ContentContainer } from './styled';
 
-const Layout = ({ children, title = "Prempicks", hideNav = false }) => {
+const Layout = ({ children, title = "PremPicks", hideNav = false }) => {
 
   return (
     <PageContainer>
