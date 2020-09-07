@@ -16,6 +16,7 @@ export const PageContainer = styled.div`
 export const ContentContainer = styled.div`
   position: relative;
   flex: 1;
+  flex-direction: column;
   display: flex;
   justify-content: center;
   align-items: center;
