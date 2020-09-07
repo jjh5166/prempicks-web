@@ -23,7 +23,7 @@ const NavBar = () => {
         <Navbar.Collapse className="collapseNav w-50 order-2">
           <Nav className="ml-auto">
             <Nav.Link href="/rules" className="nav-link">Rules</Nav.Link>
-            <Nav.Link href="/account" className="nav-link">Account</Nav.Link>
+            <Nav.Link href="/user/account" className="nav-link">Account</Nav.Link>
             <LogoutButton />
           </Nav>
         </Navbar.Collapse>
