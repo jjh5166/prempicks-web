@@ -1,5 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import Div100vh from 'react-div-100vh';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'; // Import the CSS
@@ -18,7 +19,9 @@ export default function App({ Component, pageProps }) {
     <Provider store={store}>
       <FirebaseProvider>
         <MuiThemeProvider theme={theme}>
-          <Component {...pageProps} />
+          <Div100vh>
+            <Component {...pageProps} />
+          </Div100vh>
         </MuiThemeProvider>
       </FirebaseProvider>
     </Provider>
