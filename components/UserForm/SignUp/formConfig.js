@@ -53,7 +53,7 @@ export const signupFn = async (firebase, data) => {
     uid = res.user.uid;
   })
     .catch(err => console.log(err));
-  await axios.post(`${serverUrl}/user`, {
+  await axios.post(`${serverUrl}/v1/user`, {
     user: {
       uid: uid,
       email: data.email,
