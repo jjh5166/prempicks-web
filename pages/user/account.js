@@ -5,7 +5,6 @@ import axios from 'axios';
 import { serverUrl } from '../../constants';
 import Layout from '../../components/Layout';
 import UpdateAccountForm from '../../components/UserForm/Update';
-import { withFirebase } from '../../components/Firebase';
 
 function mapStateToProps(state) {
   return {
@@ -49,4 +48,4 @@ const UpdateAccountPage = ({ authUser }) => {
   );
 };
 
-export default connect(mapStateToProps)(withFirebase(UpdateAccountPage));
+export default connect(mapStateToProps)(UpdateAccountPage);
