@@ -20,7 +20,7 @@ export const updateFields = [
 ];
 
 export const updateAccountFn = async (firebase, data) => {
-  await axios.put(`${serverUrl}/user`, {
+  await axios.put(`${serverUrl}/v1/user`, {
     user: {
       first_name: data.first_name,
       last_name: data.last_name,

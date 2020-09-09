@@ -24,7 +24,7 @@ const UpdateAccountPage = ({ authUser }) => {
   useEffect(() => {
     const fetchData = async () => {
       await axios.get(
-        `${serverUrl}/user`, { params: { "idToken": authUser.idToken } },
+        `${serverUrl}/v1/user`, { params: { "idToken": authUser.idToken } },
         { headers: { 'Content-Type': 'application/json' } }
       )
         .then(res => {
