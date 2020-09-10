@@ -1,8 +1,6 @@
 import styled from 'styled-components';
+import { device } from '../../../constants';
 
-export const MyPicksFormContainer = styled.div`
-
-`
 export const FieldsGrid = styled.div`
   display: grid;
   grid-row-start: 1;
@@ -19,5 +17,8 @@ export const FieldBlock = styled.div`
     position: absolute;
     top: 0;
     left: 0;
+  }
+  @media ${device.tablet}{
+    height: 80px;
   }
 `
