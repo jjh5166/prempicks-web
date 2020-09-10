@@ -11,7 +11,7 @@ function setPickSubmission(data){
   return Object.assign({}, ...(data.map(item => ({ [item.matchday]: item.team_id }))));
 };
 
-const MyPicks = ({ authUser, initialValues }) => {
+const MyPicks = ({ authUser, initialValues, schedule }) => {
   return (
     <Formik
       enableReinitialize
@@ -40,7 +40,7 @@ const MyPicks = ({ authUser, initialValues }) => {
           <MpButtons />
           <MyPicksContainer>
             <MyPicksFields values={values} />
-            <MyPicksSchedule />
+            <MyPicksSchedule schedule={schedule}/>
           </MyPicksContainer>
           <MpSubmitButton
             type="submit"

@@ -14,6 +14,7 @@ function mapStateToProps(state) {
 
 const MyPicksPage = ({ authUser }) => {
   const [picks, setPicks] = useState(null);
+  const [schedule, setSchedule] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       await axios.get(
@@ -21,7 +22,8 @@ const MyPicksPage = ({ authUser }) => {
         { headers: { 'Content-Type': 'application/json' } }
       )
         .then(res => {
-          setPicks(res.data);
+          setPicks(res.data.picks);
+          setSchedule(res.data.matches);
         })
         .catch(err => console.log(err.response));
     };
@@ -31,7 +33,7 @@ const MyPicksPage = ({ authUser }) => {
   }, [authUser]);
   return (
     <Layout title="My Picks">
-      <MyPicks initialValues={picks} authUser={authUser} />
+      <MyPicks initialValues={picks} authUser={authUser} schedule={schedule} />
     </Layout>
   );
 }
