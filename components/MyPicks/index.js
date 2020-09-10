@@ -5,14 +5,17 @@ import MyPicksFields from './Fields';
 import MyPicksSchedule from './Schedule';
 import { MpButtons } from './Buttons';
 import { MyPicksContainer, MpSubmitButton, MpForm } from './styled';
+import { validationSchema } from './validate';
 
 function setPickSubmission(data){
   return Object.assign({}, ...(data.map(item => ({ [item.matchday]: item.team_id }))));
-}
+};
+
 const MyPicks = ({ authUser, initialValues }) => {
   return (
     <Formik
       enableReinitialize
+      validationSchema={validationSchema}
       initialValues={{
         picks: initialValues
       }}
@@ -32,7 +35,7 @@ const MyPicks = ({ authUser, initialValues }) => {
         setSubmitting(false);
       }}
     >
-      {({ values, handleSubmit, errors, isSubmitting }) => (
+      {({ values, handleSubmit, dirty, isValid, errors, isSubmitting }) => (
         <MpForm onSubmit={handleSubmit}>
           <MpButtons />
           <MyPicksContainer>
@@ -41,7 +44,7 @@ const MyPicks = ({ authUser, initialValues }) => {
           </MyPicksContainer>
           <MpSubmitButton
             type="submit"
-            disabled={isSubmitting}
+            disabled={!dirty || isSubmitting || !isValid}
           >Submit</MpSubmitButton>
         </MpForm>
       )}
