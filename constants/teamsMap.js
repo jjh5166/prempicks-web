@@ -75,7 +75,7 @@ export const teamsMap = {
     "name": "Leicester City",
     "short": "Leicester City",
     "abv": "LEI",
-    "crestURL": "http://upload.wikimedia.org/wikipedia/en/6/63/Leicester02.png"
+    "crestURL": "https://upload.wikimedia.org/wikipedia/en/2/2d/Leicester_City_crest.svg"
   },
   "340": {
     "name": "Southampton",
