@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/globals.css';
 config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
 
-import { useStore } from '../store';
+import { useStore } from '../redux/store';
 import { FirebaseProvider } from '../components/Firebase'
 import theme from '../styles/theme';
 
