@@ -13,7 +13,7 @@ const MyPicksSchedule = ({ schedule }) => {
         schedule &&
         [...Array(38)].map((_, i) => {
           return (
-            <ScheduleMatchday matches={schedule[i + 1]} />
+            <ScheduleMatchday key={`Matchday${i + 1}`} matches={schedule[i + 1]} />
           );
         })
       }
@@ -26,16 +26,16 @@ const ScheduleMatchday = ({ matches }) => {
     <MatchdayContainer>
       <MatchdayScroll>
         <MatchRow>
-          {matches.slice(0, 5).map(match => {
+          {matches.slice(0, 5).map((match, i) => {
             return (
-              <Match match={match} />
+              <Match key={`match${match.home.id}_${match.away.id + i}`} match={match} />
             );
           })}
         </MatchRow>
         <MatchRow>
-          {matches.slice(5, 10).map(match => {
+          {matches.slice(5, 10).map((match, i) => {
             return (
-              <Match match={match} />
+              <Match key={`match${match.home.id}_${match.away.id + i}`} match={match} />
             );
           })}
         </MatchRow>
