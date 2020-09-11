@@ -1,23 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
 import axios from 'axios';
 
+import useAuthUser from '../../redux/useAuthUser';
 import { serverUrl } from '../../constants';
 import Layout from '../../components/Layout';
 import UpdateAccountForm from '../../components/UserForm/Update';
 
-function mapStateToProps(state) {
-  return {
-    authUser: state.authUser,
-  };
-}
 const initialValues = {
   first_name: '',
   last_name: '',
   team_name: ''
 };
 
-const UpdateAccountPage = ({ authUser }) => {
+const UpdateAccountPage = () => {
+  const { authUser } = useAuthUser();
   const [isLoading, setIsLoading] = useState(true);
   const [userData, setUserData] = useState(initialValues);
   useEffect(() => {
@@ -48,4 +44,4 @@ const UpdateAccountPage = ({ authUser }) => {
   );
 };
 
-export default connect(mapStateToProps)(UpdateAccountPage);
+export default UpdateAccountPage;

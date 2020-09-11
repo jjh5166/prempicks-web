@@ -1,20 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
 import axios from 'axios';
 
+import useAuthUser from '../redux/useAuthUser';
 import { serverUrl } from '../constants';
 import Layout from '../components/Layout';
 import MyPicks from '../components/MyPicks';
 
-function mapStateToProps(state) {
-  return {
-    authUser: state.authUser,
-  };
-};
-
-const MyPicksPage = ({ authUser }) => {
+const MyPicksPage = () => {
   const [picks, setPicks] = useState(null);
   const [schedule, setSchedule] = useState(null);
+  const { authUser } = useAuthUser();
   useEffect(() => {
     const fetchData = async () => {
       await axios.get(
@@ -37,4 +32,4 @@ const MyPicksPage = ({ authUser }) => {
     </Layout>
   );
 }
-export default connect(mapStateToProps)(MyPicksPage);
+export default MyPicksPage;
