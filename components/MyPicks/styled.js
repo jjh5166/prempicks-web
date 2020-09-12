@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { device } from '../../constants';
 
 export const MyPicksContainer = styled.div`
-  height: 77vh;
+  height: 60vh;
   width: 98%;
   display: grid;
   grid-template-rows: 1fr;
