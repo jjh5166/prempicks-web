@@ -1,15 +1,19 @@
+import { createContext } from 'react';
 import { Formik } from 'formik';
 import axios from 'axios';
+
 import {serverUrl} from '../../constants';
 import MyPicksFields from './Fields';
 import MyPicksSchedule from './Schedule';
 import { MpButtons } from './Buttons';
-import { MyPicksContainer, MpSubmitButton, MpForm } from './styled';
 import { validationSchema } from './validate';
+import { MyPicksContainer, MpSubmitButton, MpForm } from './styled';
 
 function setPickSubmission(data){
   return Object.assign({}, ...(data.map(item => ({ [item.matchday]: item.team_id }))));
 };
+
+export const ScheduleContext = createContext();
 
 const MyPicks = ({ authUser, initialValues, schedule }) => {
   return (
@@ -39,8 +43,10 @@ const MyPicks = ({ authUser, initialValues, schedule }) => {
         <MpForm onSubmit={handleSubmit}>
           <MpButtons />
           <MyPicksContainer>
-            <MyPicksFields values={values} />
-            <MyPicksSchedule schedule={schedule}/>
+            <ScheduleContext.Provider value={schedule}>
+              <MyPicksFields values={values} />
+              <MyPicksSchedule/>
+            </ScheduleContext.Provider>
           </MyPicksContainer>
           <MpSubmitButton
             type="submit"

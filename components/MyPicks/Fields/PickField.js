@@ -6,13 +6,14 @@ const teams = [
   "LIV", "MCI", "MUN", "NEW", "SHU", "SOU", "TOT", "WBA", "WHU", "WOL"
 ];
 
-const PickField = ({ name }) => {
+const PickField = ({ name, disabled }) => {
 
   return (
     <Field
       name={name}
       type="select"
       as="select"
+      disabled={disabled}
     >
       {teams.map(t => {
         return <option key={t} value={t}>{t}</option>;

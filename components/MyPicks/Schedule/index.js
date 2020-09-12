@@ -1,4 +1,7 @@
+import React, {useContext} from 'react'
+
 import { teamsMap } from '../../../constants';
+import { ScheduleContext } from '../index';
 
 import {
   MyPicksScheduleContainer, MatchdayContainer,
@@ -6,7 +9,8 @@ import {
   HomeSpan, AwaySpan, HomeImage, AwayImage, ScoreSpan
 } from './styled';
 
-const MyPicksSchedule = ({ schedule }) => {
+const MyPicksSchedule = () => {
+  const schedule = useContext(ScheduleContext);
   return (
     <MyPicksScheduleContainer>
       {
