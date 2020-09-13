@@ -16,7 +16,7 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="collapseNav w-50 order-1 order-md-0">
           <Nav>
-            <Nav.Link href="#" className="nav-link">Standings</Nav.Link>
+            <Nav.Link href="/standings" className="nav-link">Standings</Nav.Link>
             <Nav.Link href="/mypicks" className="nav-link">My Picks</Nav.Link>
             <Nav.Link href="#" className="nav-link">EPL Table</Nav.Link>
             <Nav.Link href="#" className="nav-link">
