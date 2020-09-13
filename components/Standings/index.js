@@ -6,10 +6,12 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+import { StyledTableContainer } from './styled';
+
 const StandingsTable = ({standingsData}) => {
   console.log(standingsData)
   return(
-    <TableContainer component={Paper}>
+    <StyledTableContainer component={Paper}>
       <Table size="small">
         <TableHead>
           <TableRow>
@@ -17,7 +19,7 @@ const StandingsTable = ({standingsData}) => {
             {
               [...Array(standingsData.currentMatchday)].map((_, i) => {
                 return(
-                  <TableCell align="right">{i+1}</TableCell>
+                  <TableCell align="center">{i+1}</TableCell>
                 )
             }
               )}
@@ -33,7 +35,7 @@ const StandingsTable = ({standingsData}) => {
                 row.picks.map(
                   pick => {
                     return(
-                      <TableCell component="td" scope="row">
+                      <TableCell component="td" scope="row" align="center">
                         {pick.team_id}
                       </TableCell>
                     )
@@ -44,8 +46,7 @@ const StandingsTable = ({standingsData}) => {
           ))}
         </TableBody>
       </Table>
-    </TableContainer>
-
+    </StyledTableContainer>
   )
 };
 
