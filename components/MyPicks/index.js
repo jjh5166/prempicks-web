@@ -24,11 +24,12 @@ const MyPicks = ({ authUser, initialValues, schedule }) => {
         picks: initialValues
       }}
       onSubmit={async (data, { setSubmitting }) => {
+        const submitionData = data.picks.filter(x => !initialValues.includes(x));
         setSubmitting(true);
         await axios.patch(
           `${serverUrl}/v1/mypicks`, {
             "idToken": authUser.idToken,
-            "picks": setPickSubmission(data.picks)
+            "picks": setPickSubmission(submitionData)
         },
           { headers: { 'Content-Type': 'application/json' } }
         )
