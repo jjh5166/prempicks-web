@@ -1,4 +1,4 @@
-import { Fragment }  from 'react';
+import { Fragment } from 'react';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -8,20 +8,30 @@ import Paper from '@material-ui/core/Paper';
 
 import { StyledTableContainer, TableSpacer } from './styled';
 
-const StandingsTable = ({standingsData}) => {
-  return(
+const StandingsTable = ({ standingsData }) => {
+  const totals = {};
+  standingsData.standings.forEach((team) => {
+    totals[team.name] = {
+      firstHalf: 0,
+      secondHalf: 0
+    };
+    team.picks.forEach((pick, i) => {
+      if (i < 19) {
+        totals[team.name].firstHalf += standingsData.scores[pick.matchday][pick.team_id];
+      } else {
+        totals[team.name].secondHalf += standingsData.scores[pick.matchday][pick.team_id];
+      }
+    });
+  });
+  return (
     <StyledTableContainer component={Paper}>
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell colSpan={2}></TableCell>
-            {
-              [...Array(standingsData.currentMatchday)].map((_, i) => {
-                return(
-                  <TableCell key={`dayHeader${i}`} align="center" colSpan={2}>{i+1}</TableCell>
-                )
-            }
-              )}
+            <TableCell colSpan={2} />
+            {[...Array(standingsData.currentMatchday)].map((_, i) =>
+              <TableCell key={`dayHeader${i}`} align="center" colSpan={2}>{i + 1}</TableCell>
+            )}
             <TableSpacer />
           </TableRow>
         </TableHead>
@@ -32,22 +42,19 @@ const StandingsTable = ({standingsData}) => {
                 {row.name}
               </TableCell>
               <TableCell className={`${row.name}_total`} component="th" scope="row" align="center">
-                {0}
+                {totals[row.name].firstHalf}
               </TableCell>
               {
                 row.picks.map(
-                  (pick, i) => {
-                    return(
-                      <Fragment key={row.name + i}>
-                        <TableCell component="td" scope="row" align="center">
-                          {pick.team_id}
-                        </TableCell>
-                        <TableCell className={`${row.name}${i+1}`} component="td" scope="row" align="center">
-                          {standingsData.scores[pick.matchday][pick.team_id]}
-                        </TableCell>
-                      </Fragment>
-                    )
-                  }
+                  (pick, i) =>
+                    <Fragment key={row.name + i}>
+                      <TableCell component="td" scope="row" align="center">
+                        {pick.team_id}
+                      </TableCell>
+                      <TableCell className={`${row.name}${i + 1}`} component="td" scope="row" align="center">
+                        {standingsData.scores[pick.matchday][pick.team_id]}
+                      </TableCell>
+                    </Fragment>
                 )
               }
               <TableCell />
@@ -56,7 +63,7 @@ const StandingsTable = ({standingsData}) => {
         </TableBody>
       </Table>
     </StyledTableContainer>
-  )
+  );
 };
 
 export default StandingsTable;
