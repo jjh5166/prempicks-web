@@ -12,7 +12,6 @@ export const FormContainer = styled.div`
   color: rgba(231, 241, 241, 1);
   text-shadow: 1px 1px #00394d;
   overflow-y: scroll;
-  margin-bottom: 35%;
   h2{
     font-style: oblique
   }
