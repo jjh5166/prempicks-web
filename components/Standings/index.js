@@ -29,8 +29,8 @@ const StandingsTable = ({ standingsData }) => {
         <TableHead>
           <TableRow>
             <TableCell colSpan={2} />
-            {[...Array(standingsData.currentMatchday)].map((_, i) =>
-              <TableCell key={`dayHeader${i}`} align="center" colSpan={2}>{i + 1}</TableCell>
+            {[...Array(Object.keys(standingsData.scores))].map((matchday) =>
+              <TableCell key={`dayHeader${matchday}`} align="center" colSpan={2}>{matchday}</TableCell>
             )}
             <TableSpacer />
           </TableRow>
