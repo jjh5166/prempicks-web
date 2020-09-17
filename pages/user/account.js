@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Loader from 'react-loader-spinner';
 
 import useAuthUser from '../../redux/useAuthUser';
 import { serverUrl } from '../../constants';
@@ -14,10 +15,11 @@ const initialValues = {
 
 const UpdateAccountPage = () => {
   const { authUser } = useAuthUser();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [userData, setUserData] = useState(initialValues);
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       await axios.get(
         `${serverUrl}/v1/user`, { params: { "idToken": authUser.idToken } },
         { headers: { 'Content-Type': 'application/json' } }
@@ -39,7 +41,12 @@ const UpdateAccountPage = () => {
   }, [authUser]);
   return (
     <Layout title="Update Account">
-      {!isLoading && <UpdateAccountForm initialValues={userData} />}
+      {
+        isLoading ? (
+          <Loader type="Bars" color="#00BFFF" height={80} width={80} />
+        ) : (
+            <UpdateAccountForm initialValues={userData} />
+          )}
     </Layout>
   );
 };
