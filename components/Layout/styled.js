@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const PageContainer = styled.div`
+  min-height: -webkit-fill-available;
   height: 100%;
-  height: -webkit-fill-available;
   width: 100%;
   display: flex;
   flex-direction: column;
