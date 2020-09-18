@@ -9,20 +9,24 @@ import Paper from '@material-ui/core/Paper';
 import { StyledTableContainer, TableSpacer } from './styled';
 
 const StandingsTable = ({ standingsData }) => {
-  const totals = {};
+  const totals = [];
   standingsData.standings.forEach((team) => {
-    totals[team.name] = {
+    let teamObj = {
+      name: team.name,
       firstHalf: 0,
-      secondHalf: 0
+      secondHalf: 0,
+      picks: team.picks
     };
     team.picks.forEach((pick, i) => {
       if (i < 19) {
-        totals[team.name].firstHalf += standingsData.scores[pick.matchday][pick.team_id];
+        teamObj.firstHalf += standingsData.scores[pick.matchday][pick.team_id];
       } else {
-        totals[team.name].secondHalf += standingsData.scores[pick.matchday][pick.team_id];
+        teamObj.secondHalf += standingsData.scores[pick.matchday][pick.team_id];
       }
     });
+    totals.push(teamObj);
   });
+  totals.sort((a, b) => b.firstHalf - a.firstHalf);
   return (
     <StyledTableContainer component={Paper}>
       <Table size="small">
@@ -36,13 +40,13 @@ const StandingsTable = ({ standingsData }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {standingsData.standings.map((row) => (
+          {totals.map((row) => (
             <TableRow key={row.name}>
               <TableCell component="th" scope="row" align="left">
                 {row.name}
               </TableCell>
-              <TableCell className={`${row.name}_total`} component="th" scope="row" align="center">
-                {totals[row.name].firstHalf}
+              <TableCell component="th" scope="row" align="center">
+                {row.firstHalf}
               </TableCell>
               {
                 row.picks.map(
@@ -51,7 +55,7 @@ const StandingsTable = ({ standingsData }) => {
                       <TableCell component="td" scope="row" align="center">
                         {pick.team_id}
                       </TableCell>
-                      <TableCell className={`${row.name}${i + 1}`} component="td" scope="row" align="center">
+                      <TableCell component="td" scope="row" align="center">
                         {standingsData.scores[pick.matchday][pick.team_id]}
                       </TableCell>
                     </Fragment>
