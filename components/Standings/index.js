@@ -33,7 +33,7 @@ const StandingsTable = ({ standingsData }) => {
         <TableHead>
           <TableRow>
             <TableCell colSpan={2} />
-            {[...Array(Object.keys(standingsData.scores))].map((matchday) =>
+            {Object.keys(standingsData.scores).reverse().map((matchday) =>
               <TableCell key={`dayHeader${matchday}`} align="center" colSpan={2}>{matchday}</TableCell>
             )}
             <TableSpacer />
