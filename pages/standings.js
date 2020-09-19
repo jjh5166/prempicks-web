@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Router from 'next/router';
 import axios from 'axios';
 import Loader from 'react-loader-spinner';
 
@@ -12,6 +13,9 @@ export default function StandingsPage() {
   const [standings, setStandings] = useState(null);
   const { authUser } = useAuthUser();
   useEffect(() => {
+    if (!authUser) {
+      Router.push('/user/login');
+    }
     const fetchData = async () => {
       setIsLoading(true);
       await axios.get(
