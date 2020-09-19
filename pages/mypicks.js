@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Router from 'next/router';
 import axios from 'axios';
 import Loader from 'react-loader-spinner';
 
@@ -13,6 +14,9 @@ const MyPicksPage = () => {
   const [schedule, setSchedule] = useState(null);
   const { authUser } = useAuthUser();
   useEffect(() => {
+    if (!authUser) {
+      Router.push('/user/login');
+    }
     const fetchData = async () => {
       setIsLoading(true);
       await axios.get(
@@ -40,5 +44,5 @@ const MyPicksPage = () => {
           )}
     </Layout>
   );
-}
+};
 export default MyPicksPage;

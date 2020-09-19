@@ -19,13 +19,16 @@ export const loginFields = [
 ];
 
 export const loginFn = async (firebase, data) => {
+  let success = false;
   await firebase.doSignInWithEmailAndPassword(
     data.email,
     data.password
   )
-    .then(res => {
-      console.log(res);
+    .then(() => {
+      success = true;
     })
     .catch(err => console.log(err));
-  await Router.push('/mypicks')
+    if(success){
+      await Router.push('/mypicks')
+    }
 };

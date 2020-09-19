@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Router from 'next/router';
 import axios from 'axios';
 import Loader from 'react-loader-spinner';
 
@@ -18,6 +19,9 @@ const UpdateAccountPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [userData, setUserData] = useState(initialValues);
   useEffect(() => {
+    if (!authUser) {
+      Router.push('/user/login');
+    }
     const fetchData = async () => {
       setIsLoading(true);
       await axios.get(
