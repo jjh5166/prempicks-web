@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from 'next/link';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -15,11 +15,33 @@ const NavBarLink = ({ href, children }) => (
   </Link>
 );
 const NavBar = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const navRef = useRef();
+
+  const handleClickOutside = e => {
+    if (navRef.current.contains(e.target)) {
+      return;
+    }
+    setIsExpanded(false);
+  };
+  useEffect(() => {
+    if (isExpanded) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isExpanded]);
   return (
-    <StyledNavBar expand="md" className="justify-content-between navbar-dark">
+    <StyledNavBar expand="md" className="justify-content-between navbar-dark" ref={navRef} expanded={isExpanded}>
       <Container fluid>
         <StyledBrand href="/" className="d-block text-center order-0 order-md-1">PremPicks</StyledBrand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={async()=>{
+          setIsExpanded(!isExpanded);
+        }}/>
         <Navbar.Collapse className="collapseNav w-50 order-1 order-md-0">
           <Nav>
             <NavBarLink href="/standings">Standings</NavBarLink>
