@@ -13,9 +13,9 @@ export default function Home() {
         <Link href="/user/login">
           <LandingButton>Log In</LandingButton>
         </Link>
-        <Link href="/user/signup">
+        {/* <Link href="/user/signup">
           <LandingButton className="btn-success">Sign Up</LandingButton>
-        </Link>
+        </Link> */}
       </LandingButtonsContainer>
     </Layout>
   );
