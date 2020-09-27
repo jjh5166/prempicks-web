@@ -3,7 +3,7 @@ import axios from 'axios';
 import Loader from 'react-loader-spinner';
 
 import EplTable from '../../components/Tables/eplStandings';
-import { footballApiKey } from '../../constants';
+import { footballApiKey, footballApiBaseUrl } from '../../constants';
 import Layout from '../../components/Layout';
 
 const EplTablePage = () => {
@@ -13,7 +13,7 @@ const EplTablePage = () => {
     const fetchData = async () => {
       setIsLoading(true);
       await axios.get(
-        'http://api.football-data.org/v2/competitions/2021/standings',
+        `${footballApiBaseUrl}/competitions/2021/standings`,
         { headers: { 'X-Auth-Token': footballApiKey } }
       )
         .then(res => {
