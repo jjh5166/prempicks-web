@@ -29,7 +29,7 @@ const StandingsTable = ({ standingsData }) => {
   totals.sort((a, b) => b.firstHalf - a.firstHalf);
   return (
     <StyledTableContainer component={Paper}>
-      <Table size="small">
+      <Table stickyHeader size="small">
         <TableHead>
           <TableRow>
             <TableCell colSpan={2} />
