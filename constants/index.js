@@ -1,6 +1,6 @@
 import { device } from './breakpoints';
 import serverUrl from './serverUrl';
-import footballApiKey from './footballApiKey';
+import { footballApiKey, footballApiBaseUrl } from './footballApiKey';
 import { teamsMap } from './teamsMap';
 
-export { device, serverUrl, teamsMap, footballApiKey };
+export { device, serverUrl, teamsMap, footballApiKey, footballApiBaseUrl };
