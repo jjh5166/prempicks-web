@@ -6,7 +6,7 @@ import Loader from 'react-loader-spinner';
 import { serverUrl } from '../constants';
 import useAuthUser from '../redux/useAuthUser';
 import Layout from '../components/Layout';
-import StandingsTable from '../components/Standings';
+import StandingsTable from '../components/Tables/userStandings';
 
 export default function StandingsPage() {
   const [isLoading, setIsLoading] = useState(false);
