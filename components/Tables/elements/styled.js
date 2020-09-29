@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {device } from '../../../constants';
 
 export const FormItem = styled.span`
   height: 20px;
@@ -20,4 +21,24 @@ export const FormResults = styled.div`
   width: 100%;
   display: inline-flex;
   justify-content: center;
+  align-items: center;
+`;
+export const TeamCrest = styled.img`
+  height: 20px;
+  width: 20px;
+  margin-right: 5px;
+  @media ${device.tablet}{
+    height: 40px;
+    width:40px;
+  }
+`;
+export const TeamName = styled.span`
+  &:before{
+    content: '${({abv}) => abv}'
+  }
+  @media ${device.tablet}{
+    &:before{
+      content: '${({ short }) => short}'
+    }
+  }
 `;

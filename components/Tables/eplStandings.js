@@ -6,7 +6,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
 import FormCell from './elements/FormCell';
-import { teamsMap } from '../../constants'
+import TeamCell from './elements/TeamCell';
 import { StyledTableContainer } from './styled';
 
 const EplTable = ({ eplStandings }) => {
@@ -27,7 +27,7 @@ const EplTable = ({ eplStandings }) => {
           {totalStandings.map(team => 
             <TableRow key={team.team.name}>
               <TableCell>{team.position}</TableCell>
-              <TableCell>{teamsMap[team.team.id].name}</TableCell>
+              <TeamCell team={team.team.id}/>
               <FormCell form={team.form}/>
               <TableCell align="center">{team.playedGames}</TableCell>
               <TableCell align="center">{`${team.goalsFor} : ${team.goalsAgainst}`}</TableCell>
