@@ -5,13 +5,12 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+import FormCell from './elements/FormCell';
 import { teamsMap } from '../../constants'
 import { StyledTableContainer } from './styled';
 
 const EplTable = ({ eplStandings }) => {
-  console.log(eplStandings);
   const totalStandings = eplStandings.find(element => element.type === 'TOTAL').table;
-  console.log('totalStandings', totalStandings);
   return (
     <StyledTableContainer component={Paper}>
       <Table stickyHeader size="small">
@@ -29,7 +28,7 @@ const EplTable = ({ eplStandings }) => {
             <TableRow key={team.team.name}>
               <TableCell>{team.position}</TableCell>
               <TableCell>{teamsMap[team.team.id].name}</TableCell>
-              <TableCell>{team.form}</TableCell>
+              <FormCell form={team.form}/>
               <TableCell align="center">{team.playedGames}</TableCell>
               <TableCell align="center">{`${team.goalsFor} : ${team.goalsAgainst}`}</TableCell>
               <TableCell align="center">{team.points}</TableCell>
