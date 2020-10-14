@@ -31,6 +31,8 @@ export const BtnSlider = styled.span`
   z-index: -1;
   transition: .3s ease-out all;
   left: 0;
+  transform: ${({ slide }) => slide ? 'translateX(0)' : 'translateX(100%)'};
+  transition: transform .2s ease-out;
 `;
 export const SwitchButton = styled.button`
   display: inline-block;
@@ -50,4 +52,4 @@ export const SwitchButton = styled.button`
   &:focus {
     outline: none;
   }
-`
+`;
