@@ -8,6 +8,9 @@ export const MyPicksScheduleContainer = styled.div`
   grid-row-end: 20;
   outline: 1px solid #000;
   overflow: scroll;
+  display: grid;
+  grid-row-start: 1;
+  grid-row-end: 20;
 `
 export const MatchdayContainer = styled.div`
   max-width: none;
