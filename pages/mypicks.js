@@ -11,7 +11,7 @@ import MyPicks from '../components/MyPicks';
 const MyPicksPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [picks, setPicks] = useState(null);
-  const [schedule, setSchedule] = useState(null);
+  const [scheduleData, setScheduleData] = useState(null);
   const { authUser } = useAuthUser();
   useEffect(() => {
     if (!authUser) {
@@ -25,7 +25,10 @@ const MyPicksPage = () => {
       )
         .then(res => {
           setPicks(res.data.picks);
-          setSchedule(res.data.matches);
+          setScheduleData({
+            currentMatchday: res.data.currentMatchday,
+            schedule: res.data.matches
+          });
           setIsLoading(false);
         })
         .catch(err => console.log(err.response));
@@ -40,7 +43,7 @@ const MyPicksPage = () => {
         isLoading ? (
           <Loader type="Bars" color="#00BFFF" height={80} width={80} />
         ) : (
-            <MyPicks initialValues={picks} authUser={authUser} schedule={schedule} />
+            <MyPicks initialValues={picks} authUser={authUser} scheduleData={scheduleData} />
           )}
     </Layout>
   );
