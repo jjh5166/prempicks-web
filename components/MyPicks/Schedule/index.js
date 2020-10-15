@@ -1,7 +1,7 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react';
 
 import { teamsMap } from '../../../constants';
-import { ScheduleContext } from '../index';
+import { MyPicksContext } from '../index';
 
 import {
   MyPicksScheduleContainer, MatchdayContainer,
@@ -10,14 +10,15 @@ import {
 } from './styled';
 
 const MyPicksSchedule = () => {
-  const schedule = useContext(ScheduleContext);
+  const { showHalf, scheduleData } = useContext(MyPicksContext);
+  const halfIndex = showHalf === 1 ? 1 : 20;
   return (
     <MyPicksScheduleContainer>
       {
-        schedule &&
-        [...Array(38)].map((_, i) => {
+        scheduleData &&
+        [...Array(19)].map((_, i) => {
           return (
-            <ScheduleMatchday key={`Matchday${i + 1}`} matches={schedule[i + 1]} />
+            <ScheduleMatchday key={`Matchday${i + halfIndex}`} matches={scheduleData.schedule[i + halfIndex]} />
           );
         })
       }
@@ -53,9 +54,9 @@ const Match = ({ match }) => {
     <MatchSingle>
       <MatchGrid>
         <HomeSpan>{teamsMap[match.home.id].abv}</HomeSpan>
-        <HomeImage src={teamsMap[match.home.id].crestURL}/>
+        <HomeImage src={teamsMap[match.home.id].crestURL} />
         <ScoreSpan>{match.status == "FINISHED" ? `${match.score.homeTeam}:${match.score.awayTeam}` : 'vs'}</ScoreSpan>
-        <AwayImage src={teamsMap[match.away.id].crestURL}/>
+        <AwayImage src={teamsMap[match.away.id].crestURL} />
         <AwaySpan>{teamsMap[match.away.id].abv}</AwaySpan>
       </MatchGrid>
     </MatchSingle>
