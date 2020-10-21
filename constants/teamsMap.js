@@ -103,7 +103,7 @@ export const teamsMap = {
   },
   "397": {
     "name": "Brighton & Hove Albion",
-    "short": "Brighton Hove",
+    "short": "Brighton",
     "abv": "BHA",
     "crestURL": "https://upload.wikimedia.org/wikipedia/en/f/fd/Brighton_%26_Hove_Albion_logo.svg"
   },
