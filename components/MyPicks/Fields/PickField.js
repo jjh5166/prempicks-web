@@ -1,5 +1,7 @@
+import {useContext} from 'react';
 import { Field } from 'formik';
 
+import { DisabledTeamsContext } from './index'
 // should come from API
 const teams = [
   "", "ARS", "AVL", "BHA", "BUR", "CHE", "CRY", "EVE", "FUL", "LEE", "LEI",
@@ -7,7 +9,7 @@ const teams = [
 ];
 
 const PickField = ({ name, disabled }) => {
-
+  const disabledTeams = useContext(DisabledTeamsContext)
   return (
     <Field
       name={name}
@@ -16,7 +18,7 @@ const PickField = ({ name, disabled }) => {
       disabled={disabled}
     >
       {teams.map(t => {
-        return <option key={t} value={t}>{t}</option>;
+        return <option key={t} value={t} disabled={disabledTeams.includes(t)}>{t}</option>;
       })}
     </Field>
   );
