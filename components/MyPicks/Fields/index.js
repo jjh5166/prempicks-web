@@ -8,7 +8,6 @@ import { FieldsGrid, FieldBlock } from './styled';
 export const DisabledTeamsContext = createContext(null);
 
 const MyPicksFields = ({ values }) => {
-  console.log(values)
   const { showHalf, scheduleData } = useContext(MyPicksContext);
   const timeNow = new Date().toISOString();
   const slices = showHalf === 1 ? [0, 19] : [19, 38];
