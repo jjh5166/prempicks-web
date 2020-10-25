@@ -3,7 +3,7 @@ import Router from 'next/router';
 import axios from 'axios';
 import Loader from 'react-loader-spinner';
 
-import { serverUrl } from '../constants';
+import { serverUrl, footballApiKey, footballApiBaseUrl, teamsMap } from '../constants';
 import useAuthUser from '../redux/useAuthUser';
 import Layout from '../components/Layout';
 import StandingsTable from '../components/Tables/userStandings';
@@ -12,6 +12,7 @@ export default function StandingsPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [standings, setStandings] = useState(null);
   const { authUser } = useAuthUser();
+  const today = new Date().toISOString().slice(0, 10);
   useEffect(() => {
     if (!authUser) {
       Router.push('/user/login');
@@ -27,6 +28,21 @@ export default function StandingsPage() {
           setIsLoading(false);
         })
         .catch(err => console.log(err.response));
+      await axios.get(
+        `${footballApiBaseUrl}/competitions/2021/matches?dateFrom=${today}&dateTo=${today}&status=FINISHED`,
+        { headers: { 'X-Auth-Token': footballApiKey } }
+      )
+        .then(res => {
+          let matchCheck = null
+          if (res.data.matches){
+            matchCheck = res.data.matches.map(({ matchday, homeTeam }) => [teamsMap[homeTeam.id]['abv'], matchday]);
+            const scoreMatchday = matchCheck && matchCheck.find(check => standings.scores[check[1]][check[0]] === 0);
+            axios.get(
+              `${serverUrl}/v1/score-matchday`, { params: { "matchday": scoreMatchday[1] } },
+              { headers: { 'Content-Type': 'application/json' } }
+            )
+          }
+        }).catch(err => console.log(err.response));
     };
     if (authUser) {
       fetchData();
