@@ -11,6 +11,7 @@ import StandingsTable from '../components/Tables/userStandings';
 export default function StandingsPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [standings, setStandings] = useState(null);
+  const [scoreMatchday, setScoreMatchday] = useState(null);
   const { authUser } = useAuthUser();
   const today = new Date().toISOString().slice(0, 10);
   useEffect(() => {
@@ -33,16 +34,19 @@ export default function StandingsPage() {
         { headers: { 'X-Auth-Token': footballApiKey } }
       )
         .then(res => {
-          let matchCheck = null
-          if (res.data.matches){
+          let matchCheck = null;
+          if (res.data.matches) {
             matchCheck = res.data.matches.map(({ matchday, homeTeam }) => [teamsMap[homeTeam.id]['abv'], matchday]);
-            const scoreMatchday = matchCheck && matchCheck.find(check => standings.scores[check[1]][check[0]] === 0);
-            axios.get(
-              `${serverUrl}/v1/score-matchday`, { params: { "matchday": scoreMatchday[1] } },
-              { headers: { 'Content-Type': 'application/json' } }
-            )
+            setScoreMatchday(matchCheck.find(check => standings.scores[check[1]][check[0]] === 0));
           }
         }).catch(err => console.log(err.response));
+      if (scoreMatchday) {
+        console.log('scoreMatchday must be true')
+        await axios(
+          `${serverUrl}/v1/score-matchday`, { params: { "matchday": scoreMatchday[1] } },
+          { headers: { 'Content-Type': 'application/json' } }
+        ).then(console.log('scoring update requested'))
+      }
     };
     if (authUser) {
       fetchData();
