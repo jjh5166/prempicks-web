@@ -8,10 +8,17 @@ import useAuthUser from '../redux/useAuthUser';
 import Layout from '../components/Layout';
 import StandingsTable from '../components/Tables/userStandings';
 
+function triggerScoring(matchday) {
+  console.log('scoring requested');
+  axios(
+    `${serverUrl}/v1/score-matchday`, { params: { "matchday": matchday } },
+    { headers: { 'Content-Type': 'application/json' } }
+  ).then(console.log('scoring update requested'))
+};
+
 export default function StandingsPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [standings, setStandings] = useState(null);
-  const [scoreMatchday, setScoreMatchday] = useState(null);
   const { authUser } = useAuthUser();
   const today = new Date().toISOString().slice(0, 10);
   useEffect(() => {
@@ -20,6 +27,7 @@ export default function StandingsPage() {
     }
     const fetchData = async () => {
       setIsLoading(true);
+      let scores
       await axios.get(
         `${serverUrl}/v1/standings`, { params: { "idToken": authUser.idToken } },
         { headers: { 'Content-Type': 'application/json' } }
@@ -27,6 +35,7 @@ export default function StandingsPage() {
         .then(res => {
           setStandings(res.data);
           setIsLoading(false);
+          scores = res.data.scores
         })
         .catch(err => console.log(err.response));
       await axios.get(
@@ -34,19 +43,12 @@ export default function StandingsPage() {
         { headers: { 'X-Auth-Token': footballApiKey } }
       )
         .then(res => {
-          let matchCheck = null;
           if (res.data.matches) {
-            matchCheck = res.data.matches.map(({ matchday, homeTeam }) => [teamsMap[homeTeam.id]['abv'], matchday]);
-            setScoreMatchday(matchCheck.find(check => standings.scores[check[1]][check[0]] === 0));
+            const matchCheck = res.data.matches.map(({ matchday, homeTeam }) => [teamsMap[homeTeam.id]['abv'], matchday]);
+            const scoreThis = matchCheck.find(check => scores[check[1]][check[0]] === 0)
+            scoreThis && triggerScoring(scoreThis[1])
           }
-        }).catch(err => console.log(err.response));
-      if (scoreMatchday) {
-        console.log('scoreMatchday must be true')
-        await axios(
-          `${serverUrl}/v1/score-matchday`, { params: { "matchday": scoreMatchday[1] } },
-          { headers: { 'Content-Type': 'application/json' } }
-        ).then(console.log('scoring update requested'))
-      }
+        }).catch(err => console.log(err));
     };
     if (authUser) {
       fetchData();
