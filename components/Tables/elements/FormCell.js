@@ -7,7 +7,7 @@ const FormCell = ({ form }) => {
   return (
     <TableCell>
       <FormResults>
-        {formArray.map((r, i) =>
+        {formArray.reverse().map((r, i) =>
           <FormItem key={i} result={r} />
         )}
       </FormResults>
