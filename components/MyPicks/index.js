@@ -5,7 +5,7 @@ import axios from 'axios';
 import { serverUrl } from '../../constants';
 import MyPicksFields from './Fields';
 import MyPicksSchedule from './Schedule';
-import { MpButtons } from './Buttons';
+import { TwoButtons } from '../SlidingButtons';
 import { validationSchema } from './validate';
 import { MyPicksContainer, MpSubmitButton, MpForm } from './styled';
 
@@ -16,15 +16,15 @@ function setPickSubmission(data) {
 export const MyPicksContext = createContext();
 
 const MyPicks = ({ authUser, initialValues, scheduleData }) => {
-  let initHalf = 1
-  if(scheduleData){
+  let initHalf = 1;
+  if (scheduleData) {
     initHalf = scheduleData.currentMatchday > 19 ? 2 : 1;
   }
   const [showHalf, setShowHalf] = useState(initHalf);
   const mpContextValue = {
     showHalf: showHalf,
     scheduleData: scheduleData
-  }
+  };
   return (
     <Formik
       enableReinitialize
@@ -51,7 +51,11 @@ const MyPicks = ({ authUser, initialValues, scheduleData }) => {
     >
       {({ values, handleSubmit, dirty, isValid, errors, isSubmitting }) => (
         <MpForm onSubmit={handleSubmit}>
-          <MpButtons startLeft={initHalf === 1} halfSwitch={setShowHalf}/>
+          <TwoButtons
+            startLeft={initHalf === 1}
+            switchSide={setShowHalf}
+            buttonNames={['1st Half', '2nd Half']}
+          />
           <MyPicksContainer>
             {scheduleData && <MyPicksContext.Provider value={mpContextValue}>
               <MyPicksFields values={values} />

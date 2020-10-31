@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { device } from '../../../constants';
+import { device } from '../../constants';
 
 export const SwitchButtons = styled.div`
     width: 98%;
@@ -32,7 +32,7 @@ export const BtnSlider = styled.span`
   transition: .3s ease-out all;
   left: 0;
   transform: ${({ slide }) => slide ? 'translateX(0)' : 'translateX(100%)'};
-  transition: transform .2s ease-out;
+  transition: transform .5s ease-out;
 `;
 export const SwitchButton = styled.button`
   display: inline-block;

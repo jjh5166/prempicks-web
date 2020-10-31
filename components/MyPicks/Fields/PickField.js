@@ -1,15 +1,14 @@
-import {useContext} from 'react';
+import { useContext } from 'react';
 import { Field } from 'formik';
 
-import { DisabledTeamsContext } from './index'
-// should come from API
-const teams = [
-  "", "ARS", "AVL", "BHA", "BUR", "CHE", "CRY", "EVE", "FUL", "LEE", "LEI",
-  "LIV", "MCI", "MUN", "NEW", "SHU", "SOU", "TOT", "WBA", "WHU", "WOL"
-];
+import { teamChoices } from '../../../constants';
+
+import { DisabledTeamsContext } from './index';
+
+const teams = ["", ...teamChoices];
 
 const PickField = ({ name, disabled }) => {
-  const disabledTeams = useContext(DisabledTeamsContext)
+  const disabledTeams = useContext(DisabledTeamsContext);
   return (
     <Field
       name={name}
