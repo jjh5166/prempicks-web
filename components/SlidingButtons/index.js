@@ -1,3 +1,4 @@
 import { TwoButtons } from './TwoButtons';
+import { ThreeButtons } from './ThreeButtons';
 
-export { TwoButtons };
+export { TwoButtons, ThreeButtons };

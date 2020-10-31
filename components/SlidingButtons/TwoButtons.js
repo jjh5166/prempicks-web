@@ -1,22 +1,22 @@
 import { useState } from 'react';
-import { SwitchButtons, BtnSlider, SwitchButton } from './styled';
+import { SwitchButtons, TwoBtnSlider, SwitchButton } from './styled';
 
 export const TwoButtons = ({ startLeft = true, switchSide, buttonNames }) => {
   const [isLeft, setSide] = useState(startLeft);
 
   const handleClick = () => {
     if (isLeft) {
+      setSide(!isLeft);
       switchSide(2);
-      setSide(!isLeft);
     } else {
-      switchSide(1);
       setSide(!isLeft);
+      switchSide(1);
     }
   };
 
   return (
-    <SwitchButtons>
-      <BtnSlider slide={isLeft} />
+    <SwitchButtons buttons={2}>
+      <TwoBtnSlider slide={isLeft} />
       <SwitchButton type="button" onClick={handleClick} active={isLeft}>
         {buttonNames[0]}
       </SwitchButton>

@@ -3,17 +3,21 @@ const faker = require('faker');
 import { teamChoices } from '../../constants';
 
 function createPicks() {
+  return [...createHalfPicks(true), ...createHalfPicks(false)].reverse();
+};
+function createHalfPicks(isFirst) {
   let array = [];
   let theseTeams = [...teamChoices];
-  [...Array(38)].forEach((_, i) => {
+  const halfFactor = isFirst ? 1 : 20;
+  [...Array(19)].forEach((_, i) => {
     array.push({
-      matchday: i + 1,
+      matchday: i + halfFactor,
       team_id: theseTeams.splice(Math.floor(Math.random() * theseTeams.length), 1)[0]
     });
-  });
-  return array.reverse();
+  })
+  return array;
 };
-export function createScores() {
+function createScores() {
   let fakeScores = {};
   [...Array(38)].forEach((_, i) => {
     fakeScores[i + 1] = fakeScoresForWeek();
