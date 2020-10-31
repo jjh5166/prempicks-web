@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import { SwitchButtons, BtnSlider, SwitchButton } from './styled';
 
-export const MpButtons = ({ startLeft = true, halfSwitch }) => {
+export const TwoButtons = ({ startLeft = true, switchSide, buttonNames }) => {
   const [isLeft, setSide] = useState(startLeft);
 
   const handleClick = () => {
     if (isLeft) {
-      halfSwitch(2);
+      switchSide(2);
       setSide(!isLeft);
     } else {
-      halfSwitch(1);
+      switchSide(1);
       setSide(!isLeft);
     }
   };
@@ -18,10 +18,10 @@ export const MpButtons = ({ startLeft = true, halfSwitch }) => {
     <SwitchButtons>
       <BtnSlider slide={isLeft} />
       <SwitchButton type="button" onClick={handleClick} active={isLeft}>
-        1st Half
+        {buttonNames[0]}
       </SwitchButton>
       <SwitchButton type="button" onClick={handleClick} active={!isLeft}>
-        2nd Half
+        {buttonNames[1]}
       </SwitchButton>
     </SwitchButtons>
   );
