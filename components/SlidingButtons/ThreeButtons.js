@@ -5,13 +5,13 @@ export const ThreeButtons = ({ start = 0, switchTable, buttonNames }) => {
   const [active, setActive] = useState(start);
 
   const handleClick = index => e => {
-      switchTable(index);
+    switchTable(index);
     setActive(index);
   };
 
   return (
     <SwitchButtons buttons={3}>
-      <ThreeBtnSlider slide={active}/>
+      <ThreeBtnSlider slide={active} />
       {buttonNames.map((name, i) =>
         <SwitchButton
           key={i}
