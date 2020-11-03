@@ -47,7 +47,7 @@ const NavBar = () => {
             <NavBarLink href="/standings">Standings</NavBarLink>
             <NavBarLink href="/mypicks">My Picks</NavBarLink>
             <NavBarLink href="/epl/table">EPL Table</NavBarLink>
-            <NavBarLink href="#">
+            <NavBarLink href="/epl/schedule">
               <FontAwesomeIcon icon={faCalendarAlt} size="2x" />
             </NavBarLink>
           </Nav>
