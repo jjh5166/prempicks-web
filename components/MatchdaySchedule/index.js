@@ -1,4 +1,7 @@
 import { Fragment } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+
 import { teamsMap } from '../../constants';
 
 import {
@@ -9,10 +12,26 @@ import {
 function showScore(status) {
   return status === ('FINISHED' || 'AWARDED' || 'INPLAY' || 'PAUSED');
 }
-const MatchdaySchedule = ({ matchday, matches }) => {
+const MatchdaySchedule = ({ matchday, matches, changeMatchday }) => {
   return (
     <Fragment>
-      <MatchdayTitle>{`Matchday ${matchday}`}</MatchdayTitle>
+      <MatchdayTitle>
+        {
+          matchday > 1 &&
+          <FontAwesomeIcon
+            onClick={changeMatchday(matchday - 1)}
+            icon={faChevronLeft}
+            size={"lg"} />
+        }
+        <span>{`Matchday ${matchday}`}</span>
+        {
+          matchday < 38 &&
+          <FontAwesomeIcon
+            onClick={changeMatchday(matchday + 1)}
+            icon={faChevronRight}
+            size={"lg"} />
+        }
+      </MatchdayTitle>
       <ScheduleContainer>
         {matches.map(match => {
           let thisScore = showScore(match.status) ?
