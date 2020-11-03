@@ -61,7 +61,7 @@ export const teamsMap = {
   },
   "76": {
     "name": "Wolverhampton Wanderers",
-    "short": "Wolverhampton",
+    "short": "Wolves",
     "abv": "WOL",
     "crestURL": "https://upload.wikimedia.org/wikipedia/en/f/fc/Wolverhampton_Wanderers.svg"
   },
