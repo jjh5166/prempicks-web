@@ -39,6 +39,14 @@ export const MatchdayTitle = styled.div`
   text-align: center;
   color: #fff;
   font-style: italic;
+  display: flex;
+  align-items: center;
+  svg{
+    cursor: pointer;
+  }
+  span{
+    padding: 13px;
+  }
 `
 
 export const ScoreContainer =styled.span`

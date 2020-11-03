@@ -20,12 +20,19 @@ function setMatchData(data) {
     showMatches: matches.filter(m => m.matchday == matchday)
   };
 }
+function changeMatchday(allMatches, matchday) {
+  return allMatches.filter(m => m.matchday == matchday);
+}
 function reducer(state, action) {
   switch (action.type) {
     case 'SET_DATA':
       return setMatchData(action.data);
-    case 'decrement':
-      return { count: state.count - 1 };
+    case 'CHANGE_MATCHDAY':
+      return {
+        ...state,
+        showMatchday: action.matchday,
+        showMatches: changeMatchday(state.allMatches, action.matchday)
+      };
     default:
       throw new Error();
   }
@@ -33,6 +40,9 @@ function reducer(state, action) {
 const EplSchedulePage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
+  const changeMatchday = matchday => e => {
+    dispatch({ type: 'CHANGE_MATCHDAY', matchday: matchday });
+  };
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
@@ -58,6 +68,7 @@ const EplSchedulePage = () => {
             <MatchdaySchedule
               matchday={state.showMatchday}
               matches={state.showMatches}
+              changeMatchday={changeMatchday}
             />
           )}
     </Layout>
