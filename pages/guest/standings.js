@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { fakeStandingsData } from '../../utils/guest/fakeStandingsData';
+import { fakeStandingsData } from '../../utils/guest';
 import Layout from '../../components/Layout';
 import StandingsTable from '../../components/Tables/userStandings';
 
