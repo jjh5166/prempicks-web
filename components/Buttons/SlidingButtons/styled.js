@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { device } from '../../constants';
+import { device } from '../../../constants';
 
 const BtnSlider = styled.span`
   color: #151515;

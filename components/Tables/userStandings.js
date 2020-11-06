@@ -6,7 +6,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-import { ThreeButtons } from '../SlidingButtons';
+import { ThreeButtons } from '../Buttons';
 import { StyledTableContainer, TableSpacer } from './styled';
 
 const StandingsTable = ({ standingsData }) => {

@@ -3,8 +3,8 @@ import Link from 'next/link';
 
 
 import Layout from '../Layout';
-
-import { BigTitle, LandingButtonsContainer, LandingButton } from './styled';
+import { LandingButton } from '../Buttons';
+import { BigTitle, LandingButtonsContainer } from './styled';
 
 export default function Home() {
   return (

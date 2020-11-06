@@ -5,7 +5,7 @@ import axios from 'axios';
 import { serverUrl } from '../../constants';
 import MyPicksFields from './Fields';
 import MyPicksSchedule from './Schedule';
-import { TwoButtons } from '../SlidingButtons';
+import { TwoButtons } from '../Buttons';
 import { validationSchema } from './validate';
 import { MyPicksContainer, MpSubmitButton, MpForm } from './styled';
 

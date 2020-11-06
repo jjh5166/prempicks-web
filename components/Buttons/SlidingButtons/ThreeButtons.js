@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { SwitchButtons, ThreeBtnSlider, SwitchButton } from './styled';
 
-export const ThreeButtons = ({ start = 0, switchTable, buttonNames }) => {
+const ThreeButtons = ({ start = 0, switchTable, buttonNames }) => {
   const [active, setActive] = useState(start);
 
   const handleClick = index => e => {
@@ -25,3 +25,5 @@ export const ThreeButtons = ({ start = 0, switchTable, buttonNames }) => {
     </SwitchButtons>
   );
 };
+
+export default ThreeButtons;
