@@ -3,7 +3,7 @@ import Router from 'next/router';
 import axios from 'axios';
 import Loader from 'react-loader-spinner';
 
-import useAuthUser from '../redux/useAuthUser';
+import useAuthUser from '../redux/hooks/useAuthUser';
 import { serverUrl } from '../constants';
 import Layout from '../components/Layout';
 import MyPicks from '../components/MyPicks';
@@ -12,7 +12,7 @@ const MyPicksPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [picks, setPicks] = useState(null);
   const [scheduleData, setScheduleData] = useState(null);
-  const { authUser } = useAuthUser();
+  const authUser = useAuthUser();
   useEffect(() => {
     if (!authUser) {
       Router.push('/user/login');

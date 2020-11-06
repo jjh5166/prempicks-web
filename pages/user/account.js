@@ -3,7 +3,7 @@ import Router from 'next/router';
 import axios from 'axios';
 import Loader from 'react-loader-spinner';
 
-import useAuthUser from '../../redux/useAuthUser';
+import useAuthUser from '../../redux/hooks/useAuthUser';
 import { serverUrl } from '../../constants';
 import Layout from '../../components/Layout';
 import UpdateAccountForm from '../../components/UserForm/Update';
@@ -15,7 +15,7 @@ const initialValues = {
 };
 
 const UpdateAccountPage = () => {
-  const { authUser } = useAuthUser();
+  const authUser = useAuthUser();
   const [isLoading, setIsLoading] = useState(false);
   const [userData, setUserData] = useState(initialValues);
   useEffect(() => {

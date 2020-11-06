@@ -3,11 +3,11 @@ import Router from 'next/router';
 
 import LandingPage from '../components/LandingPage';
 import Layout from '../components/Layout';
-import useAuthUser from '../redux/useAuthUser';
+import useAuthUser from '../redux/hooks/useAuthUser';
 
 
 export default function Home() {
-  const { authUser } = useAuthUser();
+  const authUser = useAuthUser();
   useEffect(() => {
     if (authUser) {
       Router.push('/mypicks');
