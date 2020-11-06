@@ -4,7 +4,7 @@ import axios from 'axios';
 import Loader from 'react-loader-spinner';
 
 import { serverUrl, footballApiKey, footballApiBaseUrl, teamsMap } from '../constants';
-import useAuthUser from '../redux/useAuthUser';
+import useAuthUser from '../redux/hooks/useAuthUser';
 import Layout from '../components/Layout';
 import StandingsTable from '../components/Tables/userStandings';
 

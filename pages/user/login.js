@@ -3,7 +3,7 @@ import Router from 'next/router';
 
 import Layout from '../../components/Layout';
 import LoginForm from '../../components/UserForm/Login';
-import useAuthUser from '../../redux/useAuthUser';
+import useAuthUser from '../../redux/hooks/useAuthUser';
 
 const LoginPage = () => {
   const authUser = useAuthUser();
