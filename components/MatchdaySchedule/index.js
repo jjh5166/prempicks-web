@@ -8,10 +8,8 @@ import {
   ScheduleContainer, MatchdayTitle,
   MatchContainer, ScoreContainer, HomeTeam, AwayTeam
 } from './styled';
+import { showScore } from '../../utils/footballApi';
 
-function showScore(status) {
-  return status === ('FINISHED' || 'AWARDED' || 'INPLAY' || 'PAUSED');
-}
 const MatchdaySchedule = ({ matchday, matches, changeMatchday }) => {
   return (
     <Fragment>

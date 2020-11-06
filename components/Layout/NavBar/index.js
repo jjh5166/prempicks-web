@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faGavel, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 
 import useGuestUser from '../../../redux/hooks/useGuestUser';
-import LogoutButton from '../../LogoutButton';
+import { LogoutButton } from '../../Buttons';
 import { StyledNavBar, StyledBrand } from './styled';
 
 const NavBarLink = ({ href, children }) => (

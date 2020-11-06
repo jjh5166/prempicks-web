@@ -2,16 +2,13 @@ import { createContext, useState } from 'react';
 import { Formik } from 'formik';
 import axios from 'axios';
 
+import { setPickSubmission } from '../../utils/picks';
 import { serverUrl } from '../../constants';
 import MyPicksFields from './Fields';
 import MyPicksSchedule from './Schedule';
-import { TwoButtons } from '../SlidingButtons';
+import { TwoButtons } from '../Buttons';
 import { validationSchema } from './validate';
 import { MyPicksContainer, MpSubmitButton, MpForm } from './styled';
-
-function setPickSubmission(data) {
-  return Object.assign({}, ...(data.map(item => ({ [item.matchday]: item.team_id }))));
-};
 
 export const MyPicksContext = createContext();
 
@@ -33,6 +30,7 @@ const MyPicks = ({ authUser, initialValues, scheduleData }) => {
         picks: initialValues
       }}
       onSubmit={async (data, { setSubmitting }) => {
+        // only send changed values
         const submitionData = data.picks.filter(x => !initialValues.includes(x));
         setSubmitting(true);
         await axios.patch(

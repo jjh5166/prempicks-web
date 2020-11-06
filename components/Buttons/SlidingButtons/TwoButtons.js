@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { SwitchButtons, TwoBtnSlider, SwitchButton } from './styled';
 
-export const TwoButtons = ({ startLeft = true, switchSide, buttonNames }) => {
+const TwoButtons = ({ startLeft = true, switchSide, buttonNames }) => {
   const [isLeft, setSide] = useState(startLeft);
 
   const handleClick = () => {
@@ -26,3 +26,5 @@ export const TwoButtons = ({ startLeft = true, switchSide, buttonNames }) => {
     </SwitchButtons>
   );
 };
+
+export default TwoButtons;
