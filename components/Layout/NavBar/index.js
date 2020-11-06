@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faGavel, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 
+import useGuestUser from '../../../redux/hooks/useGuestUser';
 import LogoutButton from '../../LogoutButton';
 import { StyledNavBar, StyledBrand } from './styled';
 
@@ -17,7 +18,7 @@ const NavBarLink = ({ href, children }) => (
 const NavBar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const navRef = useRef();
-
+  const isGuest = useGuestUser();
   const handleClickOutside = e => {
     if (navRef.current.contains(e.target)) {
       return;
@@ -39,13 +40,13 @@ const NavBar = () => {
     <StyledNavBar expand="md" className="justify-content-between navbar-dark" ref={navRef} expanded={isExpanded}>
       <Container fluid>
         <StyledBrand href="/" className="d-block text-center order-0 order-md-1">PremPicks</StyledBrand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={async()=>{
+        <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={async () => {
           setIsExpanded(!isExpanded);
-        }}/>
+        }} />
         <Navbar.Collapse className="collapseNav w-50 order-1 order-md-0">
           <Nav>
-            <NavBarLink href="/standings">Standings</NavBarLink>
-            <NavBarLink href="/mypicks">My Picks</NavBarLink>
+            <NavBarLink href={isGuest ? "/guest/standings" : "/standings"}>Standings</NavBarLink>
+            <NavBarLink href={isGuest ? "/guest/mypicks" : "/mypicks"}>My Picks</NavBarLink>
             <NavBarLink href="/epl/table">EPL Table</NavBarLink>
             <NavBarLink href="/epl/schedule">
               <FontAwesomeIcon icon={faCalendarAlt} size="2x" />
@@ -57,9 +58,9 @@ const NavBar = () => {
             <NavBarLink href="/rules">
               <FontAwesomeIcon icon={faGavel} size="2x" />
             </NavBarLink>
-            <NavBarLink href="/user/account">
+            {!isGuest && <NavBarLink href="/user/account">
               <FontAwesomeIcon icon={faUser} size="2x" />
-            </NavBarLink>
+            </NavBarLink>}
             <LogoutButton />
           </Nav>
         </Navbar.Collapse>
