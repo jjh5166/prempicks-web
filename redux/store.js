@@ -1,37 +1,25 @@
 import { useMemo } from 'react';
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import logger from 'redux-logger';
+
+const middleware = [];
+if (process.env.NODE_ENV === 'development') {
+  middleware.push(logger);
+}
+import reducers from './reducers';
 
 let store;
-
 const initialState = {
-  authUser: null
-};
+authUser: null,
+guest: false
+}
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'UPDATE_AUTH':
-      return {
-        ...state,
-        authUser: {
-          idToken: action.idToken
-        }
-      };
-    case 'LOGOUT':
-      return {
-        ...state,
-        authUser: null
-      };
-    default:
-      return state;
-  }
-};
-
-function initStore(preloadedState = initialState) {
+function initStore() {
   return createStore(
-    reducer,
-    preloadedState,
-    composeWithDevTools(applyMiddleware())
+    reducers,
+    initialState,
+    composeWithDevTools(applyMiddleware(...middleware))
   );
 }
 
