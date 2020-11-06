@@ -13,13 +13,13 @@ function triggerScoring(matchday) {
   axios(
     `${serverUrl}/v1/score-matchday`, { params: { "matchday": matchday } },
     { headers: { 'Content-Type': 'application/json' } }
-  ).then(console.log('scoring update requested'))
+  ).then(console.log('scoring update requested'));
 };
 
 export default function StandingsPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [standings, setStandings] = useState(null);
-  const { authUser } = useAuthUser();
+  const authUser = useAuthUser();
   const today = new Date().toISOString().slice(0, 10);
   useEffect(() => {
     if (!authUser) {
@@ -27,7 +27,7 @@ export default function StandingsPage() {
     }
     const fetchData = async () => {
       setIsLoading(true);
-      let scores
+      let scores;
       await axios.get(
         `${serverUrl}/v1/standings`, { params: { "idToken": authUser.idToken } },
         { headers: { 'Content-Type': 'application/json' } }
@@ -35,7 +35,7 @@ export default function StandingsPage() {
         .then(res => {
           setStandings(res.data);
           setIsLoading(false);
-          scores = res.data.scores
+          scores = res.data.scores;
         })
         .catch(err => console.log(err.response));
       await axios.get(
@@ -45,8 +45,8 @@ export default function StandingsPage() {
         .then(res => {
           if (res.data.matches) {
             const matchCheck = res.data.matches.map(({ matchday, homeTeam }) => [teamsMap[homeTeam.id]['abv'], matchday]);
-            const scoreThis = matchCheck.find(check => scores[check[1]][check[0]] === 0)
-            scoreThis && triggerScoring(scoreThis[1])
+            const scoreThis = matchCheck.find(check => scores[check[1]][check[0]] === 0);
+            scoreThis && triggerScoring(scoreThis[1]);
           }
         }).catch(err => console.log(err));
     };

@@ -2,9 +2,7 @@ import { useSelector, shallowEqual } from 'react-redux';
 
 const useAuthUser = () => {
   return useSelector(
-    (state) => ({
-      authUser: state.authUser,
-    }),
+    (state) => (state.authUser),
     shallowEqual
   );
 }

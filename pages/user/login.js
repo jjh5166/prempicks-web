@@ -6,7 +6,7 @@ import LoginForm from '../../components/UserForm/Login';
 import useAuthUser from '../../redux/useAuthUser';
 
 const LoginPage = () => {
-  const { authUser } = useAuthUser();
+  const authUser = useAuthUser();
   useEffect(() => {
     if (authUser) {
       Router.push('/mypicks');

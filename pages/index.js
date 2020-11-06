@@ -7,7 +7,7 @@ import useAuthUser from '../redux/useAuthUser';
 
 
 export default function Home() {
-  const { authUser } = useAuthUser();
+  const authUser = useAuthUser();
   useEffect(() => {
     if (authUser) {
       Router.push('/mypicks');

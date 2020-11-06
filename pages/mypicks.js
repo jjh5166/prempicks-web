@@ -12,7 +12,7 @@ const MyPicksPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [picks, setPicks] = useState(null);
   const [scheduleData, setScheduleData] = useState(null);
-  const { authUser } = useAuthUser();
+  const authUser = useAuthUser();
   useEffect(() => {
     if (!authUser) {
       Router.push('/user/login');

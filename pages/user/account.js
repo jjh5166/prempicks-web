@@ -15,7 +15,7 @@ const initialValues = {
 };
 
 const UpdateAccountPage = () => {
-  const { authUser } = useAuthUser();
+  const authUser = useAuthUser();
   const [isLoading, setIsLoading] = useState(false);
   const [userData, setUserData] = useState(initialValues);
   useEffect(() => {
