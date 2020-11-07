@@ -1,6 +1,6 @@
 import TableCell from '@material-ui/core/TableCell';
 
-import { teamsMap } from '../../../constants';
+import { teamsMap } from '../../../../constants';
 import { TeamCrest, TeamName } from './styled';
 
 const style = {

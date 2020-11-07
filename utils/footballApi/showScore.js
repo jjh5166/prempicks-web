@@ -1,3 +1,5 @@
 export default function showScore(status) {
-  return status === ('FINISHED' || 'AWARDED' || 'IN_PLAY' || 'PAUSED');
+  const showIfStatus = ['FINISHED', 'AWARDED', 'IN_PLAY', 'PAUSED'];
+  const showIndex = showIfStatus.indexOf(status);
+  return [showIndex > -1, showIndex < 2];
 }

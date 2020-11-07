@@ -32,7 +32,8 @@ const MatchdaySchedule = ({ matchday, matches, changeMatchday }) => {
       </MatchdayTitle>
       <ScheduleContainer>
         {matches.map(match => {
-          let thisScore = showScore(match.status) ?
+          let showIt = showScore(match.status);
+          let thisScore = showIt[0] ?
             `${match.score.fullTime.homeTeam} : ${match.score.fullTime.awayTeam}`
             :
             'vs.';
@@ -42,7 +43,7 @@ const MatchdaySchedule = ({ matchday, matches, changeMatchday }) => {
                 <span>{teamsMap[match.homeTeam.id]['short']}</span>
                 <img src={teamsMap[match.homeTeam.id]['crestURL']} />
               </HomeTeam>
-              <ScoreContainer>{thisScore}</ScoreContainer>
+              <ScoreContainer isOver={showIt[0] && showIt[1]}>{thisScore}</ScoreContainer>
               <AwayTeam>
                 <img src={teamsMap[match.awayTeam.id]['crestURL']} />
                 <span>{teamsMap[match.awayTeam.id]['short']}</span>
