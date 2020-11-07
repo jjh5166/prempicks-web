@@ -51,6 +51,7 @@ export const MatchdayTitle = styled.div`
 
 export const ScoreContainer =styled.span`
   justify-self: center;
+  color: ${({ isOver }) => isOver ? '#4c4a4a' : '#000'}
 `
 const ScheduleTeam = styled.div`
   img{
