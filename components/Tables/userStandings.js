@@ -7,7 +7,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
 import { ThreeButtons } from '../Buttons';
-import { StyledTableContainer, TableSpacer } from './styled';
+import { StyledTableContainer, TableSpacer } from './elements';
 
 const StandingsTable = ({ standingsData }) => {
   const maxMatchday = standingsData.standings[0].picks[0]['matchday']; // use to conditionally render ThreeButtons
