@@ -1,10 +1,12 @@
 import Tooltip from '@material-ui/core/Tooltip';
+
+import { TextContainer } from '../Container';
 import RulesTable from './RulesTable';
-import { RulesContainer, RulesSection } from './styled';
+import { RulesSection } from './styled';
 
 export default function Rules() {
   return (
-    <RulesContainer>
+    <TextContainer>
       <RulesSection>
         <h4>General Rules</h4>
         <p>
@@ -14,6 +16,7 @@ export default function Rules() {
         </p>
       </RulesSection>
       <RulesSection>
+        <h4>Scoring</h4>
         <RulesTable />
         <ul>
           <li>Goal Difference Factor: If the team you pick wins by 3 or more goals, you receive a bonus point. If the team you pick loses by 3 or more goals, you are penalized an additional point. </li>
@@ -32,6 +35,6 @@ export default function Rules() {
           Any matches postponed still count for that same matchday and points will be tallied once the match is completed.
         </p>
       </RulesSection>
-    </RulesContainer>
+    </TextContainer>
   );
 }

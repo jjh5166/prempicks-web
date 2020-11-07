@@ -1,13 +1,5 @@
 import styled from 'styled-components';
 
-export const RulesContainer = styled.div`
-  height: 85vh;
-  width: 90%;
-  outline: solid #000 1px;
-  background-color: rgba(244, 244, 244, .5);
-  overflow: auto;
-`
-
 export const RulesSection = styled.div`
     margin: 0 4%;
     height: auto;
