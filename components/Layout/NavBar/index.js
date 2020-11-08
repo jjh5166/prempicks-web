@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faGavel, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 
-import useGuestUser from '../../../redux/hooks/useGuestUser';
+import { useGuestUser } from '../../../redux/hooks';
 import { LogoutButton } from '../../Buttons';
 import { StyledNavBar, StyledBrand } from './styled';
 
@@ -18,7 +18,7 @@ const NavBarLink = ({ href, children }) => (
 const NavBar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const navRef = useRef();
-  const isGuest = useGuestUser();
+  const { isGuest } = useGuestUser();
   const handleClickOutside = e => {
     if (navRef.current.contains(e.target)) {
       return;
