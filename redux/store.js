@@ -10,15 +10,11 @@ if (process.env.NODE_ENV === 'development') {
 import reducers from './reducers';
 
 let store;
-const initialState = {
-authUser: null,
-guest: false
-}
 
 function initStore() {
   return createStore(
     reducers,
-    initialState,
+    undefined,
     composeWithDevTools(applyMiddleware(...middleware))
   );
 }
