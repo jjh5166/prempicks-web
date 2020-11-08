@@ -3,7 +3,7 @@ import Router from 'next/router';
 
 import LandingPage from '../components/LandingPage';
 import Layout from '../components/Layout';
-import useAuthUser from '../redux/hooks/useAuthUser';
+import { useAuthUser } from '../redux/hooks';
 
 
 export default function Home() {
