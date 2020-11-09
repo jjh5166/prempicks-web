@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import { teamsMap } from '../../../constants';
-import { MyPicksContext } from '../index';
+import { MyPicksContext } from '../Context';
 
 import {
   MyPicksScheduleContainer, MatchdayContainer,
