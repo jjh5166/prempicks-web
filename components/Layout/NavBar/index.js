@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faGavel, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { useGuestUser } from '../../../redux/hooks';
-import { LogoutButton } from '../../Buttons';
+import { UserLogout, GuestLogout } from '../../Buttons';
 import { StyledNavBar, StyledBrand } from './styled';
 
 const NavBarLink = ({ href, children }) => (
@@ -61,7 +61,7 @@ const NavBar = () => {
             {!isGuest && <NavBarLink href="/user/account">
               <FontAwesomeIcon icon={faUser} size="2x" />
             </NavBarLink>}
-            <LogoutButton />
+            {isGuest ? <GuestLogout /> : <UserLogout />}
           </Nav>
         </Navbar.Collapse>
       </Container>

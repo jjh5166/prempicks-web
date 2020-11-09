@@ -1,6 +1,7 @@
-import LogoutButton from './LogoutButton'
-import LandingButton from './LandingButton'
-import TwoButtons from './SlidingButtons/TwoButtons'
-import ThreeButtons from './SlidingButtons/ThreeButtons'
+import LandingButton from './LandingButton';
+import TwoButtons from './SlidingButtons/TwoButtons';
+import ThreeButtons from './SlidingButtons/ThreeButtons';
+import UserLogout from './LogoutButtons/UserLogout';
+import GuestLogout from './LogoutButtons/GuestLogout';
 
-export { LogoutButton, TwoButtons, ThreeButtons, LandingButton }
+export { TwoButtons, ThreeButtons, LandingButton, UserLogout, GuestLogout };
