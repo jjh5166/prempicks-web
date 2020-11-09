@@ -1,6 +1,6 @@
 export const initialValues = {
   team_name: ''
-};;
+};
 
 export const teamField = [
   {
