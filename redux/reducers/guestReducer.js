@@ -22,7 +22,7 @@ const guestReducer = (state = initialState, action) => {
       };
     case 'GUEST_LOGOUT':
       return {
-        initialState
+        ...initialState
       };
     default:
       return state;
