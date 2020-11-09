@@ -20,9 +20,14 @@ const guestReducer = (state = initialState, action) => {
         team_name: action.team_name,
         picks: createInitialValues()
       };
+    case 'UPDATE_PICKS':
+      return {
+        ...state,
+        picks: action.picks
+      }
     case 'GUEST_LOGOUT':
       return {
-        initialState
+        ...initialState
       };
     default:
       return state;

@@ -15,6 +15,10 @@ export const FormContainer = styled.div`
   h2{
     font-style: oblique
   }
+  p{
+    margin: 22px 24px;
+    text-align: justify;
+  }
   @media only screen and (orientation: landscape) {
     width: 56%;
   }

@@ -6,7 +6,7 @@ import Loader from 'react-loader-spinner';
 import useAuthUser from '../redux/hooks/useAuthUser';
 import { serverUrl } from '../constants';
 import Layout from '../components/Layout';
-import MyPicks from '../components/MyPicks';
+import { UserMyPicks } from '../components/MyPicks';
 
 const MyPicksPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -43,7 +43,7 @@ const MyPicksPage = () => {
         isLoading ? (
           <Loader type="Bars" color="#00BFFF" height={80} width={80} />
         ) : (
-            <MyPicks initialValues={picks} authUser={authUser} scheduleData={scheduleData} />
+            <UserMyPicks initialValues={picks} authUser={authUser} scheduleData={scheduleData} />
           )}
     </Layout>
   );

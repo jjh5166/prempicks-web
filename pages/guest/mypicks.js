@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Loader from 'react-loader-spinner';
 
-import { createInitialValues, parseScheduleMyPicks } from '../../utils/guest';
+import { useGuestUser } from '../../redux/hooks';
+import { parseScheduleMyPicks } from '../../utils/guest';
 import { footballApiBaseUrl, footballApiKey } from '../../constants';
 import Layout from '../../components/Layout';
-import MyPicks from '../../components/MyPicks';
+import { GuestMyPicks } from '../../components/MyPicks';
 
 const GuestMyPicksPage = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const picks = createInitialValues();
+  const { picks } = useGuestUser();
   const [scheduleData, setScheduleData] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
@@ -29,6 +30,7 @@ const GuestMyPicksPage = () => {
         })
         .catch(err => console.log(err.response));
     };
+
     fetchData();
   }, []);
   return (
@@ -37,7 +39,8 @@ const GuestMyPicksPage = () => {
         isLoading ? (
           <Loader type="Bars" color="#00BFFF" height={80} width={80} />
         ) : (
-            <MyPicks initialValues={picks} scheduleData={scheduleData} />
+          // ability to change currentMatchday
+            <GuestMyPicks initialValues={picks} scheduleData={scheduleData} />
           )}
     </Layout>
   );

@@ -2,7 +2,7 @@ import { useContext, createContext } from 'react';
 import { FieldArray } from 'formik';
 import PickField from './PickField';
 
-import { MyPicksContext } from '../index';
+import { MyPicksContext } from '../Context';
 import { FieldsGrid, FieldBlock } from './styled';
 
 export const DisabledTeamsContext = createContext(null);
