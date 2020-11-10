@@ -47,9 +47,9 @@ const StandingsTable = ({ standingsData }) => {
           <TableHead>
             <TableRow>
               <TableCell colSpan={2} />
-              {Object.keys(standingsData.scores).reverse().map((matchday) =>
-                !((whichTable === 0 && matchday > 19) || (whichTable === 2 && matchday < 19)) &&
-                <TableCell key={`dayHeader${matchday}`} align="center" colSpan={2}>{matchday}</TableCell>
+              {standingsData.standings[0].picks.map((pick) =>
+                !((whichTable === 0 && pick.matchday > 19) || (whichTable === 2 && pick.matchday < 19)) &&
+                <TableCell key={`dayHeader${pick.matchday}`} align="center" colSpan={2}>{pick.matchday}</TableCell>
               )}
               <TableSpacer />
             </TableRow>
