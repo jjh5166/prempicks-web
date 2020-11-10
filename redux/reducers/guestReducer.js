@@ -1,4 +1,4 @@
-import { createInitialValues } from '../../utils/guest';
+import { createInitialValues, fakeStandingsData, updateStandingsData } from '../../utils/guest';
 
 const initialState = {
   isGuest: false,
@@ -23,8 +23,17 @@ const guestReducer = (state = initialState, action) => {
     case 'UPDATE_PICKS':
       return {
         ...state,
-        picks: action.picks
-      }
+        picks: action.picks,
+        standingsData: updateStandingsData(state.standingsData, action.picks)
+      };
+    case 'CREATE_STANDINGS_DATA':
+      return {
+        ...state,
+        standingsData: fakeStandingsData({
+          name: state.team_name,
+          picks: state.picks
+        })
+      };
     case 'GUEST_LOGOUT':
       return {
         ...initialState

@@ -14,7 +14,7 @@ function createHalfPicks(isFirst) {
       matchday: i + halfFactor,
       team_id: theseTeams.splice(Math.floor(Math.random() * theseTeams.length), 1)[0]
     });
-  })
+  });
   return array;
 };
 function createScores() {
@@ -31,11 +31,15 @@ function fakeScoresForWeek() {
   });
   return scores;
 }
-export function fakeStandingsData() {
+export function fakeStandingsData(guest) {
   const fakeData = {
     scores: createScores(),
     standings: []
   };
+  fakeData.standings.push({
+    name: guest.name,
+    picks: guest.picks.reverse()
+  });
   [...Array(20)].forEach(user => {
     let u = {
       name: faker.internet.userName(),
