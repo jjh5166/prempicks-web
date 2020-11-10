@@ -36,7 +36,10 @@ export function fakeStandingsData(guest) {
     scores: createScores(),
     standings: []
   };
-  fakeData.standings.push(guest);
+  fakeData.standings.push({
+    name: guest.name,
+    picks: guest.picks.reverse()
+  });
   [...Array(20)].forEach(user => {
     let u = {
       name: faker.internet.userName(),
