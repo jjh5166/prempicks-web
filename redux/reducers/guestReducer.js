@@ -4,7 +4,8 @@ const initialState = {
   isGuest: false,
   team_name: '',
   picks: null,
-  standingsData: null
+  standingsData: null,
+  currentMatchday: 1
 };
 
 const guestReducer = (state = initialState, action) => {
@@ -34,6 +35,11 @@ const guestReducer = (state = initialState, action) => {
           picks: state.picks
         })
       };
+    case 'CHANGE_MATCHDAY':
+      return {
+        ...state,
+        currentMatchday: action.matchday
+      }
     case 'GUEST_LOGOUT':
       return {
         ...initialState
