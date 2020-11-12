@@ -38,7 +38,7 @@ export function fakeStandingsData(guest) {
   };
   fakeData.standings.push({
     name: guest.name,
-    picks: guest.picks.reverse()
+    picks: JSON.parse(JSON.stringify(guest.picks)).reverse()
   });
   [...Array(20)].forEach(user => {
     let u = {
