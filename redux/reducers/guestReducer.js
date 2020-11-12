@@ -1,6 +1,7 @@
-import { 
+import {
   createInitialValues, fakeStandingsData,
-  updateStandingsData, replaceGuestInStandings
+  updateStandingsData, replaceGuestInStandings,
+  autopickGuest
 } from '../../utils/guest';
 
 const initialState = {
@@ -39,18 +40,23 @@ const guestReducer = (state = initialState, action) => {
         })
       };
     case 'GUEST_PICKS_IN_STANDINGS':
-      return{
+      return {
         ...state,
         standingsData: {
           scores: state.standingsData.scores,
           standings: replaceGuestInStandings(state.standingsData.standings, state.picks)
         }
-      }
+      };
+    case 'AUTOPICK_GUEST':
+      return {
+        ...state,
+        picks: autopickGuest(state.picks, action.matchday)
+      };
     case 'CHANGE_MATCHDAY':
       return {
         ...state,
         currentMatchday: action.matchday
-      }
+      };
     case 'GUEST_LOGOUT':
       return {
         ...initialState
