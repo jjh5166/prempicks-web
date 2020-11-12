@@ -11,7 +11,8 @@ import { StyledTableContainer, TableSpacer } from './elements';
 
 const StandingsTable = ({ standingsData }) => {
   const maxMatchday = standingsData.standings[0].picks[0]['matchday']; // use to conditionally render ThreeButtons
-  const [whichTable, switchTable] = useState(0);
+  const initTable = maxMatchday > 19 ? 1 : 0
+  const [whichTable, switchTable] = useState(initTable);
   const totals = [];
   standingsData.standings.forEach((team) => {
     let teamObj = {
@@ -41,7 +42,7 @@ const StandingsTable = ({ standingsData }) => {
   }
   return (
     <Fragment>
-      {maxMatchday > 19 && <ThreeButtons buttonNames={['1st Half', 'Season', '2nd Half']} switchTable={switchTable} />}
+      {initTable > 0 && <ThreeButtons buttonNames={['1st Half', 'Season', '2nd Half']} switchTable={switchTable} />}
       <StyledTableContainer component={Paper}>
         <Table stickyHeader size="small">
           <TableHead>

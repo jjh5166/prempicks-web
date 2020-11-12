@@ -16,7 +16,9 @@ function orderSchedule(matches) {
   );
 }
 // done using API with authorized user
-export function parseScheduleMyPicks(matches) {
+export function parseScheduleMyPicks(matches, matchday) {
+  const disableTime = "2000-09-12T11:30:00Z";
+  const allowTime = "2030-09-12T11:30:00Z";
   const sortedMatches = orderSchedule(matches);
   const schedule = {};
   [...Array(38)].forEach((_, i) => {
@@ -31,7 +33,7 @@ export function parseScheduleMyPicks(matches) {
         awayTeam: match['score']['fullTime']['awayTeam']
       },
       status: match['status'],
-      utcDate: match['utcDate']
+      utcDate: match.matchday <= matchday ? disableTime : allowTime
     });
   });
   return schedule;

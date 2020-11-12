@@ -10,7 +10,7 @@ import { GuestMyPicks } from '../../components/MyPicks';
 
 const GuestMyPicksPage = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const { picks } = useGuestUser();
+  const { picks, currentMatchday } = useGuestUser();
   const [scheduleData, setScheduleData] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
@@ -22,8 +22,8 @@ const GuestMyPicksPage = () => {
         .then(res => {
           setScheduleData(
             {
-              currentMatchday: 1,
-              schedule: parseScheduleMyPicks(res.data.matches)
+              currentMatchday: currentMatchday,
+              schedule: parseScheduleMyPicks(res.data.matches, currentMatchday)
             }
           );
           setIsLoading(false);
@@ -32,14 +32,13 @@ const GuestMyPicksPage = () => {
     };
 
     fetchData();
-  }, []);
+  }, [currentMatchday]);
   return (
     <Layout title="My Picks">
       {
         isLoading ? (
           <Loader type="Bars" color="#00BFFF" height={80} width={80} />
         ) : (
-          // ability to change currentMatchday
             <GuestMyPicks initialValues={picks} scheduleData={scheduleData} />
           )}
     </Layout>
