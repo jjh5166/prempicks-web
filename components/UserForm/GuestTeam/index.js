@@ -16,9 +16,11 @@ const GuestTeam = () => {
   return (
     <FormContainer>
       <h2>{'Welcome!'}</h2>
-      <p>{`Welcome to the PremPicks. This application hosts a picks league throughout the Premier League 
-      season. Scores are determined based on quality of the teams and the results of the matches. Check out
-      the rules after entering a team name below. User data in guest mode is randomly generated nothing is stored.`}</p>
+      <p>
+        {`Welcome to the PremPicks. This application hosts a picks league throughout the Premier League 
+      season. Sample the app by entering a team name below. User data in guest mode is randomly generated
+       nothing is stored.`}
+      </p>
       <Formik
         enableReinitialize
         initialValues={initialValues}
@@ -26,7 +28,7 @@ const GuestTeam = () => {
         onSubmit={async (data, { setSubmitting }) => {
           setSubmitting(true);
           await setTeam(data.team_name);
-          await Router.push('/guest/mypicks');
+          await Router.push('/rules');
         }}
       >
         {({ dirty, isValid, isSubmitting }) => (
