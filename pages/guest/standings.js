@@ -7,23 +7,30 @@ import Layout from '../../components/Layout';
 import StandingsTable from '../../components/Tables/userStandings';
 
 export default function GuestStandingsPage() {
-  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
   const [standings, setStandings] = useState(null);
+  const dispatch = useDispatch();
   const { standingsData, currentMatchday } = useGuestUser();
   useEffect(() => {
+    setIsLoading(true);
     if (!standingsData) {
       dispatch({ type: 'CREATE_STANDINGS_DATA' });
-    }else{
+    } else {
       setStandings({
         scores: standingsData.scores,
         standings: pluckPicks(standingsData.standings, currentMatchday)
       });
     }
+    setIsLoading(false);
   }, [standingsData, currentMatchday]);
   return (
     <Layout title="Standings">
       {
-        standings && <StandingsTable standingsData={standings} />
+        isLoading ? (
+          <Loader type="Bars" color="#00BFFF" height={80} width={80} />
+        ) : (
+            standings && <StandingsTable standingsData={standings} />
+          )
       }
     </Layout>
   );

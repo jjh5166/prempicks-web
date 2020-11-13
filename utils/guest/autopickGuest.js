@@ -28,7 +28,8 @@ function autopickHalf(picks) {
   });
 }
 export function autopickGuest(picks, matchday) {
-  const thesePicks = picks.slice(0, -(38 - matchday));
+  const newPicks = JSON.parse(JSON.stringify(picks))
+  const thesePicks = newPicks.slice(0, -(38 - matchday));
   const firstHalf = thesePicks.splice(0, 19);
   const secondHalf = thesePicks.splice(-19);
   if (needsAuto(firstHalf)) {
@@ -37,4 +38,5 @@ export function autopickGuest(picks, matchday) {
   if (needsAuto(secondHalf)) {
     autopickHalf(secondHalf);
   }
+  return newPicks;
 }
