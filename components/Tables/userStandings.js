@@ -1,3 +1,4 @@
+import {useEffect, useRef} from 'react';
 import { useState, Fragment } from 'react';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -7,13 +8,18 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
 import { ThreeButtons } from '../Buttons';
-import { StyledTableContainer, TableSpacer } from './elements';
+import { StyledTableContainer, TableSpacer, StickyCell, StickyHeaderCell } from './elements';
 
 const StandingsTable = ({ standingsData }) => {
   const maxMatchday = standingsData.standings[0].picks[0]['matchday']; // use to conditionally render ThreeButtons
   const initTable = maxMatchday > 19 ? 1 : 0;
   const [whichTable, switchTable] = useState(initTable);
   const totals = [];
+  const firstColumn = useRef(null);
+  const [secondColumnLeft, setSecondColumn] = useState(null)
+  const setStickyColumn = () => {
+    setSecondColumn(window.getComputedStyle(firstColumn.current, null).getPropertyValue("width")) 
+  }
   standingsData.standings.forEach((team) => {
     let teamObj = {
       name: team.name,
@@ -40,6 +46,11 @@ const StandingsTable = ({ standingsData }) => {
   } else {
     totals.sort((a, b) => b.season - a.season);
   }
+  useEffect(() => {
+    if (firstColumn){
+      setStickyColumn();
+    }
+  })
   return (
     <Fragment>
       {
@@ -54,7 +65,7 @@ const StandingsTable = ({ standingsData }) => {
         <Table stickyHeader size="small">
           <TableHead>
             <TableRow>
-              <TableCell colSpan={2} />
+              <StickyHeaderCell colSpan={2} />
               {standingsData.standings[0].picks.map((pick) =>
                 !((whichTable === 0 && pick.matchday > 19) || (whichTable === 2 && pick.matchday < 19)) &&
                 <TableCell key={`dayHeader${pick.matchday}`} align="center" colSpan={2}>{pick.matchday}</TableCell>
@@ -63,14 +74,14 @@ const StandingsTable = ({ standingsData }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {totals.map((row) => (
+            {totals.map((row, i) => (
               <TableRow key={row.name}>
-                <TableCell component="th" scope="row" align="left">
+                <StickyCell scope="row" align="left" ref={i===0 ? firstColumn : null}>
                   {row.name}
-                </TableCell>
-                <TableCell component="th" scope="row" align="center">
+                </StickyCell>
+                <StickyCell scope="row" align="center" stickyleft={secondColumnLeft}>
                   {whichTable === 0 ? row.firstHalf : whichTable === 1 ? row.season : row.secondHalf}
-                </TableCell>
+                </StickyCell>
                 {
                   row.picks.map(
                     (pick, i) =>
