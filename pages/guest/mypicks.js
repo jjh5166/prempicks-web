@@ -16,6 +16,7 @@ const GuestMyPicksPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { picks, currentMatchday } = useGuestUser();
   const [scheduleData, setScheduleData] = useState(null);
+  const mdValue = currentMatchday === 0 ? 1 : currentMatchday
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
@@ -43,7 +44,7 @@ const GuestMyPicksPage = () => {
           <Loader type="Bars" color="#00BFFF" height={80} width={80} />
         ) : (
           <Fragment>
-              <GuestInfo matchday={currentMatchday} infoText={informationText}/>
+              <GuestInfo matchday={mdValue} infoText={informationText}/>
               <GuestMyPicks initialValues={picks} scheduleData={scheduleData} />
           </Fragment>
           )}
