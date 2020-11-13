@@ -16,9 +16,9 @@ const GuestTeam = () => {
   return (
     <FormContainer>
       <h2>{'Welcome!'}</h2>
-      <p>{`Welcome to the PremPicks. To sample the application and interact with the app
-            as a guest user, enter a team name.  Otherwise, the pages
-            that don't require a team are available to browse from the navbar.`}</p>
+      <p>{`Welcome to the PremPicks. This application hosts a picks league throughout the Premier League 
+      season. Scores are determined based on quality of the teams and the results of the matches. Check out
+      the rules after entering a team name below. User data in guest mode is randomly generated nothing is stored.`}</p>
       <Formik
         enableReinitialize
         initialValues={initialValues}

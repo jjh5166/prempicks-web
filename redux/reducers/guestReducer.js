@@ -9,7 +9,7 @@ const initialState = {
   team_name: '',
   picks: null,
   standingsData: null,
-  currentMatchday: 1
+  currentMatchday: 0
 };
 
 const guestReducer = (state = initialState, action) => {
