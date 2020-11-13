@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import axios from 'axios';
 import Loader from 'react-loader-spinner';
 
@@ -7,7 +7,11 @@ import { parseScheduleMyPicks } from '../../utils/guest';
 import { footballApiBaseUrl, footballApiKey } from '../../constants';
 import Layout from '../../components/Layout';
 import { GuestMyPicks } from '../../components/MyPicks';
+import GuestInfo from '../../components/GuestInfo';
 
+const informationText = `This is the My Picks page where users make their selections. Season data is fetched from
+an external API and fields are locked after the matchday has started. In guest mode, you interact with the Redux 
+store instead of the app server. Control where you are in the season by using the dropdown to the right.`
 const GuestMyPicksPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { picks, currentMatchday } = useGuestUser();
@@ -30,8 +34,7 @@ const GuestMyPicksPage = () => {
         })
         .catch(err => console.log(err.response));
     };
-
-    fetchData();
+      fetchData();
   }, [currentMatchday]);
   return (
     <Layout title="My Picks">
@@ -39,7 +42,10 @@ const GuestMyPicksPage = () => {
         isLoading ? (
           <Loader type="Bars" color="#00BFFF" height={80} width={80} />
         ) : (
-            <GuestMyPicks initialValues={picks} scheduleData={scheduleData} />
+          <Fragment>
+              <GuestInfo matchday={currentMatchday} infoText={informationText}/>
+              <GuestMyPicks initialValues={picks} scheduleData={scheduleData} />
+          </Fragment>
           )}
     </Layout>
   );
