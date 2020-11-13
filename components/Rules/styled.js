@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../constants';
 
 export const RulesSection = styled.div`
     margin: 0 4%;
@@ -14,9 +15,16 @@ export const RulesSection = styled.div`
     span{
       text-decoration: underline;
     }
+    @media ${device.tablet}{
+      div{
+        display: grid;
+        grid-template-columns: 40% 60%;
+      }
+    }
 `
 
 export const RulesTableEl = styled.table`
+  justify-self: center;
   position: relative;
   table-layout: auto;
   background-color: #EDEAEA;
