@@ -15,3 +15,14 @@ export const StyledTableContainer = styled(TableContainer)`
 export const TableSpacer = styled(TableCell)`
   width:100%;
 `;
+
+export const StickyCell = styled(TableCell)`
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  background-color: #fff;
+  left: ${({ stickyleft }) => stickyleft ? stickyleft : 0};
+`;
+export const StickyHeaderCell = styled(StickyCell)`
+  background-color: #fafafa !important;
+  z-index: 3 !important;
+`;
