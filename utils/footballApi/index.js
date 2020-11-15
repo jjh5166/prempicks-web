@@ -1,3 +1,4 @@
 import showScore from './showScore';
+import triggerScoring from './triggerScoring';
 
-export { showScore };
+export { showScore, triggerScoring };
