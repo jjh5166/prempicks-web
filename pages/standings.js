@@ -3,18 +3,11 @@ import Router from 'next/router';
 import axios from 'axios';
 import Loader from 'react-loader-spinner';
 
+import { triggerScoring } from '../utils/footballApi';
 import { serverUrl, footballApiKey, footballApiBaseUrl, teamsMap } from '../constants';
 import useAuthUser from '../redux/hooks/useAuthUser';
 import Layout from '../components/Layout';
 import StandingsTable from '../components/Tables/userStandings';
-
-function triggerScoring(matchday) {
-  console.log('scoring requested');
-  axios(
-    `${serverUrl}/v1/score-matchday`, { params: { "matchday": matchday } },
-    { headers: { 'Content-Type': 'application/json' } }
-  ).then(console.log('scoring update requested'));
-};
 
 export default function StandingsPage() {
   const [isLoading, setIsLoading] = useState(false);
