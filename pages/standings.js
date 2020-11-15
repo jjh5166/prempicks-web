@@ -14,6 +14,9 @@ export default function StandingsPage() {
   const [standings, setStandings] = useState(null);
   const authUser = useAuthUser();
   const today = new Date().toISOString().slice(0, 10);
+  const yestDate = new Date();
+  yestDate.setDate(yestDate.getDate() - 1);
+  const yesterday = yestDate.toISOString().slice(0, 10);
   useEffect(() => {
     if (!authUser) {
       Router.push('/user/login');
@@ -32,11 +35,14 @@ export default function StandingsPage() {
         })
         .catch(err => console.log(err.response));
       await axios.get(
-        `${footballApiBaseUrl}/competitions/2021/matches?dateFrom=${today}&dateTo=${today}&status=FINISHED`,
+        // request matches from yesterday to today
+        `${footballApiBaseUrl}/competitions/2021/matches?dateFrom=${yesterday}&dateTo=${today}&status=FINISHED`,
         { headers: { 'X-Auth-Token': footballApiKey } }
       )
         .then(res => {
           if (res.data.matches) {
+            /* if there are matches, check whether home team has been scored for the matchday.
+            if not, init scoring job on the server */
             const matchCheck = res.data.matches.map(({ matchday, homeTeam }) => [teamsMap[homeTeam.id]['abv'], matchday]);
             const scoreThis = matchCheck.find(check => scores[check[1]][check[0]] === 0);
             scoreThis && triggerScoring(scoreThis[1]);
