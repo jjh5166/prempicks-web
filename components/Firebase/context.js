@@ -1,7 +1,7 @@
 import { useEffect, createContext } from 'react'
 import { useDispatch } from 'react-redux';
 import Firebase from './firebase';
-
+import { updateAuth, logout } from '../../redux/actions/authUser'
 const FirebaseContext = createContext(null);
 
 export const withFirebase = Component => props => (
@@ -19,9 +19,9 @@ export function FirebaseProvider({ children }) {
       try {
         if (user) {
           const idToken = await firebase.retrieveToken();
-          dispatch({ type: "UPDATE_AUTH", idToken: idToken})
+          dispatch(updateAuth(idToken))
         } else { 
-          dispatch({ type: "LOGOUT" })
+          dispatch(logout())
         };
       } catch (error) {
         // Most probably a connection error. Handle appropriately.

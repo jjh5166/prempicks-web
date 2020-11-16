@@ -7,12 +7,11 @@ import Bttn from '../elements/Bttn';
 import { FormContainer } from '../Base/styled';
 import { validationSchema } from './validate';
 import { initialValues, teamField } from './formConfig';
+import { setTeam } from '../../../redux/actions/guest';
 
 const GuestTeam = () => {
   const dispatch = useDispatch();
-  const setTeam = async (team) => {
-    dispatch({ type: "SET_TEAM", team_name: team });
-  };
+
   return (
     <FormContainer>
       <h2>{'Welcome!'}</h2>
@@ -25,10 +24,10 @@ const GuestTeam = () => {
         enableReinitialize
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={async (data, { setSubmitting }) => {
+        onSubmit={(data, { setSubmitting }) => {
           setSubmitting(true);
-          await setTeam(data.team_name);
-          await Router.push('/rules');
+          dispatch(setTeam(data.team_name));
+          Router.push('/rules');
         }}
       >
         {({ dirty, isValid, isSubmitting }) => (

@@ -1,4 +1,10 @@
 import {
+  GUEST_LOGIN, SET_TEAM, UPDATE_PICKS,
+CREATE_STANDINGS_DATA, GUEST_PICKS_IN_STANDINGS,
+AUTOPICK_GUEST, CHANGE_MATCHDAY, GUEST_LOGOUT
+} from '../actions/guest';
+
+import {
   createInitialValues, fakeStandingsData,
   updateStandingsData, replaceGuestInStandings,
   autopickGuest
@@ -14,24 +20,24 @@ const initialState = {
 
 const guestReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'GUEST_LOGIN':
+    case GUEST_LOGIN:
       return {
         ...state,
         isGuest: true
       };
-    case 'SET_TEAM':
+    case SET_TEAM:
       return {
         ...state,
         team_name: action.team_name,
         picks: createInitialValues()
       };
-    case 'UPDATE_PICKS':
+    case UPDATE_PICKS:
       return {
         ...state,
         picks: action.picks,
         standingsData: updateStandingsData(state.standingsData, action.picks)
       };
-    case 'CREATE_STANDINGS_DATA':
+    case CREATE_STANDINGS_DATA:
       return {
         ...state,
         standingsData: fakeStandingsData({
@@ -39,7 +45,7 @@ const guestReducer = (state = initialState, action) => {
           picks: state.picks
         })
       };
-    case 'GUEST_PICKS_IN_STANDINGS':
+    case GUEST_PICKS_IN_STANDINGS:
       return {
         ...state,
         standingsData: {
@@ -47,17 +53,17 @@ const guestReducer = (state = initialState, action) => {
           standings: replaceGuestInStandings(state.standingsData.standings, state.picks)
         }
       };
-    case 'AUTOPICK_GUEST':
+    case AUTOPICK_GUEST:
       return {
         ...state,
         picks: autopickGuest(state.picks, action.matchday)
       };
-    case 'CHANGE_MATCHDAY':
+    case CHANGE_MATCHDAY:
       return {
         ...state,
         currentMatchday: action.matchday
       };
-    case 'GUEST_LOGOUT':
+    case GUEST_LOGOUT:
       return {
         ...initialState
       };
