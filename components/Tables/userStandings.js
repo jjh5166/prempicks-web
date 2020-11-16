@@ -1,4 +1,4 @@
-import {useEffect, useRef} from 'react';
+import { useEffect, useRef } from 'react';
 import { useState, Fragment } from 'react';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -16,10 +16,10 @@ const StandingsTable = ({ standingsData }) => {
   const [whichTable, switchTable] = useState(initTable);
   const totals = [];
   const firstColumn = useRef(null);
-  const [secondColumnLeft, setSecondColumn] = useState(null)
+  const [secondColumnLeft, setSecondColumn] = useState(null);
   const setStickyColumn = () => {
-    setSecondColumn(window.getComputedStyle(firstColumn.current, null).getPropertyValue("width")) 
-  }
+    setSecondColumn(window.getComputedStyle(firstColumn.current, null).getPropertyValue("width"));
+  };
   standingsData.standings.forEach((team) => {
     let teamObj = {
       name: team.name,
@@ -47,10 +47,10 @@ const StandingsTable = ({ standingsData }) => {
     totals.sort((a, b) => b.season - a.season);
   }
   useEffect(() => {
-    if (firstColumn){
+    if (firstColumn) {
       setStickyColumn();
     }
-  })
+  });
   return (
     <Fragment>
       {
@@ -76,7 +76,7 @@ const StandingsTable = ({ standingsData }) => {
           <TableBody>
             {totals.map((row, i) => (
               <TableRow key={row.name}>
-                <StickyCell scope="row" align="left" ref={i===0 ? firstColumn : null}>
+                <StickyCell scope="row" align="left" ref={i === 0 ? firstColumn : null}>
                   {row.name}
                 </StickyCell>
                 <StickyCell scope="row" align="center" stickyleft={secondColumnLeft}>
