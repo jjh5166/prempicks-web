@@ -1,14 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { SwitchButtons, ThreeBtnSlider, SwitchButton } from './styled';
 
-const ThreeButtons = ({ start = 0, switchTable, buttonNames }) => {
+const ThreeButtons = ({ start, switchTable, buttonNames }) => {
   const [active, setActive] = useState(start);
 
   const handleClick = index => e => {
     switchTable(index);
     setActive(index);
   };
-
+  useEffect(() => {
+    setActive(start);
+  }, [start]);
   return (
     <SwitchButtons buttons={3}>
       <ThreeBtnSlider slide={active} />
