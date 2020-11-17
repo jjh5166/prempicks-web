@@ -20,6 +20,9 @@ const StandingsTable = ({ standingsData }) => {
   const setStickyColumn = () => {
     setSecondColumn(window.getComputedStyle(firstColumn.current, null).getPropertyValue("width"));
   };
+  const setTableStart = () => {
+    switchTable(initTable);
+  };
   standingsData.standings.forEach((team) => {
     let teamObj = {
       name: team.name,
@@ -47,9 +50,8 @@ const StandingsTable = ({ standingsData }) => {
     totals.sort((a, b) => b.season - a.season);
   }
   useEffect(() => {
-    if (firstColumn) {
-      setStickyColumn();
-    }
+    setTableStart();
+    if (firstColumn) setStickyColumn();
   });
   return (
     <Fragment>
