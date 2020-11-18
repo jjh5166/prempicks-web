@@ -10,7 +10,7 @@ const ThreeButtons = ({ start, switchTable, buttonNames }) => {
   };
   useEffect(() => {
     setActive(start);
-  }, [start]);
+  }, []);
   return (
     <SwitchButtons buttons={3}>
       <ThreeBtnSlider slide={active} />
