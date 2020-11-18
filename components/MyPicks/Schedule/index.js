@@ -16,50 +16,41 @@ const MyPicksSchedule = () => {
     <MyPicksScheduleContainer>
       {
         scheduleData &&
-        [...Array(19)].map((_, i) => {
-          return (
-            <ScheduleMatchday key={`Matchday${i + halfIndex}`} matches={scheduleData.schedule[i + halfIndex]} />
-          );
-        })
+        [...Array(19)].map((_, i) =>
+          <ScheduleMatchday key={`Matchday${i + halfIndex}`} matches={scheduleData.schedule[i + halfIndex]} />
+        )
       }
     </MyPicksScheduleContainer>
   );
 };
-const ScheduleMatchday = ({ matches }) => {
 
-  return (
-    <MatchdayContainer>
-      <MatchdayScroll>
-        <MatchRow>
-          {matches.slice(0, 5).map((match, i) => {
-            return (
-              <Match key={`match${match.home.id}_${match.away.id + i}`} match={match} />
-            );
-          })}
-        </MatchRow>
-        <MatchRow>
-          {matches.slice(5, 10).map((match, i) => {
-            return (
-              <Match key={`match${match.home.id}_${match.away.id + i}`} match={match} />
-            );
-          })}
-        </MatchRow>
-      </MatchdayScroll>
-    </MatchdayContainer>
-  );
-};
-const Match = ({ match }) => {
+const ScheduleMatchday = ({ matches }) => (
+  <MatchdayContainer>
+    <MatchdayScroll>
+      <MatchRow>
+        {matches.slice(0, 5).map(match =>
+          <Match key={`match${match.home.id}_${match.away.id}`} match={match} />
+        )}
+      </MatchRow>
+      <MatchRow>
+        {matches.slice(5, 10).map(match =>
+          <Match key={`match${match.home.id}_${match.away.id}`} match={match} />
+        )}
+      </MatchRow>
+    </MatchdayScroll>
+  </MatchdayContainer>
+);
 
-  return (
-    <MatchSingle>
-      <MatchGrid>
-        <HomeSpan>{teamsMap[match.home.id].abv}</HomeSpan>
-        <HomeImage src={teamsMap[match.home.id].crestURL} />
-        <ScoreSpan>{match.status == "FINISHED" ? `${match.score.homeTeam}:${match.score.awayTeam}` : 'vs'}</ScoreSpan>
-        <AwayImage src={teamsMap[match.away.id].crestURL} />
-        <AwaySpan>{teamsMap[match.away.id].abv}</AwaySpan>
-      </MatchGrid>
-    </MatchSingle>
-  );
-};
+const Match = ({ match }) => (
+  <MatchSingle>
+    <MatchGrid>
+      <HomeSpan>{teamsMap[match.home.id].abv}</HomeSpan>
+      <HomeImage src={teamsMap[match.home.id].crestURL} />
+      <ScoreSpan>{match.status == "FINISHED" ? `${match.score.homeTeam}:${match.score.awayTeam}` : 'vs'}</ScoreSpan>
+      <AwayImage src={teamsMap[match.away.id].crestURL} />
+      <AwaySpan>{teamsMap[match.away.id].abv}</AwaySpan>
+    </MatchGrid>
+  </MatchSingle>
+);
+
 export default MyPicksSchedule;
