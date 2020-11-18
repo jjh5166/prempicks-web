@@ -3,31 +3,31 @@ export const teamsMap = {
     "name": "Arsenal",
     "short": "Arsenal",
     "abv": "ARS",
-    "crestURL": "http://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg"
+    "crestURL": "https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg"
   },
   "58": {
     "name": "Aston Villa",
     "short": "Aston Villa",
     "abv": "AVL",
-    "crestURL": "http://upload.wikimedia.org/wikipedia/de/9/9f/Aston_Villa_logo.svg"
+    "crestURL": "https://upload.wikimedia.org/wikipedia/de/9/9f/Aston_Villa_logo.svg"
   },
   "61": {
     "name": "Chelsea",
     "short": "Chelsea",
     "abv": "CHE",
-    "crestURL": "http://upload.wikimedia.org/wikipedia/de/5/5c/Chelsea_crest.svg"
+    "crestURL": "https://upload.wikimedia.org/wikipedia/de/5/5c/Chelsea_crest.svg"
   },
   "62": {
     "name": "Everton",
     "short": "Everton",
     "abv": "EVE",
-    "crestURL": "http://upload.wikimedia.org/wikipedia/de/f/f9/Everton_FC.svg"
+    "crestURL": "https://upload.wikimedia.org/wikipedia/de/f/f9/Everton_FC.svg"
   },
   "64": {
     "name": "Liverpool",
     "short": "Liverpool",
     "abv": "LIV",
-    "crestURL": "http://upload.wikimedia.org/wikipedia/de/0/0a/FC_Liverpool.svg"
+    "crestURL": "https://upload.wikimedia.org/wikipedia/de/0/0a/FC_Liverpool.svg"
   },
   "65": {
     "name": "Manchester City",
@@ -39,25 +39,25 @@ export const teamsMap = {
     "name": "Manchester United",
     "short": "Man United",
     "abv": "MUN",
-    "crestURL": "http://upload.wikimedia.org/wikipedia/de/d/da/Manchester_United_FC.svg"
+    "crestURL": "https://upload.wikimedia.org/wikipedia/de/d/da/Manchester_United_FC.svg"
   },
   "67": {
     "name": "Newcastle United",
     "short": "Newcastle",
     "abv": "NEW",
-    "crestURL": "http://upload.wikimedia.org/wikipedia/de/5/56/Newcastle_United_Logo.svg"
+    "crestURL": "https://upload.wikimedia.org/wikipedia/de/5/56/Newcastle_United_Logo.svg"
   },
   "68": {
     "name": "Norwich City",
     "short": "Norwich",
     "abv": "NOR",
-    "crestURL": "http://upload.wikimedia.org/wikipedia/de/8/8c/Norwich_City.svg"
+    "crestURL": "https://upload.wikimedia.org/wikipedia/de/8/8c/Norwich_City.svg"
   },
   "73": {
     "name": "Tottenham Hotspur",
     "short": "Tottenham",
     "abv": "TOT",
-    "crestURL": "http://upload.wikimedia.org/wikipedia/de/b/b4/Tottenham_Hotspur.svg"
+    "crestURL": "https://upload.wikimedia.org/wikipedia/de/b/b4/Tottenham_Hotspur.svg"
   },
   "76": {
     "name": "Wolverhampton Wanderers",
@@ -81,7 +81,7 @@ export const teamsMap = {
     "name": "Southampton",
     "short": "Southampton",
     "abv": "SOU",
-    "crestURL": "http://upload.wikimedia.org/wikipedia/de/c/c9/FC_Southampton.svg"
+    "crestURL": "https://upload.wikimedia.org/wikipedia/de/c/c9/FC_Southampton.svg"
   },
   "346": {
     "name": "Watford",
@@ -93,7 +93,7 @@ export const teamsMap = {
     "name": "Crystal Palace",
     "short": "Crystal Palace",
     "abv": "CRY",
-    "crestURL": "http://upload.wikimedia.org/wikipedia/de/b/bf/Crystal_Palace_F.C._logo_%282013%29.png"
+    "crestURL": "https://upload.wikimedia.org/wikipedia/de/b/bf/Crystal_Palace_F.C._logo_%282013%29.png"
   },
   "356": {
     "name": "Sheffield United",
@@ -111,7 +111,7 @@ export const teamsMap = {
     "name": "West Ham United",
     "short": "West Ham",
     "abv": "WHU",
-    "crestURL": "http://upload.wikimedia.org/wikipedia/de/e/e0/West_Ham_United_FC.svg"
+    "crestURL": "https://upload.wikimedia.org/wikipedia/de/e/e0/West_Ham_United_FC.svg"
   },
   "1044": {
     "name": "Bournemouth",
@@ -123,7 +123,7 @@ export const teamsMap = {
     "name": "Fulham",
     "short": "Fulham",
     "abv": "FUL",
-    "crestURL": "http://upload.wikimedia.org/wikipedia/de/a/a8/Fulham_fc.svg"
+    "crestURL": "https://upload.wikimedia.org/wikipedia/de/a/a8/Fulham_fc.svg"
   },
   "715": {
     "name": "Cardiff City",
