@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 import { teamsMap } from '../../constants';
-import { showScore } from '../../utils/footballApi';
 import { ScoreContainer } from '../Container';
 import {
   ScheduleContainer, MatchdayTitle,
@@ -30,30 +29,22 @@ const MatchdaySchedule = ({ matchday, matches, changeMatchday }) =>
       }
     </MatchdayTitle>
     <ScheduleContainer>
-      {matches.map(match => {
-        let showIt = showScore(match.status);
-        let thisScore = showIt[0] ?
+      {matches.map(match =>
+        <MatchContainer key={match.id}>
+          <HomeTeam>
+            <span>{teamsMap[match.homeTeam.id]['short']}</span>
+            <img src={teamsMap[match.homeTeam.id]['crestURL']} />
+          </HomeTeam>
           <ScoreContainer
             home={match.score.fullTime.homeTeam}
             away={match.score.fullTime.awayTeam}
-            isOver={showIt[0] && showIt[1]}
-            />
-          :
-          <span>{`vs.`}</span>;
-        return (
-          <MatchContainer key={match.id}>
-            <HomeTeam>
-              <span>{teamsMap[match.homeTeam.id]['short']}</span>
-              <img src={teamsMap[match.homeTeam.id]['crestURL']} />
-            </HomeTeam>
-            {thisScore}
-            <AwayTeam>
-              <img src={teamsMap[match.awayTeam.id]['crestURL']} />
-              <span>{teamsMap[match.awayTeam.id]['short']}</span>
-            </AwayTeam>
-          </MatchContainer>
-        );
-      }
+            status={match.status}
+          />
+          <AwayTeam>
+            <img src={teamsMap[match.awayTeam.id]['crestURL']} />
+            <span>{teamsMap[match.awayTeam.id]['short']}</span>
+          </AwayTeam>
+        </MatchContainer>
       )}
     </ScheduleContainer>
   </Fragment>;

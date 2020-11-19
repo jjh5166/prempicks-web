@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const ScoreFlexContainer = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   color: ${({ isOver }) => isOver ? '#4c4a4a' : '#000'};
   div{
     display: inline-block;
@@ -12,7 +13,7 @@ export const ScoreFlexContainer = styled.div`
       text-align: center;
     }
     span{
-      width: 20px;
+      width: ${({ scoreSize }) => scoreSize ? scoreSize : '20px'};
     }
     &:first-child{
       span{
@@ -26,3 +27,7 @@ export const ScoreFlexContainer = styled.div`
     }
   };
 `;
+export const SelfCenteredSpan = styled.div`
+  justify-self: center;
+  align-self: center;
+`

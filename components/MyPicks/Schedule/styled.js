@@ -84,14 +84,7 @@ grid-column-start: 5;
 `
 export const HomeImage = styled.img`
   grid-column-start: 2;
- `;
+ `
 export const AwayImage = styled.img`
  grid-column-start: 4;
- `;
- export const ScoreSpan = styled.span`
-  place-self: center;
-  text-align: center;
-  grid-column-start: 3;
-  position: relative;
-  margin: 0 auto;
  `

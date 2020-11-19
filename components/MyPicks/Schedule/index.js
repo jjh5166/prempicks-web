@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 
 import { teamsMap } from '../../../constants';
+import { ScoreContainer } from '../../Container';
 import { MyPicksContext } from '../Context';
 
 import {
   MyPicksScheduleContainer, MatchdayContainer,
   MatchdayScroll, MatchRow, MatchSingle, MatchGrid,
-  HomeSpan, AwaySpan, HomeImage, AwayImage, ScoreSpan
+  HomeSpan, AwaySpan, HomeImage, AwayImage
 } from './styled';
 
 const MyPicksSchedule = () => {
@@ -24,7 +25,7 @@ const MyPicksSchedule = () => {
   );
 };
 
-const ScheduleMatchday = ({ matches }) => (
+const ScheduleMatchday = ({ matches }) =>
   <MatchdayContainer>
     <MatchdayScroll>
       <MatchRow>
@@ -39,18 +40,21 @@ const ScheduleMatchday = ({ matches }) => (
       </MatchRow>
     </MatchdayScroll>
   </MatchdayContainer>
-);
 
-const Match = ({ match }) => (
+const Match = ({ match }) =>
   <MatchSingle>
     <MatchGrid>
       <HomeSpan>{teamsMap[match.home.id].abv}</HomeSpan>
       <HomeImage src={teamsMap[match.home.id].crestURL} />
-      <ScoreSpan>{match.status == "FINISHED" ? `${match.score.homeTeam}:${match.score.awayTeam}` : 'vs'}</ScoreSpan>
+      <ScoreContainer
+      home={match.score.homeTeam}
+      away={match.score.awayTeam}
+      status={match.status}
+      scoreSize={'12px'}
+      />
       <AwayImage src={teamsMap[match.away.id].crestURL} />
       <AwaySpan>{teamsMap[match.away.id].abv}</AwaySpan>
     </MatchGrid>
   </MatchSingle>
-);
 
 export default MyPicksSchedule;
