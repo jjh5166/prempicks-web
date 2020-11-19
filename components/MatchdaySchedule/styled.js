@@ -5,6 +5,9 @@ export const MatchContainer = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: 43% 14% 43%;
+  span{
+    justify-self: center;
+  }
 `
 export const ScheduleContainer = styled.div`
   height: 60vh;
@@ -49,10 +52,6 @@ export const MatchdayTitle = styled.div`
   }
 `
 
-export const ScoreContainer =styled.span`
-  justify-self: center;
-  color: ${({ isOver }) => isOver ? '#4c4a4a' : '#000'}
-`
 const ScheduleTeam = styled.div`
   img{
     height:22px;
