@@ -57,4 +57,4 @@ const Match = ({ match }) =>
     </MatchGrid>
   </MatchSingle>
 
-export default MyPicksSchedule;
+export default React.memo(MyPicksSchedule);
