@@ -49,6 +49,9 @@ export const MatchSingle = styled.div`
   margin: 0 1%;
   height: 100%;
   scroll-snap-align: start;
+  @media only screen and (min-width: 640px) and (max-width: 812px) and (orientation: landscape) {
+    width: 32%;
+  }
   @media ${device.tablet}{
     width: 17.5%;
     text-align: center;
@@ -61,30 +64,28 @@ export const MatchGrid = styled.div`
   display: inline-grid;
   grid-template-columns: 25% 15% 20% 15% 25%;
   img{
-    height:22px;
-    width:22px;
-    place-self: center;
+    height:18px;
+    width:18px;
+    align-self: center;
+    justify-self: center;
   }
-  @media ${device.tablet}{
-    img{
-      height:18px;
-      width:18px;
-    }
+  @media only screen and (min-width: 640px) and (max-width: 812px) and (orientation: landscape) {
+    grid-template-columns: 22% 17% 22% 17% 22%;
   }
 `
 const teamSpan = styled.span`
-  place-self: center;
+  align-self: center;
   font-size: 16px;
 `
 export const HomeSpan = styled(teamSpan)`
-grid-column-start: 1;
+  grid-column-start: 1;
 `
 export const AwaySpan = styled(teamSpan)`
-grid-column-start: 5;
+  grid-column-start: 5;
 `
 export const HomeImage = styled.img`
   grid-column-start: 2;
- `
+`
 export const AwayImage = styled.img`
- grid-column-start: 4;
- `
+  grid-column-start: 4;
+`
