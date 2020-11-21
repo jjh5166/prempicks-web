@@ -1,4 +1,5 @@
 import { serverUrl } from '../../constants';
+import axios from 'axios';
 
 export default function triggerScoring(matchday) {
   axios(
