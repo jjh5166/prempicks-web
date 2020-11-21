@@ -16,13 +16,23 @@ export const TableSpacer = styled(TableCell)`
   width:100%;
 `;
 
-export const StickyCell = styled(TableCell)`
+const StickyCell = styled(TableCell)`
   position: -webkit-sticky !important;
   position: sticky !important;
-  background-color: #fff;
   left: ${({ stickyleft }) => stickyleft ? stickyleft : 0};
 `;
+export const StickyTd = styled(StickyCell)`
+  &::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #f5f5f5;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+`
 export const StickyHeaderCell = styled(StickyCell)`
-  background-color: #fafafa !important;
   z-index: 3 !important;
 `;

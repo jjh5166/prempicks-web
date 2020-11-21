@@ -8,7 +8,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
 import { ThreeButtons } from '../Buttons';
-import { StyledTableContainer, TableSpacer, StickyCell, StickyHeaderCell } from './elements';
+import { StyledTableContainer, TableSpacer, StickyTd, StickyHeaderCell } from './elements';
 
 const StandingsTable = ({ standingsData }) => {
   const maxMatchday = standingsData.standings[0].picks[0]['matchday']; // use to conditionally render ThreeButtons
@@ -77,13 +77,13 @@ const StandingsTable = ({ standingsData }) => {
           </TableHead>
           <TableBody>
             {totals.map((row, i) => (
-              <TableRow key={row.name}>
-                <StickyCell scope="row" align="left" ref={i === 0 ? firstColumn : null}>
+              <TableRow key={row.name} hover={true}>
+                <StickyTd scope="row" align="left" ref={i === 0 ? firstColumn : null}>
                   {row.name}
-                </StickyCell>
-                <StickyCell scope="row" align="center" stickyleft={secondColumnLeft}>
+                </StickyTd>
+                <StickyTd scope="row" align="center" stickyleft={secondColumnLeft}>
                   {whichTable === 0 ? row.firstHalf : whichTable === 1 ? row.season : row.secondHalf}
-                </StickyCell>
+                </StickyTd>
                 {
                   row.picks.map(
                     (pick, i) =>
