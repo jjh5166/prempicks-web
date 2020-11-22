@@ -37,6 +37,16 @@ export const ScheduleContainer = styled.div`
     }
   }
 `
+export const ScheduleDate = styled.div`
+  font-weight: bold;
+  font-size: 1.1em;
+  @media (min-width: 580px) and (orientation: landscape) {
+    display: none;
+  }
+  @media ${device.tablet}{
+    display: block
+  }
+`
 export const MatchdayTitle = styled.div`
   font-size: 1.5em;
   text-align: center;

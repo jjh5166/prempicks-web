@@ -6,7 +6,8 @@ import { teamsMap } from '../../constants';
 import { ScoreContainer } from '../Container';
 import {
   ScheduleContainer, MatchdayTitle,
-  MatchContainer, HomeTeam, AwayTeam
+  MatchContainer, HomeTeam, AwayTeam,
+  ScheduleDate
 } from './styled';
 
 const MatchdaySchedule = ({ matchday, matches, changeMatchday }) => {
@@ -38,7 +39,7 @@ const MatchdaySchedule = ({ matchday, matches, changeMatchday }) => {
           else listedDates.push(date);
           return (
             <Fragment>
-              {date && <div>{date}</div>}
+              {date && <ScheduleDate>{date}</ScheduleDate>}
               <MatchContainer key={match.id}>
                 <HomeTeam>
                   <span>{teamsMap[match.homeTeam.id]['short']}</span>
