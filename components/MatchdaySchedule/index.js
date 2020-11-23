@@ -38,9 +38,9 @@ const MatchdaySchedule = ({ matchday, matches, changeMatchday }) => {
           if (listedDates.includes(date)) date = null;
           else listedDates.push(date);
           return (
-            <Fragment>
+            <Fragment key={match.id}>
               {date && <ScheduleDate>{date}</ScheduleDate>}
-              <MatchContainer key={match.id}>
+              <MatchContainer>
                 <HomeTeam>
                   <span>{teamsMap[match.homeTeam.id]['short']}</span>
                   <img src={teamsMap[match.homeTeam.id]['crestURL']} />
