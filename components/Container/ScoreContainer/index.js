@@ -8,15 +8,22 @@ export const ScoreContainer = ({ home, away, status, scoreSize }) => {
   return (
     <Fragment>
       {
-        showIt[0] ?
-          <ScoreFlexContainer isOver={showIt[0] && showIt[1]} scoreSize={scoreSize}>
+        showIt ?
+          <ScoreFlexContainer isOver={status === ('FINISHED' || 'AWARDED')} scoreSize={scoreSize}>
             <div><span>{home}</span></div>
-            <div>{`:`}</div>
+            <div>{':'}</div>
             <div><span>{away}</span></div>
           </ScoreFlexContainer>
           :
-          <SelfCenteredSpan>{`vs.`}</SelfCenteredSpan>
+          <MatchText status={status} />
       }
     </Fragment>
   );
+}
+
+const MatchText = ({status}) => {
+  const isPostponed = status === ('POSTPONED' || 'CANCELED');
+  return(
+    <SelfCenteredSpan isPostponed={isPostponed}>{isPostponed ? 'PPD' : 'vs.'}</SelfCenteredSpan>
+  )
 }

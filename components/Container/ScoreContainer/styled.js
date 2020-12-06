@@ -30,4 +30,5 @@ export const ScoreFlexContainer = styled.div`
 export const SelfCenteredSpan = styled.div`
   justify-self: center;
   align-self: center;
+  color: ${({isPostponed}) => isPostponed ? '#ca1313' : 'unset'};
 `
