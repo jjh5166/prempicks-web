@@ -49,6 +49,7 @@ const MatchdaySchedule = ({ matchday, matches, changeMatchday }) => {
                   home={match.score.fullTime.homeTeam}
                   away={match.score.fullTime.awayTeam}
                   status={match.status}
+                  kickOffTime={match.utcDate}
                 />
                 <AwayTeam>
                   <img src={teamsMap[match.awayTeam.id]['crestURL']} />
