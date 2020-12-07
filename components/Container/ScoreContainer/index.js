@@ -1,9 +1,10 @@
 import { Fragment } from 'react';
 
 import { showScore } from '../../../utils/footballApi';
+import { getTimeFromUtc } from '../../../utils/time';
 import { ScoreFlexContainer, SelfCenteredSpan } from './styled';
 
-export const ScoreContainer = ({ home, away, status, scoreSize }) => {
+export const ScoreContainer = ({ home, away, status, scoreSize, kickOffTime }) => {
   const showIt = showScore(status);
   return (
     <Fragment>
@@ -15,15 +16,18 @@ export const ScoreContainer = ({ home, away, status, scoreSize }) => {
             <div><span>{away}</span></div>
           </ScoreFlexContainer>
           :
-          <MatchText status={status} />
+          <MatchText status={status} kickOffTime={kickOffTime} />
       }
     </Fragment>
   );
 }
 
-const MatchText = ({status}) => {
+const MatchText = ({ status, kickOffTime }) => {
   const isPostponed = status === ('POSTPONED' || 'CANCELED');
-  return(
-    <SelfCenteredSpan isPostponed={isPostponed}>{isPostponed ? 'PPD' : 'vs.'}</SelfCenteredSpan>
+  const time = getTimeFromUtc(kickOffTime)
+  return (
+    <SelfCenteredSpan isPostponed={isPostponed}>
+      {isPostponed ? 'PPD' : kickOffTime ? time : 'vs.'}
+    </SelfCenteredSpan>
   )
 }
