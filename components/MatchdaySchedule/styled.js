@@ -4,7 +4,7 @@ import { device } from '../../constants';
 export const MatchContainer = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: 43% 14% 43%;
+  grid-template-columns: 1fr 20% 1fr;
   span{
     justify-self: center;
   }
