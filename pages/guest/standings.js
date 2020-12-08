@@ -13,7 +13,7 @@ export default function GuestStandingsPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [standings, setStandings] = useState(null);
   const dispatch = useDispatch();
-  const { standingsData, currentMatchday, picks } = useGuestUser();
+  const { standingsData, currentMatchday, picks, team_name } = useGuestUser();
   useEffect(() => {
     setIsLoading(true);
     if (!standingsData) {
@@ -22,7 +22,8 @@ export default function GuestStandingsPage() {
       updateMatchday(picks, currentMatchday);
       setStandings({
         scores: standingsData.scores,
-        standings: pluckPicks(standingsData.standings, currentMatchday)
+        standings: pluckPicks(standingsData.standings, currentMatchday),
+        userTeam: team_name
       });
     }
     setIsLoading(false);

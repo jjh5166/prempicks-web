@@ -8,7 +8,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
 import { ThreeButtons } from '../Buttons';
-import { StyledTableContainer, TableSpacer, StickyTd, StickyHeaderCell } from './elements';
+import { StyledTableContainer, TableSpacer, StickyTd, StickyHeaderCell, BoldingSpan } from './elements';
 
 const StandingsTable = ({ standingsData }) => {
   const maxMatchday = standingsData.standings[0].picks[0]['matchday']; // use to conditionally render ThreeButtons
@@ -79,10 +79,12 @@ const StandingsTable = ({ standingsData }) => {
             {totals.map((row, i) => (
               <TableRow key={row.name} hover={true}>
                 <StickyTd scope="row" align="left" ref={i === 0 ? firstColumn : null}>
-                  {row.name}
+                  <BoldingSpan isUser={row.name === standingsData.userTeam}>{row.name}</BoldingSpan>
                 </StickyTd>
                 <StickyTd scope="row" align="center" stickyleft={secondColumnLeft}>
+                  <BoldingSpan isUser={row.name === standingsData.userTeam}>
                   {whichTable === 0 ? row.firstHalf : whichTable === 1 ? row.season : row.secondHalf}
+                  </BoldingSpan>
                 </StickyTd>
                 {
                   row.picks.map(
@@ -90,7 +92,7 @@ const StandingsTable = ({ standingsData }) => {
                       !((whichTable === 0 && pick.matchday > 19) || (whichTable === 2 && pick.matchday < 19)) &&
                       <Fragment key={row.name + i}>
                         <TableCell component="td" scope="row" align="center">
-                          {pick.team_id}
+                            {pick.team_id}
                         </TableCell>
                         <TableCell component="td" scope="row" align="center">
                           {standingsData.scores[pick.matchday][pick.team_id]}
