@@ -36,3 +36,7 @@ export const StickyTd = styled(StickyCell)`
 export const StickyHeaderCell = styled(StickyCell)`
   z-index: 3 !important;
 `;
+
+export const BoldingSpan = styled.span`
+  font-weight: ${({isUser}) => isUser ? '900' : 'unset'}
+`
