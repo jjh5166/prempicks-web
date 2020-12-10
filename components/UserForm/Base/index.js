@@ -1,5 +1,6 @@
 import React from "react";
 import { Formik, Form } from 'formik';
+import { useDispatch } from 'react-redux';
 
 import { withFirebase } from '../../Firebase';
 import FormFields from '../elements/FormFields';
@@ -8,7 +9,8 @@ import FormLinks from '../elements/FormLinks';
 import { FormContainer } from './styled';
 
 const UserForm = ({ firebase, name, initialValues, validationSchema, submitFn, fields }) => {
-  return(
+  const dispatch = useDispatch();
+  return (
     <FormContainer>
       <h2>{name}</h2>
       <Formik
@@ -17,7 +19,7 @@ const UserForm = ({ firebase, name, initialValues, validationSchema, submitFn, f
         validationSchema={validationSchema}
         onSubmit={(data, { setSubmitting }) => {
           setSubmitting(true);
-          submitFn(firebase, data);
+          submitFn(firebase, data, dispatch);
           setSubmitting(false);
         }}
       >
@@ -28,7 +30,7 @@ const UserForm = ({ firebase, name, initialValues, validationSchema, submitFn, f
           </Form>
         )}
       </Formik>
-      <FormLinks formType={name}/>
+      <FormLinks formType={name} />
     </FormContainer>
   )
 }
