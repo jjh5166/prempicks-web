@@ -1,5 +1,7 @@
 import axios from 'axios';
+
 import { serverUrl } from '../../../constants';
+import { setErrorAlert, setSuccessAlert } from '../../../redux/actions/alert';
 
 export const updateFields = [
   {
@@ -19,7 +21,7 @@ export const updateFields = [
   }
 ];
 
-export const updateAccountFn = async (firebase, data) => {
+export const updateAccountFn = async (firebase, data, dispatch) => {
   await axios.put(`${serverUrl}/v1/user`, {
     user: {
       first_name: data.first_name,
@@ -29,9 +31,9 @@ export const updateAccountFn = async (firebase, data) => {
     idToken: await firebase.retrieveToken()
   },
     { headers: { 'Content-Type': 'application/json' } })
-    .then(res => {
-      console.log(res);
-    }).catch(err => {
-      console.log(err.response);
-    });
+    .then(() =>
+      dispatch(setSuccessAlert('Account Updated'))
+    ).catch(() =>
+      dispatch(setErrorAlert('There was an error. Try Again.'))
+    );
 };

@@ -1,4 +1,5 @@
 import Router from 'next/router';
+import { setErrorAlert, setSuccessAlert } from '../../../redux/actions/alert';
 
 export const initialValues = {
   email: '',
@@ -18,17 +19,17 @@ export const loginFields = [
   }
 ];
 
-export const loginFn = async (firebase, data) => {
-  let success = false;
+export const loginFn = async (firebase, data, dispatch) => {
   await firebase.doSignInWithEmailAndPassword(
     data.email,
     data.password
   )
     .then(() => {
-      success = true;
+      dispatch(setSuccessAlert('Welcome Back!'))
+      Router.push('/mypicks')
     })
-    .catch(err => console.log(err));
-    if(success){
-      await Router.push('/mypicks')
-    }
+    .catch(err => {
+      console.log(err);
+      dispatch(setErrorAlert(err.message))
+    });
 };
