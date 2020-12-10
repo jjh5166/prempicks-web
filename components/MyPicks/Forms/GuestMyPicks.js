@@ -9,9 +9,9 @@ const GuestMyPicks = ({ initialValues, scheduleData }) => {
   const submitFn = async (data) => {
     try {
       dispatch(updatePicks(data.picks))
-      dispatch(setSuccessAlert({ message: 'Picks Updated' }))
+      dispatch(setSuccessAlert('Picks Updated'))
     } catch (err) {
-      dispatch(setErrorAlert({ message: 'There was an error. Try Again.' }))
+      dispatch(setErrorAlert('There was an error. Try Again.'))
     }
   };
   return (

@@ -18,10 +18,10 @@ const UserMyPicks = ({ authUser, initialValues, scheduleData }) => {
     },
       { headers: { 'Content-Type': 'application/json' } }
     )
-      .then(res => {
-        dispatch(setSuccessAlert({ message: 'Picks Updated' }));
+      .then(() => {
+        dispatch(setSuccessAlert('Picks Updated'));
       })
-      .catch(err => dispatch(setErrorAlert({ message: 'There was an error. Try Again.' })));
+      .catch(() => dispatch(setErrorAlert('There was an error. Try Again.')));
   };
   return (
     <MyPicksFormBase

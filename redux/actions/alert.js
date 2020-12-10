@@ -8,14 +8,14 @@ export const setAlert = ({ message, severity }) => {
     severity: severity
   }
 }
-export const setErrorAlert = ({ message }) => {
+export const setErrorAlert = (message) => {
   return {
     type: SET_ALERT,
     message: message,
     severity: 'error'
   }
 }
-export const setSuccessAlert = ({ message }) => {
+export const setSuccessAlert = (message) => {
   return {
     type: SET_ALERT,
     message: message,
