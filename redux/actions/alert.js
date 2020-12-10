@@ -22,6 +22,13 @@ export const setSuccessAlert = (message) => {
     severity: 'success'
   }
 }
+export const setInfoAlert = (message) => {
+  return {
+    type: SET_ALERT,
+    message: message,
+    severity: 'info'
+  }
+}
 export const clearAlert = () => {
   return {
     type: CLEAR_ALERT
