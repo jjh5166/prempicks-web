@@ -8,9 +8,22 @@ export const setAlert = ({ message, severity }) => {
     severity: severity
   }
 }
-
+export const setErrorAlert = ({ message }) => {
+  return {
+    type: SET_ALERT,
+    message: message,
+    severity: 'error'
+  }
+}
+export const setSuccessAlert = ({ message }) => {
+  return {
+    type: SET_ALERT,
+    message: message,
+    severity: 'success'
+  }
+}
 export const clearAlert = () => {
-  return{
+  return {
     type: CLEAR_ALERT
   }
 }
