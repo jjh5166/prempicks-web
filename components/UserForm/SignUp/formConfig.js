@@ -1,6 +1,7 @@
 import Router from 'next/router';
 import axios from 'axios';
 import { serverUrl } from '../../../constants';
+import { setErrorAlert, setSuccessAlert } from '../../../redux/actions/alert';
 
 export const initialValues = {
   first_name: '',
@@ -44,7 +45,7 @@ export const signupFields = [
   }
 ];
 
-export const signupFn = async (firebase, data) => {
+export const signupFn = async (firebase, data, dispatch) => {
   let uid;
   await firebase.doCreateUserWithEmailAndPassword(
     data.email,
@@ -52,7 +53,8 @@ export const signupFn = async (firebase, data) => {
   ).then(res => {
     uid = res.user.uid;
   })
-    .catch(err => console.log(err));
+    .catch(() =>
+      dispatch(setErrorAlert('There was an error. Please contact the admin.')));
   await axios.post(`${serverUrl}/v1/user`, {
     user: {
       uid: uid,
@@ -63,11 +65,11 @@ export const signupFn = async (firebase, data) => {
     },
     idToken: await firebase.retrieveToken()
   },
-    { headers: { 'Content-Type': 'application/json' }})
-    .then(res => {
-      console.log(res);
-    }).catch(err => {
-      console.log(err.response);
-    });
-  await Router.push('/mypicks')
+    { headers: { 'Content-Type': 'application/json' } })
+    .then(() => {
+      dispatch(setSuccessAlert('Sign Up Successful'))
+      Router.push('/mypicks')
+    }).catch(() =>
+      dispatch(setErrorAlert('There was an error. Please contact the admin.'))
+    );
 };

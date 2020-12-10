@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import MyPicksFormBase from './base';
 import { serverUrl } from '../../../constants';
 import { setPickSubmission } from '../../../utils/picks';
-import { setAlert } from '../../../redux/actions/alert';
+import { setSuccessAlert, setErrorAlert } from '../../../redux/actions/alert';
 
 const UserMyPicks = ({ authUser, initialValues, scheduleData }) => {
   const dispatch = useDispatch();
@@ -18,10 +18,10 @@ const UserMyPicks = ({ authUser, initialValues, scheduleData }) => {
     },
       { headers: { 'Content-Type': 'application/json' } }
     )
-      .then(res => {
-        dispatch(setAlert({message: 'Picks Updated', severity: 'success'}));
+      .then(() => {
+        dispatch(setSuccessAlert('Picks Updated'));
       })
-      .catch(err => dispatch(setAlert({ message: 'There was an error. Try Again.', severity: 'error' })));
+      .catch(() => dispatch(setErrorAlert('There was an error. Try Again.')));
   };
   return (
     <MyPicksFormBase
