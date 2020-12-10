@@ -42,7 +42,7 @@ const Layout = ({ children, title = "PremPicks", hideNav = false }) => {
       <ContentContainer>
         <Snackbar
           anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-          autoHideDuration={3000}
+          autoHideDuration={2000}
           open={open}
           onClose={handleClose}
           TransitionComponent={GrowTransition}
