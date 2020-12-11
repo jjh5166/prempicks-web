@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, forwardRef } from 'react';
 
 import { teamsMap } from '../../../constants';
 import { ScoreContainer } from '../../Container';
@@ -11,22 +11,26 @@ import {
 } from './styled';
 
 const MyPicksSchedule = () => {
-  const { showHalf, scheduleData } = useContext(MyPicksContext);
+  const { showHalf, scheduleData, currentMatches } = useContext(MyPicksContext);
   const halfIndex = showHalf === 1 ? 1 : 20;
   return (
     <MyPicksScheduleContainer>
       {
         scheduleData &&
         [...Array(19)].map((_, i) =>
-          <ScheduleMatchday key={`Matchday${i + halfIndex}`} matches={scheduleData.schedule[i + halfIndex]} />
+          <ScheduleMatchday
+            ref={scheduleData.currentMatchday === (i + 1) ? currentMatches : null}
+            key={`Matchday${i + halfIndex}`}
+            matches={scheduleData.schedule[i + halfIndex]}
+          />
         )
       }
     </MyPicksScheduleContainer>
   );
 };
 
-const ScheduleMatchday = ({ matches }) =>
-  <MatchdayContainer>
+const ScheduleMatchday = forwardRef(({ matches }, ref) =>
+  (<MatchdayContainer ref={ref}>
     <MatchdayScroll>
       <MatchRow>
         {matches.slice(0, 5).map(match =>
@@ -39,7 +43,7 @@ const ScheduleMatchday = ({ matches }) =>
         )}
       </MatchRow>
     </MatchdayScroll>
-  </MatchdayContainer>
+  </MatchdayContainer>))
 
 const Match = ({ match }) =>
   <MatchSingle>
@@ -47,10 +51,10 @@ const Match = ({ match }) =>
       <HomeSpan>{teamsMap[match.home.id].abv}</HomeSpan>
       <HomeImage src={teamsMap[match.home.id].crestURL} />
       <ScoreContainer
-      home={match.score.homeTeam}
-      away={match.score.awayTeam}
-      status={match.status}
-      scoreSize={'12px'}
+        home={match.score.homeTeam}
+        away={match.score.awayTeam}
+        status={match.status}
+        scoreSize={'12px'}
       />
       <AwayImage src={teamsMap[match.away.id].crestURL} />
       <AwaySpan>{teamsMap[match.away.id].abv}</AwaySpan>
