@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Formik } from 'formik';
 
 import MyPicksFields from '../../Fields';
@@ -10,6 +10,7 @@ import { MyPicksContainer, MpSubmitButton, MpForm } from './styled';
 import { MyPicksContext } from '../../Context';
 
 const MyPicksFormBase = ({ initialValues, scheduleData, submitFn }) => {
+  const currentMDRef = useRef();
   let initHalf = 1;
   if (scheduleData) {
     initHalf = scheduleData.currentMatchday > 19 ? 2 : 1;
@@ -17,8 +18,12 @@ const MyPicksFormBase = ({ initialValues, scheduleData, submitFn }) => {
   const [showHalf, setShowHalf] = useState(initHalf);
   const mpContextValue = {
     showHalf: showHalf,
-    scheduleData: scheduleData
+    scheduleData: scheduleData,
+    currentMatches: currentMDRef
   };
+  useEffect(() => {
+    if (currentMDRef.current) currentMDRef.current.scrollIntoView() 
+  }, [])
   return (
     <Formik
       enableReinitialize
