@@ -1,11 +1,9 @@
-import { useContext, createContext } from 'react';
+import { useContext } from 'react';
 import { FieldArray } from 'formik';
 import PickField from './PickField';
 
-import { MyPicksContext } from '../Context';
+import { MyPicksContext, DisabledTeamsContext } from '../Context';
 import { FieldsGrid, FieldBlock } from './styled';
-
-export const DisabledTeamsContext = createContext(null);
 
 const MyPicksFields = ({ values }) => {
   const { showHalf, scheduleData } = useContext(MyPicksContext);

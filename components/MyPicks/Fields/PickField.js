@@ -3,7 +3,7 @@ import { Field } from 'formik';
 
 import { teamChoices } from '../../../constants';
 
-import { DisabledTeamsContext } from './index';
+import { DisabledTeamsContext } from '../Context';
 
 const teams = ["", ...teamChoices];
 
