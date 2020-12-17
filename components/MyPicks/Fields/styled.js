@@ -22,3 +22,6 @@ export const FieldBlock = styled.div`
     height: 80px;
   }
 `
+export const SelectWithHighlight = styled.select`
+  background-color: ${({ isError }) => isError ? '#b94545' : '#fff'}
+`

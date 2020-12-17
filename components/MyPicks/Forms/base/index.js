@@ -37,7 +37,7 @@ const MyPicksFormBase = ({ initialValues, scheduleData, submitFn }) => {
         setSubmitting(false);
       }}
     >
-      {({ values, handleSubmit, dirty, isValid, errors, isSubmitting }) => (
+      {({ values, handleSubmit, dirty, isValid, isSubmitting }) => (
         <MpForm onSubmit={handleSubmit}>
           <TwoButtons
             startLeft={initHalf === 1}
