@@ -11,9 +11,9 @@ import { MyPicksContext } from '../../Context';
 
 const MyPicksFormBase = ({ initialValues, scheduleData, submitFn }) => {
   const currentMDRef = useRef();
-  let initHalf = 1;
+  let initHalf = 0;
   if (scheduleData) {
-    initHalf = scheduleData.currentMatchday > 19 ? 2 : 1;
+    initHalf = scheduleData.currentMatchday > 19 ? 1 : 0;
   }
   const [showHalf, setShowHalf] = useState(initHalf);
   const mpContextValue = {
@@ -40,7 +40,7 @@ const MyPicksFormBase = ({ initialValues, scheduleData, submitFn }) => {
       {({ values, handleSubmit, dirty, isValid, isSubmitting }) => (
         <MpForm onSubmit={handleSubmit}>
           <TwoButtons
-            startLeft={initHalf === 1}
+            startLeft={initHalf === 0}
             switchSide={setShowHalf}
             buttonNames={['1st Half', '2nd Half']}
           />

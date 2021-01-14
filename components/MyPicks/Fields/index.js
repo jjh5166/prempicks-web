@@ -8,8 +8,8 @@ import { FieldsGrid, FieldBlock } from './styled';
 const MyPicksFields = ({ values }) => {
   const { showHalf, scheduleData } = useContext(MyPicksContext);
   const timeNow = new Date().toISOString();
-  const slices = showHalf === 1 ? [0, 19] : [19, 38];
-  const indexFactor = showHalf === 1 ? 0 : 19;
+  const slices = showHalf === 0 ? [0, 19] : [19, 38];
+  const indexFactor = showHalf === 0 ? 0 : 19;
   const disabledTeams = []
   const newSelectedTeams = []
   return (
