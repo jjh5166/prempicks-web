@@ -7,7 +7,7 @@ import Paper from '@material-ui/core/Paper';
 
 import { FormCell, TeamCell, StyledTableContainer } from './elements';
 
-const EplTable = ({ eplStandings }) => {
+const EplTable = ({ eplStandings, showForm = false }) => {
   const totalStandings = eplStandings.find(element => element.type === 'TOTAL').table;
   return (
     <StyledTableContainer component={Paper}>
@@ -15,7 +15,7 @@ const EplTable = ({ eplStandings }) => {
         <TableHead>
           <TableRow>
             <TableCell colSpan={2} />
-            <TableCell align="center">Form</TableCell>
+            {showForm && <TableCell align="center">Form</TableCell>}
             <TableCell align="center">Games</TableCell>
             <TableCell align="center">Goals</TableCell>
             <TableCell align="center">Points</TableCell>
@@ -26,7 +26,7 @@ const EplTable = ({ eplStandings }) => {
             <TableRow key={team.team.name}>
               <TableCell>{team.position}</TableCell>
               <TeamCell team={team.team.id} />
-              <FormCell form={team.form} />
+              {showForm && <FormCell form = {team.form}/>}
               <TableCell align="center">{team.playedGames}</TableCell>
               <TableCell align="center">{`${team.goalsFor} : ${team.goalsAgainst}`}</TableCell>
               <TableCell align="center">{team.points}</TableCell>
