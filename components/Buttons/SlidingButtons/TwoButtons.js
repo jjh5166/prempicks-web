@@ -3,14 +3,14 @@ import { SwitchButtons, TwoBtnSlider, SwitchButton } from './styled';
 
 const TwoButtons = ({ startLeft = true, switchSide, buttonNames }) => {
   const [isLeft, setSide] = useState(startLeft);
-
+  // sides indexed 0, 1
   const handleClick = () => {
     if (isLeft) {
       setSide(!isLeft);
-      switchSide(2);
+      switchSide(1);
     } else {
       setSide(!isLeft);
-      switchSide(1);
+      switchSide(0);
     }
   };
 
