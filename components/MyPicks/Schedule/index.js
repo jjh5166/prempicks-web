@@ -12,7 +12,7 @@ import {
 
 const MyPicksSchedule = () => {
   const { showHalf, scheduleData, currentMatches } = useContext(MyPicksContext);
-  const halfIndex = showHalf === 1 ? 1 : 20;
+  const halfIndex = showHalf === 0 ? 1 : 20;
   return (
     <MyPicksScheduleContainer>
       {
