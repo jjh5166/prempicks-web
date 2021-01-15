@@ -2,11 +2,12 @@ import { useContext } from 'react';
 import { FieldArray } from 'formik';
 import PickField from './PickField';
 
-import { MyPicksContext, DisabledTeamsContext, NewSelectedTeamsContext } from '../Context';
+import { MyPicksContext, ScheduleDataContext, DisabledTeamsContext, NewSelectedTeamsContext } from '../Context';
 import { FieldsGrid, FieldBlock } from './styled';
 
 const MyPicksFields = ({ values }) => {
-  const { showHalf, scheduleData } = useContext(MyPicksContext);
+  const { showHalf } = useContext(MyPicksContext);
+  const scheduleData = useContext(ScheduleDataContext);
   const timeNow = new Date().toISOString();
   const slices = showHalf === 0 ? [0, 19] : [19, 38];
   const indexFactor = showHalf === 0 ? 0 : 19;

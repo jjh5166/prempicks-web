@@ -7,7 +7,7 @@ import { TwoButtons } from '../../../Buttons';
 import { validationSchema } from './validate';
 import { MyPicksContainer, MpSubmitButton, MpForm } from './styled';
 
-import { MyPicksContext } from '../../Context';
+import { MyPicksContext, ScheduleDataContext } from "../../Context";
 
 const MyPicksFormBase = ({ initialValues, scheduleData, submitFn }) => {
   const currentMDRef = useRef();
@@ -18,7 +18,6 @@ const MyPicksFormBase = ({ initialValues, scheduleData, submitFn }) => {
   const [showHalf, setShowHalf] = useState(initHalf);
   const mpContextValue = {
     showHalf: showHalf,
-    scheduleData: scheduleData,
     currentMatches: currentMDRef
   };
   useEffect(() => {
@@ -29,7 +28,7 @@ const MyPicksFormBase = ({ initialValues, scheduleData, submitFn }) => {
       enableReinitialize
       validationSchema={validationSchema}
       initialValues={{
-        picks: initialValues
+        picks: initialValues,
       }}
       onSubmit={async (data, { setSubmitting }) => {
         setSubmitting(true);
@@ -42,18 +41,26 @@ const MyPicksFormBase = ({ initialValues, scheduleData, submitFn }) => {
           <TwoButtons
             startLeft={initHalf === 0}
             switchSide={setShowHalf}
-            buttonNames={['1st Half', '2nd Half']}
+            buttonNames={["1st Half", "2nd Half"]}
           />
           <MyPicksContainer>
-            {scheduleData && <MyPicksContext.Provider value={mpContextValue}>
-              <MyPicksFields values={values} />
-              <MyPicksSchedule />
-            </MyPicksContext.Provider>}
+            {scheduleData && (
+              <>
+                <MyPicksContext.Provider value={mpContextValue}>
+                  <ScheduleDataContext.Provider value={scheduleData}>
+                    <MyPicksFields values={values} />
+                    <MyPicksSchedule />
+                  </ScheduleDataContext.Provider>
+                </MyPicksContext.Provider>
+              </>
+            )}
           </MyPicksContainer>
           <MpSubmitButton
             type="submit"
             disabled={!dirty || isSubmitting || !isValid}
-          >Submit</MpSubmitButton>
+          >
+            Submit
+          </MpSubmitButton>
         </MpForm>
       )}
     </Formik>
