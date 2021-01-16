@@ -15,7 +15,9 @@ export const StyledTableContainer = styled(TableContainer)`
 export const TableSpacer = styled(TableCell)`
   width:100%;
 `;
-
+export const NoWrapCell = styled(TableCell)`
+  white-space: nowrap;
+`;
 const StickyCell = styled(TableCell)`
   position: -webkit-sticky !important;
   position: sticky !important;
