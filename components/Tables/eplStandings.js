@@ -5,7 +5,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-import { FormCell, TeamCell, StyledTableContainer } from './elements';
+import { FormCell, NoWrapCell, TeamCell, StyledTableContainer } from "./elements";
 
 const EplTable = ({ eplStandings, showForm = false }) => {
   const totalStandings = eplStandings.find(element => element.type === 'TOTAL').table;
@@ -28,7 +28,7 @@ const EplTable = ({ eplStandings, showForm = false }) => {
               <TeamCell team={team.team.id} />
               {showForm && <FormCell form = {team.form}/>}
               <TableCell align="center">{team.playedGames}</TableCell>
-              <TableCell align="center">{`${team.goalsFor} : ${team.goalsAgainst}`}</TableCell>
+              <NoWrapCell align="center">{`${team.goalsFor} : ${team.goalsAgainst}`}</NoWrapCell>
               <TableCell align="center">{team.points}</TableCell>
             </TableRow>
           )}
