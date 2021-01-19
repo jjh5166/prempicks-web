@@ -9,7 +9,7 @@ export const FieldsGrid = styled.div`
 export const FieldBlock = styled.div`
   position: relative;
   border-bottom: 1px solid #000;
-  height: 50px;
+  height: 49px;
   display: flex;
   justify-content: center;
   align-items: center;
