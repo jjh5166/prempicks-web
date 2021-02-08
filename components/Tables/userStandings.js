@@ -69,7 +69,7 @@ const StandingsTable = ({ standingsData }) => {
             <TableRow>
               <StickyHeaderCell colSpan={2} />
               {standingsData.standings[0].picks.map((pick) =>
-                !((whichTable === 0 && pick.matchday > 19) || (whichTable === 2 && pick.matchday < 19)) &&
+                !((whichTable === 0 && pick.matchday > 19) || (whichTable === 2 && pick.matchday < 20)) &&
                 <TableCell key={`dayHeader${pick.matchday}`} align="center" colSpan={2}>{pick.matchday}</TableCell>
               )}
               <TableSpacer />
@@ -89,7 +89,7 @@ const StandingsTable = ({ standingsData }) => {
                 {
                   row.picks.map(
                     (pick, i) =>
-                      !((whichTable === 0 && pick.matchday > 19) || (whichTable === 2 && pick.matchday < 19)) &&
+                      !((whichTable === 0 && pick.matchday > 19) || (whichTable === 2 && pick.matchday < 20)) &&
                       <Fragment key={row.name + i}>
                         <TableCell component="td" scope="row" align="center">
                             {pick.team_id}
