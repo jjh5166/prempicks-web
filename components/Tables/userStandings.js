@@ -52,7 +52,7 @@ const StandingsTable = ({ standingsData }) => {
   useEffect(() => {
     setTableStart();
     if (firstColumn) setStickyColumn();
-  });
+  },[]);
   return (
     <Fragment>
       {
