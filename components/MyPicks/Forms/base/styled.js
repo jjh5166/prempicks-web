@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import { device } from '../../../../constants';
 
 export const MyPicksContainer = styled.div`
-  height: 72vh;
+  height: 60vh;
+  // height: 72vh;
   width: 98%;
   max-width: 1060px;
   display: grid;
@@ -17,7 +18,7 @@ export const MyPicksContainer = styled.div`
   @media ${device.tablet} {
     grid-template-columns: 13% 87%;
   }
-`
+`;
 export const MpSubmitButton = styled.button`
   position: relative;
   margin: 0 auto;
