@@ -40,5 +40,6 @@ export const StickyHeaderCell = styled(StickyCell)`
 `;
 
 export const BoldingSpan = styled.span`
-  font-weight: ${({isUser}) => isUser ? '900' : 'unset'}
-`
+  white-space: nowrap;
+  font-weight: ${({ isUser }) => (isUser ? "900" : "unset")};
+`;
