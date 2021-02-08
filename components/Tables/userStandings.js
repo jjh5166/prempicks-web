@@ -34,7 +34,7 @@ const StandingsTable = ({ standingsData }) => {
     team.picks.forEach((pick, i) => {
       const thisScore = standingsData.scores[pick.matchday][pick.team_id];
       teamObj.season += thisScore;
-      if (i < 19) {
+      if (pick.matchday < 20) {
         teamObj.firstHalf += thisScore;
       } else {
         teamObj.secondHalf += thisScore;
@@ -53,6 +53,7 @@ const StandingsTable = ({ standingsData }) => {
     setTableStart();
     if (firstColumn) setStickyColumn();
   },[]);
+  console.log(totals)
   return (
     <Fragment>
       {
