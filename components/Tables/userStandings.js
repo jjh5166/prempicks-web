@@ -34,7 +34,7 @@ const StandingsTable = ({ standingsData }) => {
     team.picks.forEach((pick, i) => {
       const thisScore = standingsData.scores[pick.matchday][pick.team_id];
       teamObj.season += thisScore;
-      if (i < 19) {
+      if (pick.matchday < 20) {
         teamObj.firstHalf += thisScore;
       } else {
         teamObj.secondHalf += thisScore;
@@ -53,6 +53,7 @@ const StandingsTable = ({ standingsData }) => {
     setTableStart();
     if (firstColumn) setStickyColumn();
   },[]);
+  console.log(totals)
   return (
     <Fragment>
       {
@@ -69,7 +70,7 @@ const StandingsTable = ({ standingsData }) => {
             <TableRow>
               <StickyHeaderCell colSpan={2} />
               {standingsData.standings[0].picks.map((pick) =>
-                !((whichTable === 0 && pick.matchday > 19) || (whichTable === 2 && pick.matchday < 19)) &&
+                !((whichTable === 0 && pick.matchday > 19) || (whichTable === 2 && pick.matchday < 20)) &&
                 <TableCell key={`dayHeader${pick.matchday}`} align="center" colSpan={2}>{pick.matchday}</TableCell>
               )}
               <TableSpacer />
@@ -89,7 +90,7 @@ const StandingsTable = ({ standingsData }) => {
                 {
                   row.picks.map(
                     (pick, i) =>
-                      !((whichTable === 0 && pick.matchday > 19) || (whichTable === 2 && pick.matchday < 19)) &&
+                      !((whichTable === 0 && pick.matchday > 19) || (whichTable === 2 && pick.matchday < 20)) &&
                       <Fragment key={row.name + i}>
                         <TableCell component="td" scope="row" align="center">
                             {pick.team_id}
