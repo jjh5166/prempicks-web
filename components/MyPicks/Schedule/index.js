@@ -26,7 +26,11 @@ const MyPicksSchedule = () => {
       {scheduleData &&
         [...Array(19)].map((_, i) => (
           <ScheduleMatchday
-            ref={scheduleData.currentMatchday === i + 1 ? currentMatches : null}
+            ref={
+              scheduleData.currentMatchday === i + halfIndex
+                ? currentMatches
+                : null
+            }
             key={`Matchday${i + halfIndex}`}
             matches={scheduleData.schedule[i + halfIndex]}
           />
