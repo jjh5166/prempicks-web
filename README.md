@@ -74,6 +74,7 @@ For each half, users may only pick each team once, leaving one team out of twent
 [John Hartnett](https://jjhv.me) - jjh5166@gmail.com
 
 Project Link: [https://github.com/jjh5166/prempicks-web](https://github.com/jjh5166/prempicks-web)
+
 Project Link for API: [https://github.com/jjh5166/prempicks-api](https://github.com/jjh5166/prempicks-api)
 
 
