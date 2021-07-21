@@ -2362,9 +2362,9 @@ camelize@^1.0.0:
   integrity sha1-FkpUg+Yw+kMh5a8HAg5TGDGyYJs=
 
 caniuse-lite@^1.0.30001093, caniuse-lite@^1.0.30001113, caniuse-lite@^1.0.30001157:
-  version "1.0.30001194"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001194.tgz"
-  integrity sha512-iDUOH+oFeBYk5XawYsPtsx/8fFpndAPUQJC7gBTfxHM8xw5nOZv7ceAD4frS1MKCLUac7QL5wdAJiFQlDRjXlA==
+  version "1.0.30001245"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001245.tgz"
+  integrity sha512-768fM9j1PKXpOCKws6eTo3RHmvTUsG9UrpT4WoREFeZgJBTi4/X9g565azS/rVUGtqb8nt7FjLeF5u4kukERnA==
 
 chalk@4.0.0:
   version "4.0.0"
