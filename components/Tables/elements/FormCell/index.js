@@ -3,7 +3,7 @@ import TableCell from '@material-ui/core/TableCell';
 import { FormItem, FormResults } from './styled';
 
 const FormCell = ({ form }) => {
-  const formArray = form.split(',');
+  const formArray = form?.split(',') || [];
   return (
     <TableCell>
       <FormResults>

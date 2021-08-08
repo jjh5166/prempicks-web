@@ -27,7 +27,7 @@ const EplTablePage = () => {
     };
     const fetchLastSeason = async () => {
       await axios.get(
-        `${footballApiBaseUrl}/competitions/2021/standings?season=2019`, //query should be a variable
+        `${footballApiBaseUrl}/competitions/2021/standings?season=2020`, //query should be a variable
         { headers: { 'X-Auth-Token': footballApiKey } }
       )
         .then(res => {
