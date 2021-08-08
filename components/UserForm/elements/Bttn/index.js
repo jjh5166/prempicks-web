@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from '@material-ui/core';
 
-function colorButton({type}) {
+function colorButton(type) {
   switch (type) {
     case 'Sign Up':
       return '#8943b8';
@@ -23,6 +23,7 @@ const Bttn = ({ text, ...props }) => {
       type="submit"
       disabled={disabled}
       style={buttonStyle}
+      {...props}
     >
       {text}
     </Button>

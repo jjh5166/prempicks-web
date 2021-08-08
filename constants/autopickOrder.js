@@ -1,3 +1,4 @@
+// used for guest login
 export const autopickOrder = [
   'MCI',
   'MUN',
