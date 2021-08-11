@@ -12,7 +12,7 @@ export default function Rules() {
         <p>
           Every week, you pick a team to win. Points are received or deducted based on the result. The season is divided
           into two halves, you cannot pick the same team twice in a half. There are 19 matches in each half of the season,
-          meaning one team goes unpicked each half.
+          meaning one team goes unpicked each half. The Top 3 in each half and total season get a pay out. There is also a payout for longest win streak.
         </p>
       </RulesSection>
       <RulesSection>
@@ -21,9 +21,9 @@ export default function Rules() {
           <RulesTable />
           <ul>
             <li>Goal Difference Factor: If the team you pick wins by 3 or more goals, you receive a bonus point. If the team you pick loses by 3 or more goals, you are penalized an additional point. </li>
-            <li>Top 6 Loss: Any time a <Tooltip title="LIV, MCI, MUN, CHE, LEI, TOT"><span><strong>top 6 team</strong></span></Tooltip> from last season is picked and they lose, there is an additional point deduction.</li>
-            <li>Beat a Top Six: Any time the team you select beats a <Tooltip title="LIV, MCI, MUN, CHE, LEI, TOT"><span><strong>top 6 team</strong></span></Tooltip> from last season you will receive a bonus point</li>
-            <li>Newly Promoted Win: If you pick any of the <Tooltip title="LEE, WBA, FUL"><span><strong>newly promoted teams</strong></span></Tooltip> and they win, you will receive a bonus
+            <li>Top 6 Loss: Any time a <Tooltip title="MCI, MUN, LIV, CHE, LEI, WHU"><span><strong>top 6 team</strong></span></Tooltip> from last season is picked and they lose, there is an additional point deduction.</li>
+            <li>Beat a Top Six: Any time the team you select beats a <Tooltip title="MCI, MUN, LIV, CHE, LEI, WHU"><span><strong>top 6 team</strong></span></Tooltip> from last season you will receive a bonus point</li>
+            <li>Newly Promoted Win: If you pick any of the <Tooltip title="NOR, WAT, BRE"><span><strong>newly promoted teams</strong></span></Tooltip> and they win, you will receive a bonus
           point.</li>
           </ul>
         </div>
