@@ -3,10 +3,11 @@ import Router from 'next/router'
 import axios from 'axios'
 import Loader from 'react-loader-spinner'
 
-import useAuthUser from '../redux/hooks/useAuthUser'
-import { serverUrl } from '../constants'
-import Layout from '../components/Layout'
-import { UserMyPicks } from '../components/MyPicks'
+import useAuthUser from 'redux/hooks/useAuthUser'
+import { serverUrl } from 'constants/index'
+import Layout from 'components/Layout'
+import { UserMyPicks } from 'components/MyPicks'
+import { setErrorAlert } from 'redux/actions/alert'
 
 const MyPicksPage = () => {
   const [isLoading, setIsLoading] = useState(false)
