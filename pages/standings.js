@@ -3,17 +3,17 @@ import Router from 'next/router'
 import axios from 'axios'
 import Loader from 'react-loader-spinner'
 
-import { triggerScoring } from '../utils/footballApi'
 import {
   serverUrl,
   footballApiKey,
   footballApiBaseUrl,
   teamsMap,
-} from '../constants'
-import useAuthUser from '../redux/hooks/useAuthUser'
-import Layout from '../components/Layout'
-import StandingsTable from '../components/Tables/userStandings'
+} from 'constants/index'
+import useAuthUser from 'redux/hooks/useAuthUser'
+import Layout from 'components/Layout'
+import StandingsTable from 'components/Tables/userStandings'
 import TeamListTable from 'components/Tables/teamLlistTable'
+import { triggerScoring } from 'utils/footballApi'
 
 export default function StandingsPage() {
   const [isLoading, setIsLoading] = useState(false)
