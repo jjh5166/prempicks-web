@@ -1,42 +1,52 @@
-import { Fragment } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-
-import { teamsMap } from '../../constants';
-import { ScoreContainer } from '../Container';
+import { Fragment } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  ScheduleContainer, MatchdayTitle,
-  MatchContainer, HomeTeam, AwayTeam,
-  ScheduleDate
-} from './styled';
+  faChevronLeft,
+  faChevronRight,
+} from '@fortawesome/free-solid-svg-icons'
+
+import { teamsMap } from 'constants/index'
+import { ScoreContainer } from '../Container'
+import {
+  ScheduleContainer,
+  MatchdayTitle,
+  MatchContainer,
+  HomeTeam,
+  AwayTeam,
+  ScheduleDate,
+} from './styled'
 
 const MatchdaySchedule = ({ matchday, matches, changeMatchday }) => {
-  const listedDates = [];
+  const listedDates = []
   return (
     <Fragment>
       <MatchdayTitle>
-        {
-          matchday > 1 &&
+        {matchday > 1 && (
           <FontAwesomeIcon
             onClick={changeMatchday(matchday - 1)}
             icon={faChevronLeft}
-            size={"lg"} />
-        }
+            size={'lg'}
+          />
+        )}
         <span>{`Matchday ${matchday}`}</span>
-        {
-          matchday < 38 &&
+        {matchday < 38 && (
           <FontAwesomeIcon
             onClick={changeMatchday(matchday + 1)}
             icon={faChevronRight}
-            size={"lg"} />
-        }
+            size={'lg'}
+          />
+        )}
       </MatchdayTitle>
       <ScheduleContainer>
-        {matches.map(match => {
-          let date = new Date(match.utcDate)
-            .toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })
-          if (listedDates.includes(date)) date = null;
-          else listedDates.push(date);
+        {matches.map((match) => {
+          let date = new Date(match.utcDate).toLocaleDateString(undefined, {
+            weekday: 'long',
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric',
+          })
+          if (listedDates.includes(date)) date = null
+          else listedDates.push(date)
           return (
             <Fragment key={match.id}>
               {date && <ScheduleDate>{date}</ScheduleDate>}
@@ -58,10 +68,10 @@ const MatchdaySchedule = ({ matchday, matches, changeMatchday }) => {
               </MatchContainer>
             </Fragment>
           )
-        }
-        )}
+        })}
       </ScheduleContainer>
-    </Fragment>)
-};
+    </Fragment>
+  )
+}
 
-export default MatchdaySchedule;
+export default MatchdaySchedule

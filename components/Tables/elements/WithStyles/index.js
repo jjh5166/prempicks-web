@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
+import TableContainer from '@material-ui/core/TableContainer'
+import TableCell from '@material-ui/core/TableCell'
 
-import { device } from '../../../../constants';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableCell from '@material-ui/core/TableCell';
+import { device } from 'constants/index'
 
 export const StyledTableContainer = styled(TableContainer)`
   max-height: 75vh;
@@ -10,22 +10,22 @@ export const StyledTableContainer = styled(TableContainer)`
   @media ${device.tablet} {
     width: 80% !important;
   }
-`;
+`
 
 export const TableSpacer = styled(TableCell)`
-  width:100%;
-`;
+  width: 100%;
+`
 export const NoWrapCell = styled(TableCell)`
   white-space: nowrap;
-`;
+`
 const StickyCell = styled(TableCell)`
   position: -webkit-sticky !important;
   position: sticky !important;
-  left: ${({ stickyleft }) => stickyleft ? stickyleft : 0};
-`;
+  left: ${({ stickyleft }) => (stickyleft ? stickyleft : 0)};
+`
 export const StickyTd = styled(StickyCell)`
-  &::before{
-    content: "";
+  &::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -37,9 +37,9 @@ export const StickyTd = styled(StickyCell)`
 `
 export const StickyHeaderCell = styled(StickyCell)`
   z-index: 3 !important;
-`;
+`
 
 export const BoldingSpan = styled.span`
   white-space: nowrap;
-  font-weight: ${({ isUser }) => (isUser ? "900" : "unset")};
-`;
+  font-weight: ${({ isUser }) => (isUser ? '900' : 'unset')};
+`

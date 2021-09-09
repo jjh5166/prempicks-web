@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-import { device } from '../../constants';
+import { device } from 'constants/index'
 
 export const BigTitle = styled.div`
   position: absolute;
@@ -14,12 +14,12 @@ export const BigTitle = styled.div`
   text-shadow: 2px 2px #00394d;
   text-align: center;
   @media (orientation: landscape) {
-    line-height: 1
+    line-height: 1;
   }
   @media ${device.tablet} {
     line-height: 1.5;
   }
-`;
+`
 export const LandingButtonsContainer = styled.div`
   position: absolute;
   top: 74%;
@@ -29,9 +29,9 @@ export const LandingButtonsContainer = styled.div`
   display: flex;
   justify-content: center;
   @media (orientation: landscape) {
-    top: 80%
+    top: 80%;
   }
   @media ${device.tablet} {
     top: 74%;
   }
-`;
+`

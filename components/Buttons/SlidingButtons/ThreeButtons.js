@@ -1,31 +1,31 @@
-import { useState, useEffect } from 'react';
-import { SwitchButtons, ThreeBtnSlider, SwitchButton } from './styled';
+import { useState, useEffect } from 'react'
+import { SwitchButtons, ThreeBtnSlider, SwitchButton } from './styled'
 
 const ThreeButtons = ({ start, switchTable, buttonNames }) => {
-  const [active, setActive] = useState(start);
+  const [active, setActive] = useState(start)
 
-  const handleClick = index => e => {
-    switchTable(index);
-    setActive(index);
-  };
+  const handleClick = (index) => (e) => {
+    switchTable(index)
+    setActive(index)
+  }
   useEffect(() => {
-    setActive(start);
-  }, []);
+    setActive(start)
+  }, [])
   return (
     <SwitchButtons buttons={3}>
       <ThreeBtnSlider slide={active} />
-      {buttonNames.map((name, i) =>
+      {buttonNames.map((name, i) => (
         <SwitchButton
           key={i}
-          type="button"
+          type='button'
           onClick={handleClick(i)}
           active={active === i}
         >
           {name}
         </SwitchButton>
-      )}
+      ))}
     </SwitchButtons>
-  );
-};
+  )
+}
 
-export default ThreeButtons;
+export default ThreeButtons

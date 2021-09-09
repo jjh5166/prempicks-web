@@ -1,29 +1,41 @@
-import { Fragment } from 'react';
+import { Fragment } from 'react'
 
-import { showScore } from '../../../utils/footballApi';
-import { getTimeFromUtc } from '../../../utils/time';
-import { ScoreFlexContainer, SelfCenteredSpan } from './styled';
+import { showScore } from 'utils/footballApi'
+import { getTimeFromUtc } from 'utils/time'
+import { ScoreFlexContainer, SelfCenteredSpan } from './styled'
 
-export const ScoreContainer = ({ home, away, status, scoreSize, kickOffTime }) => {
-  const showIt = showScore(status);
+export const ScoreContainer = ({
+  home,
+  away,
+  status,
+  scoreSize,
+  kickOffTime,
+}) => {
+  const showIt = showScore(status)
   return (
     <Fragment>
-      {
-        showIt ?
-          <ScoreFlexContainer isOver={status === ('FINISHED' || 'AWARDED')} scoreSize={scoreSize}>
-            <div><span>{home}</span></div>
-            <div>{':'}</div>
-            <div><span>{away}</span></div>
-          </ScoreFlexContainer>
-          :
-          <MatchText status={status} kickOffTime={kickOffTime} />
-      }
+      {showIt ? (
+        <ScoreFlexContainer
+          isOver={status === ('FINISHED' || 'AWARDED')}
+          scoreSize={scoreSize}
+        >
+          <div>
+            <span>{home}</span>
+          </div>
+          <div>{':'}</div>
+          <div>
+            <span>{away}</span>
+          </div>
+        </ScoreFlexContainer>
+      ) : (
+        <MatchText status={status} kickOffTime={kickOffTime} />
+      )}
     </Fragment>
-  );
+  )
 }
 
 const MatchText = ({ status, kickOffTime }) => {
-  const isPostponed = status === ('POSTPONED' || 'CANCELED');
+  const isPostponed = status === ('POSTPONED' || 'CANCELED')
   const time = getTimeFromUtc(kickOffTime)
   return (
     <SelfCenteredSpan isPostponed={isPostponed}>

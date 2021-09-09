@@ -1,35 +1,36 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const ScoreFlexContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${({ isOver }) => isOver ? '#4c4a4a' : '#000'};
-  div{
+  color: ${({ isOver }) => (isOver ? '#4c4a4a' : '#000')};
+  div {
     display: inline-block;
     text-align: center;
-    &:first-child, &:last-child{
+    &:first-child,
+    &:last-child {
       flex: 1;
       text-align: center;
     }
-    span{
-      width: ${({ scoreSize }) => scoreSize ? scoreSize : '20px'};
+    span {
+      width: ${({ scoreSize }) => (scoreSize ? scoreSize : '20px')};
     }
-    &:first-child{
-      span{
+    &:first-child {
+      span {
         float: right;
       }
     }
-    &:last-child{
-      span{
+    &:last-child {
+      span {
         float: left;
       }
     }
-  };
-`;
+  }
+`
 export const SelfCenteredSpan = styled.div`
   justify-self: center;
   align-self: center;
-  color: ${({isPostponed}) => isPostponed ? '#ca1313' : 'unset'};
+  color: ${({ isPostponed }) => (isPostponed ? '#ca1313' : 'unset')};
   white-space: nowrap;
 `

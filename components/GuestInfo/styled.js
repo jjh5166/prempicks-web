@@ -1,5 +1,6 @@
-import { device } from '../../constants';
-import styled from 'styled-components';
+import styled from 'styled-components'
+
+import { device } from 'constants/index'
 
 export const GuestInfoContainer = styled.div`
   width: 100%;
@@ -11,7 +12,7 @@ export const GuestInfoContainer = styled.div`
     top: 7px;
     padding: 0 10px;
   }
-  @media only screen and (orientation: landscape) and (max-height: 400px){
+  @media only screen and (orientation: landscape) and (max-height: 400px) {
     display: none;
   }
 `
@@ -35,5 +36,5 @@ export const HoverInfo = styled.div`
   color: #fff;
   &:hover ${InfoTextCont} {
     display: block;
-  } 
+  }
 `

@@ -4,13 +4,13 @@ import { useDispatch } from 'react-redux'
 import Router from 'next/router'
 
 import { serverUrl } from 'constants/index'
-import { withFirebase } from '../../Firebase'
+import { withFirebase } from 'components/Firebase'
 import Bttn from '../elements/Bttn'
 import { FormContainer } from '../Base/styled'
 import { setErrorAlert, setSuccessAlert } from 'redux/actions/alert'
 
-const OptInForm = ({firebase}) => {
-    const dispatch = useDispatch()
+const OptInForm = ({ firebase }) => {
+  const dispatch = useDispatch()
   const handleClick = async () => {
     await axios
       .post(
@@ -36,8 +36,7 @@ const OptInForm = ({firebase}) => {
         Click the button below to opt in for the 2021-2022 season
       </p>
 
-      <Bttn onClick={handleClick} text="I'm in"/>
-
+      <Bttn onClick={handleClick} text="I'm in" />
     </FormContainer>
   )
 }

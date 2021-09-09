@@ -1,11 +1,11 @@
-import styled from 'styled-components';
-import { device } from '../../constants';
+import styled from 'styled-components'
+import { device } from '../../constants'
 
 export const MatchContainer = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 20% 1fr;
-  span{
+  span {
     justify-self: center;
   }
 `
@@ -19,19 +19,19 @@ export const ScheduleContainer = styled.div`
   align-items: center;
   flex-wrap: wrap;
   outline: solid #000 2px;
-  background-color: rgba(244, 244, 244, .5);
+  background-color: rgba(244, 244, 244, 0.5);
   overflow: scroll;
   @media (min-width: 580px) and (orientation: landscape) {
     flex-direction: row;
-    ${MatchContainer}{
+    ${MatchContainer} {
       width: 50%;
-      font-size: .9em;
+      font-size: 0.9em;
     }
   }
-  @media ${device.tablet}{
+  @media ${device.tablet} {
     flex-direction: column;
     width: 50%;
-    ${MatchContainer}{
+    ${MatchContainer} {
       width: 100%;
       font-size: 1em;
     }
@@ -43,8 +43,8 @@ export const ScheduleDate = styled.div`
   @media (min-width: 580px) and (orientation: landscape) {
     display: none;
   }
-  @media ${device.tablet}{
-    display: block
+  @media ${device.tablet} {
+    display: block;
   }
 `
 export const MatchdayTitle = styled.div`
@@ -54,21 +54,21 @@ export const MatchdayTitle = styled.div`
   font-style: italic;
   display: flex;
   align-items: center;
-  svg{
+  svg {
     cursor: pointer;
   }
-  span{
+  span {
     padding: 13px;
   }
 `
 
 const ScheduleTeam = styled.div`
-  img{
-    height:22px;
-    width:22px;
+  img {
+    height: 22px;
+    width: 22px;
     place-self: center;
   }
-  span{
+  span {
     white-space: nowrap;
     padding: 7px;
   }

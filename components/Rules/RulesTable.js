@@ -1,9 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import { RulesTableEl } from './styled';
+import { RulesTableEl } from './styled'
 
 export default function RulesTable() {
-
   return (
     <RulesTableEl>
       <thead>
@@ -47,5 +46,5 @@ export default function RulesTable() {
         </tr>
       </tbody>
     </RulesTableEl>
-  );
+  )
 }

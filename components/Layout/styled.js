@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const PageContainer = styled.div`
   min-height: -webkit-fill-available;
@@ -13,7 +13,7 @@ export const PageContainer = styled.div`
   background-size: cover;
   background-color: rgba(81, 81, 159, 0.5);
   background-blend-mode: multiply;
-`;
+`
 export const ContentContainer = styled.div`
   position: relative;
   flex: 1;

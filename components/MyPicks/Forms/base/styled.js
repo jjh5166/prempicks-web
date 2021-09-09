@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { device } from '../../../../constants';
+import styled from 'styled-components'
+import { device } from 'constants/index'
 
 export const MyPicksContainer = styled.div`
   height: 60vh;
@@ -18,7 +18,7 @@ export const MyPicksContainer = styled.div`
   @media ${device.tablet} {
     grid-template-columns: 13% 87%;
   }
-`;
+`
 export const MpSubmitButton = styled.button`
   position: relative;
   margin: 0 auto;

@@ -1,13 +1,13 @@
-import TableCell from '@material-ui/core/TableCell';
+import TableCell from '@material-ui/core/TableCell'
 
-import { teamsMap } from '../../../../constants';
-import { TeamCrest, TeamName } from './styled';
+import { teamsMap } from 'constants/index'
+import { TeamCrest, TeamName } from './styled'
 
 const style = {
   display: 'inline-flex',
   justifyContent: 'center',
-  alignItems: 'center'
-};
+  alignItems: 'center',
+}
 
 const TeamCell = ({ team }) => (
   <TableCell>
@@ -16,6 +16,6 @@ const TeamCell = ({ team }) => (
       <TeamName short={teamsMap[team].short} abv={teamsMap[team].abv} />
     </div>
   </TableCell>
-);
+)
 
-export default TeamCell;
+export default TeamCell

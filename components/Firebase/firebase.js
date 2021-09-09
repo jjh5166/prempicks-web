@@ -1,5 +1,5 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import firebase from 'firebase/app'
+import 'firebase/auth'
 
 const config = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -9,40 +9,42 @@ const config = {
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MSID,
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MID
-};
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MID,
+}
 
 class Firebase {
   constructor() {
     if (!firebase.apps.length) {
-      firebase.initializeApp(config);
+      firebase.initializeApp(config)
     }
-    this.auth = firebase.auth();
+    this.auth = firebase.auth()
   }
 
   retrieveToken = async () => {
-    let token = null;
-    await this.auth.currentUser.getIdToken(true)
+    let token = null
+    await this.auth.currentUser
+      .getIdToken(true)
       .then((idToken) => {
-        token = idToken;
+        token = idToken
       })
-      .catch(err => {
-        console.log(err);
-      });
-    return token;
-  };
+      .catch((err) => {
+        console.log(err)
+      })
+    return token
+  }
 
   doCreateUserWithEmailAndPassword = (email, password) =>
-    this.auth.createUserWithEmailAndPassword(email, password);
+    this.auth.createUserWithEmailAndPassword(email, password)
 
   doSignInWithEmailAndPassword = (email, password) =>
-    this.auth.signInWithEmailAndPassword(email, password);
+    this.auth.signInWithEmailAndPassword(email, password)
 
-  doSignOut = () => this.auth.signOut();
+  doSignOut = () => this.auth.signOut()
 
-  doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
+  doPasswordReset = (email) => this.auth.sendPasswordResetEmail(email)
 
-  doPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
+  doPasswordUpdate = (password) =>
+    this.auth.currentUser.updatePassword(password)
 }
 
-export default Firebase;
+export default Firebase

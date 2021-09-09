@@ -1,15 +1,14 @@
-import React from 'react';
+import React from 'react'
 
-import TxtField from '../TxtField';
+import TxtField from '../TxtField'
 
-import { FieldsContainer } from './styled';
+import { FieldsContainer } from './styled'
 
 const FormFields = ({ fields }) => {
   return (
     <FieldsContainer>
-      {
-        fields &&
-        fields.map(field => {
+      {fields &&
+        fields.map((field) => {
           return (
             <TxtField
               key={field.name}
@@ -17,11 +16,10 @@ const FormFields = ({ fields }) => {
               labelName={field.labelName}
               isPassword={field.isPassword}
             />
-          );
-        })
-      }
+          )
+        })}
     </FieldsContainer>
-  );
-};
+  )
+}
 
-export default FormFields;
+export default FormFields
