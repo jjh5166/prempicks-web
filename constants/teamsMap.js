@@ -29,7 +29,8 @@ export const teamsMap = {
     name: 'Everton',
     short: 'Everton',
     abv: 'EVE',
-    crestURL: 'https://upload.wikimedia.org/wikipedia/de/f/f9/Everton_FC.svg',
+    crestURL:
+      'https://upload.wikimedia.org/wikipedia/en/7/7c/Everton_FC_logo.svg',
   },
   64: {
     name: 'Liverpool',
@@ -173,5 +174,12 @@ export const teamsMap = {
     abv: 'WBA',
     crestURL:
       'https://upload.wikimedia.org/wikipedia/en/8/8b/West_Bromwich_Albion.svg',
+  },
+  351: {
+    name: 'Nottingham Forest',
+    shortName: 'Nottingham',
+    abv: 'NOT',
+    crestUrl:
+      'https://upload.wikimedia.org/wikipedia/en/e/e5/Nottingham_Forest_F.C._logo.svg',
   },
 }
