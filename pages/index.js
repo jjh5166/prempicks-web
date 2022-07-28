@@ -6,14 +6,17 @@ import Loader from 'react-loader-spinner'
 import { serverUrl } from 'constants/index'
 import LandingPage from 'components/LandingPage'
 import Layout from 'components/Layout'
+import { useFirebase } from 'components/Firebase/context'
 import { useAuthUser } from 'redux/hooks'
 
 export default function Home() {
   const authUser = useAuthUser()
   const [isLoading, setIsLoading] = useState(false)
+  const firebase = useFirebase()
 
   useEffect(() => {
     let optedIn = false
+    let hasError = false
     const fetchData = async () => {
       setIsLoading(true)
       await axios
@@ -24,13 +27,20 @@ export default function Home() {
         )
         .then((res) => {
           optedIn = res.data.live
-          setIsLoading(false)
         })
-        .catch((err) => console.log(err.response))
+        .catch((err) => {
+          hasError = true
+          console.log(err.response)
+        })
+
+      setIsLoading(false)
+
       if (optedIn) {
         Router.push('/mypicks')
-      } else {
+      } else if (!hasError) {
         Router.push('/user/opt-in')
+      } else {
+        firebase.doSignOut()
       }
     }
     if (authUser) {
