@@ -33,7 +33,7 @@ const OptInForm = ({firebase}) => {
     <FormContainer>
       <h2>Welcome Back!</h2>
       <p style={{ textAlign: 'center' }}>
-        Click the button below to opt in for the 2021-2022 season
+        Click the button below to opt in for the 2022-2023 season
       </p>
 
       <Bttn onClick={handleClick} text="I'm in"/>
