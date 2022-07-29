@@ -177,9 +177,9 @@ export const teamsMap = {
   },
   351: {
     name: 'Nottingham Forest',
-    shortName: 'Nottingham',
+    short: 'Nottingham',
     abv: 'NOT',
-    crestUrl:
+    crestURL:
       'https://upload.wikimedia.org/wikipedia/en/e/e5/Nottingham_Forest_F.C._logo.svg',
   },
 }
