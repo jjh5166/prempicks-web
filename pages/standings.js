@@ -13,7 +13,7 @@ import {
 import useAuthUser from '../redux/hooks/useAuthUser'
 import Layout from '../components/Layout'
 import StandingsTable from '../components/Tables/userStandings'
-import TeamListTable from 'components/Tables/teamLlistTable'
+import { TeamListTable } from 'components/Tables/TeamListTable'
 
 export default function StandingsPage() {
   const [isLoading, setIsLoading] = useState(false)
