@@ -29,12 +29,7 @@ const UpdateAccountPage = () => {
         { headers: { 'Content-Type': 'application/json' } }
       )
         .then(res => {
-          console.log(res);
-          setUserData({
-            first_name: res.data.first_name,
-            last_name: res.data.last_name,
-            team_name: res.data.team_name
-          });
+          setUserData(res.data);
           setIsLoading(false);
         })
         .catch(err => console.log(err.response));
