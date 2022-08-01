@@ -18,6 +18,7 @@ import { TextField } from '@material-ui/core';
       }
       type={password}
       autoComplete="on"
+      {...props}
     />
   );
 };

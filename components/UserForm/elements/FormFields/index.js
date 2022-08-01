@@ -16,6 +16,7 @@ const FormFields = ({ fields }) => {
               name={field.name}
               labelName={field.labelName}
               isPassword={field.isPassword}
+              disabled={field.disabled}
             />
           );
         })
