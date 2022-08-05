@@ -1,23 +1,23 @@
-import { useEffect } from 'react';
-import Router from 'next/router';
+import { useEffect } from 'react'
+import Router from 'next/router'
 
-import Layout from '../../components/Layout';
-import LoginForm from '../../components/UserForm/Login';
-import useAuthUser from '../../redux/hooks/useAuthUser';
+import Layout from '../../components/Layout'
+import LoginForm from '../../components/UserForm/Login'
+import useAuthUser from '../../redux/hooks/useAuthUser'
 
 const LoginPage = () => {
-  const authUser = useAuthUser();
-  useEffect(() => {
-    if (authUser) {
-      Router.push('/mypicks');
-    }
-  }, [authUser]);
+    const authUser = useAuthUser()
+    useEffect(() => {
+        if (authUser) {
+            Router.push('/mypicks')
+        }
+    }, [authUser])
 
-  return (
-    <Layout title="Login" hideNav={true}>
-      <LoginForm />
-    </Layout>
-  );
-};
+    return (
+        <Layout title="Login" hideNav={true}>
+            <LoginForm />
+        </Layout>
+    )
+}
 
-export default LoginPage;
+export default LoginPage

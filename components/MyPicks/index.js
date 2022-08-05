@@ -1,4 +1,4 @@
-import UserMyPicks from './Forms/UserMyPicks';
-import GuestMyPicks from './Forms/GuestMyPicks';
+import UserMyPicks from './Forms/UserMyPicks'
+import GuestMyPicks from './Forms/GuestMyPicks'
 
-export { UserMyPicks, GuestMyPicks };
+export { UserMyPicks, GuestMyPicks }

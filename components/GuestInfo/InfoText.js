@@ -1,7 +1,7 @@
-import { InfoTextCont} from './styled';
+import { InfoTextCont } from './styled'
 
-export const InfoText = ({infoText}) => (
-  <InfoTextCont>
-  <p>{infoText}</p>
-  </InfoTextCont>
+export const InfoText = ({ infoText }) => (
+    <InfoTextCont>
+        <p>{infoText}</p>
+    </InfoTextCont>
 )

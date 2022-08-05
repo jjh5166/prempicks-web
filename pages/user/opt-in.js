@@ -6,18 +6,18 @@ import OptInForm from 'components/UserForm/OptIn'
 import useAuthUser from 'redux/hooks/useAuthUser'
 
 const OptInPage = () => {
-  const authUser = useAuthUser()
-  useEffect(() => {
-    if (!authUser) {
-      Router.push('/')
-    }
-  }, [authUser])
+    const authUser = useAuthUser()
+    useEffect(() => {
+        if (!authUser) {
+            Router.push('/')
+        }
+    }, [authUser])
 
-  return (
-    <Layout title='Opt In' hideNav={true}>
-      <OptInForm />
-    </Layout>
-  )
+    return (
+        <Layout title="Opt In" hideNav={true}>
+            <OptInForm />
+        </Layout>
+    )
 }
 
 export default OptInPage
