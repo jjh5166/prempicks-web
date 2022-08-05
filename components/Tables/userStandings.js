@@ -40,7 +40,7 @@ const StandingsTable = ({ standingsData }) => {
             season: 0,
             picks: team.picks,
         }
-        team.picks.forEach((pick, i) => {
+        team.picks.forEach(pick => {
             const thisScore = standingsData.scores[pick.matchday][pick.team_id]
             teamObj.season += thisScore
             if (pick.matchday < 20) {
