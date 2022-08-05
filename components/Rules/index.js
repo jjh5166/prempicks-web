@@ -64,14 +64,14 @@ export default function Rules() {
             <RulesSection>
                 <h4>Picking</h4>
                 <p>
-                    Picks must be in by kick off of the first match of the
+                    {`Picks must be in by kick off of the first match of the
                     matchday, otherwise the selection will be auto-picked.
                     Reminders are sent by email 24 hours before any deadline to
                     those who haven't picked. Autopick selects the team that
                     finished highest in the last years standings that is still
                     available. Any matches postponed still count for that same
                     matchday and points will be tallied once the match is
-                    completed.
+                    completed.`}
                 </p>
             </RulesSection>
         </TextContainer>
