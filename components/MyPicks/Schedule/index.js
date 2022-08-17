@@ -61,6 +61,7 @@ const ScheduleMatchday = forwardRef(({ matches }, ref) => (
         </MatchdayScroll>
     </MatchdayContainer>
 ))
+ScheduleMatchday.displayName = 'ScheduleMatchday'
 
 const Match = ({ match }) => (
     <MatchSingle>
