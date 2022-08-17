@@ -4,7 +4,7 @@ import { SwitchButtons, ThreeBtnSlider, SwitchButton } from './styled'
 const ThreeButtons = ({ start, switchTable, buttonNames }) => {
     const [active, setActive] = useState(start)
 
-    const handleClick = index => e => {
+    const handleClick = index => () => {
         switchTable(index)
         setActive(index)
     }

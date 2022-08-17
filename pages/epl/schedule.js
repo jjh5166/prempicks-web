@@ -40,7 +40,7 @@ function reducer(state, action) {
 const EplSchedulePage = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [state, dispatch] = useReducer(reducer, initialState)
-    const changeMatchday = matchday => e => {
+    const changeMatchday = matchday => () => {
         dispatch({ type: 'CHANGE_MATCHDAY', matchday: matchday })
     }
     useEffect(() => {
