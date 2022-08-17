@@ -43,6 +43,7 @@ export function fakeStandingsData(guest) {
         name: guest.name,
         picks: JSON.parse(JSON.stringify(guest.picks)).reverse(),
     })
+    //eslint-disable-next-line
     ;[...Array(20)].forEach(user => {
         let u = {
             name: faker.internet.userName(),
