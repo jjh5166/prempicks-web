@@ -1,9 +1,10 @@
 import Router from 'next/router'
 
-import { withFirebase } from '../../Firebase'
 import LogoutButtonBase from './base'
+import { useFirebase } from 'components/Firebase/context'
 
-function UserLogoutButton({ firebase }) {
+function UserLogoutButton() {
+    const firebase = useFirebase()
     return (
         <LogoutButtonBase
             logoutFn={async () => {
@@ -14,4 +15,4 @@ function UserLogoutButton({ firebase }) {
     )
 }
 
-export default withFirebase(UserLogoutButton)
+export default UserLogoutButton

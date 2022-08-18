@@ -2,14 +2,13 @@ import React from 'react'
 import { Formik, Form } from 'formik'
 import { useDispatch } from 'react-redux'
 
-import { withFirebase } from '../../Firebase'
+import { useFirebase } from 'components/Firebase/context'
 import FormFields from '../elements/FormFields'
 import Bttn from '../elements/Bttn'
 import FormLinks from '../elements/FormLinks'
 import { FormContainer } from './styled'
 
 const UserForm = ({
-    firebase,
     name,
     initialValues,
     validationSchema,
@@ -17,6 +16,7 @@ const UserForm = ({
     fields,
 }) => {
     const dispatch = useDispatch()
+    const firebase = useFirebase()
     return (
         <FormContainer>
             <h2>{name}</h2>
@@ -45,4 +45,4 @@ const UserForm = ({
     )
 }
 
-export default withFirebase(UserForm)
+export default UserForm

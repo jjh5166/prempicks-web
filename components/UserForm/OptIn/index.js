@@ -4,13 +4,14 @@ import { useDispatch } from 'react-redux'
 import Router from 'next/router'
 
 import { serverUrl } from 'constants/index'
-import { withFirebase } from '../../Firebase'
 import Bttn from '../elements/Bttn'
 import { FormContainer } from '../Base/styled'
 import { setErrorAlert, setSuccessAlert } from 'redux/actions/alert'
+import { useFirebase } from 'components/Firebase/context'
 
-const OptInForm = ({ firebase }) => {
+const OptInForm = () => {
     const dispatch = useDispatch()
+    const firebase = useFirebase()
     const handleClick = async () => {
         await axios
             .post(
@@ -44,4 +45,4 @@ const OptInForm = ({ firebase }) => {
         </FormContainer>
     )
 }
-export default withFirebase(OptInForm)
+export default OptInForm

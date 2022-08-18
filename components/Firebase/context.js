@@ -6,13 +6,6 @@ import Firebase from './firebase'
 
 const FirebaseContext = createContext(null)
 
-export const withFirebase = Component => props =>
-    (
-        <FirebaseContext.Consumer>
-            {firebase => <Component {...props} firebase={firebase} />}
-        </FirebaseContext.Consumer>
-    )
-
 export const useFirebase = () => {
     return useContext(FirebaseContext)
 }
