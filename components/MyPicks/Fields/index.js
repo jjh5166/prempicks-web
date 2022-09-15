@@ -33,9 +33,12 @@ const MyPicksFields = ({ values }) => {
                                           const pickIndex = index + indexFactor
                                           const fieldDisabled =
                                               timeNow >
+                                                  scheduleData.schedule[
+                                                      pickIndex + 1
+                                                  ][0]['utcDate'] &&
                                               scheduleData.schedule[
                                                   pickIndex + 1
-                                              ][0]['utcDate']
+                                              ][0]['status'] !== 'POSTPONED'
                                           if (fieldDisabled) {
                                               disabledTeams.push(pick.team_id)
                                           } else if (pick.team_id) {
