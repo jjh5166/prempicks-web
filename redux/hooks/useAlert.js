@@ -1,10 +1,7 @@
-import { useSelector, shallowEqual } from 'react-redux';
+import { useSelector, shallowEqual } from 'react-redux'
 
 const useAlert = () => {
-  return useSelector(
-    (state) => (state.alert),
-    shallowEqual
-  );
+    return useSelector(state => state.alert, shallowEqual)
 }
 
-export default useAlert;
+export default useAlert

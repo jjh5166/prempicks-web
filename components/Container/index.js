@@ -1,4 +1,4 @@
-import { TextContainer } from './styled';
-import { ScoreContainer } from './ScoreContainer';
+import { TextContainer } from './styled'
+import { ScoreContainer } from './ScoreContainer'
 
-export { TextContainer, ScoreContainer };
+export { TextContainer, ScoreContainer }
