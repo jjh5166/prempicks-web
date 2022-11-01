@@ -2,16 +2,20 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Loader from 'react-loader-spinner'
 
-import EplTable from '../../components/Tables/eplStandings'
-import { TwoButtons } from '../../components/Buttons'
-import { footballApiKey, footballApiBaseUrl } from '../../constants'
-import Layout from '../../components/Layout'
+import Layout from 'components/Layout'
+import EplTable from 'components/Tables/eplStandings'
+import { TwoButtons } from 'components/Buttons'
+import {
+    footballApiKey,
+    footballApiBaseUrl,
+    lastYearStandings,
+} from 'constants/index'
 
 const EplTablePage = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [currentStandings, setCurrentStandings] = useState(null)
-    const [lastYearStandings, setLastYearStandings] = useState(null)
     const [showHalf, setShowHalf] = useState(1)
+
     useEffect(() => {
         const fetchCurrentSeason = async () => {
             setIsLoading(true)
@@ -25,20 +29,8 @@ const EplTablePage = () => {
                 })
                 .catch(err => console.log(err.response))
         }
-        const fetchLastSeason = async () => {
-            await axios
-                .get(
-                    `${footballApiBaseUrl}/competitions/2021/standings?season=2020`, //query should be a variable
-                    { headers: { 'X-Auth-Token': footballApiKey } }
-                )
-                .then(res => {
-                    setLastYearStandings(res.data.standings)
-                })
-                .catch(err => console.log(err.response))
-        }
-        if (!currentStandings) fetchCurrentSeason()
-        if (currentStandings && !lastYearStandings) fetchLastSeason() //fetch last year after current
-    }, [currentStandings])
+        fetchCurrentSeason()
+    }, [])
     return (
         <Layout>
             {isLoading ? (
