@@ -62,7 +62,7 @@ const StandingsTable = ({ standingsData }) => {
         setTableStart()
         if (firstColumn) setStickyColumn()
     }, [])
-    console.log(totals)
+
     return (
         <>
             {initTable > 0 && (
