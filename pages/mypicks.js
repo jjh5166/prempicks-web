@@ -5,7 +5,6 @@ import Loader from 'react-loader-spinner'
 
 import useAuthUser from 'redux/hooks/useAuthUser'
 import { serverUrl } from 'constants/index'
-import Layout from 'components/Layout'
 import { UserMyPicks } from 'components/MyPicks'
 import { setErrorAlert } from 'redux/actions/alert'
 
@@ -59,7 +58,7 @@ const MyPicksPage = () => {
         }
     }, [authUser])
     return (
-        <Layout title="My Picks">
+        <>
             {isLoading ? (
                 <Loader type="Bars" color="#00BFFF" height={80} width={80} />
             ) : (
@@ -69,7 +68,7 @@ const MyPicksPage = () => {
                     scheduleData={scheduleData}
                 />
             )}
-        </Layout>
+        </>
     )
 }
 export default MyPicksPage

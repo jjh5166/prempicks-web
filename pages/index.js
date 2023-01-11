@@ -5,7 +5,6 @@ import Loader from 'react-loader-spinner'
 
 import { serverUrl } from 'constants/index'
 import LandingPage from 'components/LandingPage'
-import Layout from 'components/Layout'
 import { useFirebase } from 'components/Firebase/context'
 import { useAuthUser } from 'redux/hooks'
 
@@ -49,12 +48,12 @@ export default function Home() {
     }, [authUser])
 
     return (
-        <Layout hideNav={true}>
+        <>
             {isLoading ? (
                 <Loader type="Bars" color="#00BFFF" height={80} width={80} />
             ) : (
                 <LandingPage />
             )}
-        </Layout>
+        </>
     )
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Router from 'next/router'
 import axios from 'axios'
 import Loader from 'react-loader-spinner'
@@ -11,7 +11,6 @@ import {
     teamsMap,
 } from '../constants'
 import useAuthUser from '../redux/hooks/useAuthUser'
-import Layout from '../components/Layout'
 import StandingsTable from '../components/Tables/userStandings'
 import { TeamListTable } from 'components/Tables/TeamListTable'
 
@@ -71,7 +70,7 @@ export default function StandingsPage() {
         }
     }, [authUser])
     return (
-        <Layout title="Standings">
+        <>
             {isLoading ? (
                 <Loader type="Bars" color="#00BFFF" height={80} width={80} />
             ) : (
@@ -85,6 +84,6 @@ export default function StandingsPage() {
                     </>
                 )
             )}
-        </Layout>
+        </>
     )
 }

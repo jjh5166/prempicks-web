@@ -1,11 +1,10 @@
-import React, { useState, useEffect, Fragment } from 'react'
+import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import Loader from 'react-loader-spinner'
 
 import { updateMatchday, initGuestStandings } from '../../redux/thunks'
 import { useGuestUser } from '../../redux/hooks'
 import { pluckPicks } from '../../utils/guest'
-import Layout from '../../components/Layout'
 import StandingsTable from '../../components/Tables/userStandings'
 import GuestInfo from '../../components/GuestInfo'
 
@@ -32,20 +31,20 @@ export default function GuestStandingsPage() {
         setIsLoading(false)
     }, [standingsData, currentMatchday])
     return (
-        <Layout title="Standings">
+        <>
             {isLoading ? (
                 <Loader type="Bars" color="#00BFFF" height={80} width={80} />
             ) : (
                 standings && (
-                    <Fragment>
+                    <>
                         <GuestInfo
                             matchday={currentMatchday}
                             infoText={informationText}
                         />
                         <StandingsTable standingsData={standings} />
-                    </Fragment>
+                    </>
                 )
             )}
-        </Layout>
+        </>
     )
 }

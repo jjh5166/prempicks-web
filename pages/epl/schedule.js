@@ -3,7 +3,6 @@ import axios from 'axios'
 import Loader from 'react-loader-spinner'
 
 import { footballApiKey, footballApiBaseUrl } from '../../constants'
-import Layout from '../../components/Layout'
 import MatchdaySchedule from '../../components/MatchdaySchedule'
 
 const initialState = {
@@ -59,7 +58,7 @@ const EplSchedulePage = () => {
         fetchData()
     }, [])
     return (
-        <Layout>
+        <>
             {isLoading ? (
                 <Loader type="Bars" color="#00BFFF" height={80} width={80} />
             ) : (
@@ -71,7 +70,7 @@ const EplSchedulePage = () => {
                     />
                 )
             )}
-        </Layout>
+        </>
     )
 }
 

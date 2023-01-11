@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import Router from 'next/router'
 
-import Layout from '../../components/Layout'
 import LoginForm from '../../components/UserForm/Login'
 import useAuthUser from '../../redux/hooks/useAuthUser'
 
@@ -13,11 +12,7 @@ const LoginPage = () => {
         }
     }, [authUser])
 
-    return (
-        <Layout title="Login" hideNav={true}>
-            <LoginForm />
-        </Layout>
-    )
+    return <LoginForm />
 }
 
 export default LoginPage

@@ -1,11 +1,10 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Loader from 'react-loader-spinner'
 
 import { useGuestUser } from '../../redux/hooks'
 import { parseScheduleMyPicks } from '../../utils/guest'
 import { footballApiBaseUrl, footballApiKey } from '../../constants'
-import Layout from '../../components/Layout'
 import { GuestMyPicks } from '../../components/MyPicks'
 import GuestInfo from '../../components/GuestInfo'
 
@@ -39,19 +38,19 @@ const GuestMyPicksPage = () => {
         fetchData()
     }, [currentMatchday])
     return (
-        <Layout title="My Picks">
+        <>
             {isLoading ? (
                 <Loader type="Bars" color="#00BFFF" height={80} width={80} />
             ) : (
-                <Fragment>
+                <>
                     <GuestInfo matchday={mdValue} infoText={informationText} />
                     <GuestMyPicks
                         initialValues={picks}
                         scheduleData={scheduleData}
                     />
-                </Fragment>
+                </>
             )}
-        </Layout>
+        </>
     )
 }
 export default GuestMyPicksPage
