@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import Router from 'next/router'
 
-import Layout from 'components/Layout'
 import OptInForm from 'components/UserForm/OptIn'
 import useAuthUser from 'redux/hooks/useAuthUser'
 
@@ -13,11 +12,7 @@ const OptInPage = () => {
         }
     }, [authUser])
 
-    return (
-        <Layout title="Opt In" hideNav={true}>
-            <OptInForm />
-        </Layout>
-    )
+    return <OptInForm />
 }
 
 export default OptInPage

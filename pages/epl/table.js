@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Loader from 'react-loader-spinner'
 
-import Layout from 'components/Layout'
 import EplTable from 'components/Tables/eplStandings'
 import { TwoButtons } from 'components/Buttons'
 import {
@@ -32,7 +31,7 @@ const EplTablePage = () => {
         fetchCurrentSeason()
     }, [])
     return (
-        <Layout>
+        <>
             {isLoading ? (
                 <Loader type="Bars" color="#00BFFF" height={80} width={80} />
             ) : (
@@ -54,7 +53,7 @@ const EplTablePage = () => {
                     </>
                 )
             )}
-        </Layout>
+        </>
     )
 }
 
