@@ -9,7 +9,7 @@ import { UserMyPicks } from 'components/MyPicks'
 import { setErrorAlert } from 'redux/actions/alert'
 
 const MyPicksPage = () => {
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
     const [picks, setPicks] = useState(null)
     const [scheduleData, setScheduleData] = useState(null)
     const authUser = useAuthUser()
@@ -18,44 +18,27 @@ const MyPicksPage = () => {
             Router.push('/user/login')
         }
         const fetchData = async () => {
-            let optedIn
             setIsLoading(true)
-            await axios
-                .get(
-                    `${serverUrl}/v1/user`,
+            try {
+                const response = await axios.get(
+                    `${serverUrl}/v1/mypicks`,
                     { params: { idToken: authUser.idToken } },
                     { headers: { 'Content-Type': 'application/json' } }
                 )
-                .then(res => {
-                    optedIn = res.data.live
-                    setIsLoading(false)
+
+                setPicks(response.data.picks)
+                setScheduleData({
+                    currentMatchday: response.data.currentMatchday,
+                    schedule: response.data.matches,
                 })
-                .catch(() =>
-                    setErrorAlert('There was an error. Contact the admin.')
-                )
-            if (optedIn) {
-                await axios
-                    .get(
-                        `${serverUrl}/v1/mypicks`,
-                        { params: { idToken: authUser.idToken } },
-                        { headers: { 'Content-Type': 'application/json' } }
-                    )
-                    .then(res => {
-                        setPicks(res.data.picks)
-                        setScheduleData({
-                            currentMatchday: res.data.currentMatchday,
-                            schedule: res.data.matches,
-                        })
-                        setIsLoading(false)
-                    })
-                    .catch(err => console.log(err.response))
-            } else {
-                Router.push('/user/opt-in')
+            } catch (error) {
+                setErrorAlert('There was an error. Contact the admin.')
+                console.log(error.response)
             }
+            setIsLoading(false)
         }
-        if (authUser) {
-            fetchData()
-        }
+
+        fetchData()
     }, [authUser])
     return (
         <>
