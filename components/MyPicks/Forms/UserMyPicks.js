@@ -2,21 +2,21 @@ import axios from 'axios'
 import { useDispatch } from 'react-redux'
 
 import MyPicksFormBase from './base'
-import { serverUrl } from '../../../constants'
-import { setPickSubmission } from '../../../utils/picks'
-import { setSuccessAlert, setErrorAlert } from '../../../redux/actions/alert'
+import { serverUrl } from 'constants/index'
+import { setPickSubmission } from 'utils/picks'
+import { setSuccessAlert, setErrorAlert } from 'redux/actions/alert'
 
 const UserMyPicks = ({ authUser, initialValues, scheduleData }) => {
     const dispatch = useDispatch()
     const userSubmit = async data => {
         // only send changed values
-        const submitionData = data.picks.filter(x => !initialValues.includes(x))
+        const picksToSubmit = data.picks.filter(x => !initialValues.includes(x))
         await axios
             .patch(
                 `${serverUrl}/v1/mypicks`,
                 {
                     idToken: authUser.idToken,
-                    picks: setPickSubmission(submitionData),
+                    picks: setPickSubmission(picksToSubmit),
                 },
                 { headers: { 'Content-Type': 'application/json' } }
             )

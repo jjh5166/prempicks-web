@@ -3,7 +3,7 @@ import { Formik } from 'formik'
 
 import MyPicksFields from '../../Fields'
 import MyPicksSchedule from '../../Schedule'
-import { TwoButtons } from '../../../Buttons'
+import { TwoButtons } from 'components/Buttons'
 import { validationSchema } from './validate'
 import { MyPicksContainer, MpSubmitButton, MpForm } from './styled'
 
@@ -11,10 +11,8 @@ import { MyPicksContext, ScheduleDataContext } from '../../Context'
 
 const MyPicksFormBase = ({ initialValues, scheduleData, submitFn }) => {
     const currentMDRef = useRef()
-    let initHalf = 0
-    if (scheduleData) {
-        initHalf = scheduleData.currentMatchday > 19 ? 1 : 0
-    }
+    const initHalf = scheduleData?.currentMatchday > 19 ? 1 : 0
+
     const [showHalf, setShowHalf] = useState(initHalf)
     const mpContextValue = {
         showHalf: showHalf,
