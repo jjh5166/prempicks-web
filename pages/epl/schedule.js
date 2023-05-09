@@ -1,77 +1,44 @@
-import { useState, useEffect, useReducer } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
-import Loader from 'react-loader-spinner'
 
-import { footballApiKey, footballApiBaseUrl } from '../../constants'
-import MatchdaySchedule from '../../components/MatchdaySchedule'
+import { footballApiKey, footballApiBaseUrl } from 'constants/index'
+import MatchdaySchedule from 'components/MatchdaySchedule'
 
-const initialState = {
-    showMatchday: null,
-    allMatches: null,
-    showMatches: null,
-}
-function setMatchData(data) {
-    const matchday = data.matches[0]['season']['currentMatchday']
-    const matches = data.matches
-    return {
-        showMatchday: matchday,
-        allMatches: matches,
-        showMatches: matches.filter(m => m.matchday == matchday),
-    }
-}
-function changeMatchday(allMatches, matchday) {
-    return allMatches.filter(m => m.matchday == matchday)
-}
-function reducer(state, action) {
-    switch (action.type) {
-        case 'SET_DATA':
-            return setMatchData(action.data)
-        case 'CHANGE_MATCHDAY':
-            return {
-                ...state,
-                showMatchday: action.matchday,
-                showMatches: changeMatchday(state.allMatches, action.matchday),
-            }
-        default:
-            throw new Error()
-    }
-}
-const EplSchedulePage = () => {
-    const [isLoading, setIsLoading] = useState(false)
-    const [state, dispatch] = useReducer(reducer, initialState)
+const EplSchedulePage = ({ matchData }) => {
+    const [currentMatchday, setCurrentMatchday] = useState()
+
     const changeMatchday = matchday => () => {
-        dispatch({ type: 'CHANGE_MATCHDAY', matchday: matchday })
+        setCurrentMatchday(matchday)
     }
+
     useEffect(() => {
-        const fetchData = async () => {
-            setIsLoading(true)
-            await axios
-                .get(`${footballApiBaseUrl}/competitions/2021/matches`, {
-                    headers: { 'X-Auth-Token': footballApiKey },
-                })
-                .then(res => {
-                    dispatch({ type: 'SET_DATA', data: res.data })
-                    setIsLoading(false)
-                })
-                .catch(err => console.log(err.response))
-        }
-        fetchData()
+        setCurrentMatchday(matchData.matches[0]['season']['currentMatchday'])
     }, [])
+
     return (
-        <>
-            {isLoading ? (
-                <Loader type="Bars" color="#00BFFF" height={80} width={80} />
-            ) : (
-                state.showMatchday && (
-                    <MatchdaySchedule
-                        matchday={state.showMatchday}
-                        matches={state.showMatches}
-                        changeMatchday={changeMatchday}
-                    />
-                )
+        <MatchdaySchedule
+            matchday={currentMatchday}
+            matches={matchData.matches.filter(
+                m => m.matchday == currentMatchday
             )}
-        </>
+            changeMatchday={changeMatchday}
+        />
     )
+}
+
+export async function getServerSideProps() {
+    const response = await axios.get(
+        `${footballApiBaseUrl}/competitions/2021/matches`,
+        {
+            headers: { 'X-Auth-Token': footballApiKey },
+        }
+    )
+
+    return {
+        props: {
+            matchData: response.data,
+        },
+    }
 }
 
 export default EplSchedulePage
