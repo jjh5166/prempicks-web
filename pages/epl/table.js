@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
-import Loader from 'react-loader-spinner'
 
 import EplTable from 'components/Tables/eplStandings'
 import { TwoButtons } from 'components/Buttons'
@@ -10,51 +9,39 @@ import {
     lastYearStandings,
 } from 'constants/index'
 
-const EplTablePage = () => {
-    const [isLoading, setIsLoading] = useState(false)
-    const [currentStandings, setCurrentStandings] = useState(null)
+const EplTablePage = ({ standingsData }) => {
     const [showHalf, setShowHalf] = useState(1)
 
-    useEffect(() => {
-        const fetchCurrentSeason = async () => {
-            setIsLoading(true)
-            await axios
-                .get(`${footballApiBaseUrl}/competitions/2021/standings`, {
-                    headers: { 'X-Auth-Token': footballApiKey },
-                })
-                .then(res => {
-                    setCurrentStandings(res.data.standings)
-                    setIsLoading(false)
-                })
-                .catch(err => console.log(err.response))
-        }
-        fetchCurrentSeason()
-    }, [])
     return (
         <>
-            {isLoading ? (
-                <Loader type="Bars" color="#00BFFF" height={80} width={80} />
-            ) : (
-                currentStandings && (
-                    <>
-                        <TwoButtons
-                            startLeft={false}
-                            buttonNames={['Last Season', 'This Season']}
-                            switchSide={setShowHalf}
-                        />
-                        <EplTable
-                            eplStandings={
-                                showHalf === 0
-                                    ? lastYearStandings
-                                    : currentStandings
-                            }
-                            showForm={showHalf === 1}
-                        />
-                    </>
-                )
-            )}
+            <TwoButtons
+                startLeft={false}
+                buttonNames={['Last Season', 'This Season']}
+                switchSide={setShowHalf}
+            />
+            <EplTable
+                eplStandings={
+                    showHalf === 0 ? lastYearStandings : standingsData
+                }
+                showForm={showHalf === 1}
+            />
         </>
     )
+}
+
+export async function getServerSideProps() {
+    const response = await axios.get(
+        `${footballApiBaseUrl}/competitions/2021/standings`,
+        {
+            headers: { 'X-Auth-Token': footballApiKey },
+        }
+    )
+
+    return {
+        props: {
+            standingsData: response.data.standings,
+        },
+    }
 }
 
 export default EplTablePage
