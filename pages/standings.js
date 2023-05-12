@@ -60,8 +60,10 @@ export default function StandingsPage({ matchData }) {
                 const scoreThis = matchCheck.find(
                     check => scores[check[1]][check[0]] === 0
                 )
-                scoreThis && triggerScoring(scoreThis[1])
-                dispatch(setSuccessAlert('Updating Scores...'))
+                if (scoreThis) {
+                    triggerScoring(scoreThis[1])
+                    dispatch(setSuccessAlert('Updating Scores...'))
+                }
             } catch {
                 console.log('Error checking scores')
             }
