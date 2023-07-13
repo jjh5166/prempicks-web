@@ -186,4 +186,11 @@ export const teamsMap = {
         crestURL:
             'https://upload.wikimedia.org/wikipedia/en/e/e5/Nottingham_Forest_F.C._logo.svg',
     },
+    389: {
+        name: 'Luton Town',
+        short: 'Luton',
+        abv: 'LUT',
+        crestURL:
+            'https://upload.wikimedia.org/wikipedia/en/8/8b/LutonTownFC2009.png',
+    },
 }
