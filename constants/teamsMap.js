@@ -119,7 +119,7 @@ export const teamsMap = {
     356: {
         name: 'Sheffield United',
         short: 'Sheffield Utd',
-        abv: 'SHU',
+        abv: 'SHE',
         crestURL:
             'https://upload.wikimedia.org/wikipedia/en/9/9c/Sheffield_United_FC_logo.svg',
     },
@@ -185,5 +185,12 @@ export const teamsMap = {
         abv: 'NOT',
         crestURL:
             'https://upload.wikimedia.org/wikipedia/en/e/e5/Nottingham_Forest_F.C._logo.svg',
+    },
+    389: {
+        name: 'Luton Town',
+        short: 'Luton',
+        abv: 'LUT',
+        crestURL:
+            'https://upload.wikimedia.org/wikipedia/en/8/8b/LutonTownFC2009.png',
     },
 }
