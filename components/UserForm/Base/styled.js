@@ -16,7 +16,7 @@ export const FormContainer = styled.div`
     border: 2px groove grey;
     color: rgba(231, 241, 241, 1);
     text-shadow: 1px 1px #00394d;
-    overflow-y: scroll;
+    overflow-y: auto;
     h2 {
         font-style: oblique;
     }
