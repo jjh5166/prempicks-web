@@ -1,4 +1,3 @@
-import React from 'react'
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import Router from 'next/router'
@@ -38,7 +37,7 @@ const OptInForm = () => {
         <FormContainer>
             <h2>Welcome Back!</h2>
             <p style={{ textAlign: 'center' }}>
-                Click the button below to opt in for the 2022-2023 season
+                Click the button below to opt in for the 2023-2024 season
             </p>
 
             <Bttn onClick={handleClick} text="I'm in" />
