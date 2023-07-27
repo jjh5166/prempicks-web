@@ -12,6 +12,7 @@ import { FirebaseProvider } from '../components/Firebase'
 import theme from '../styles/theme'
 import Layout from 'components/Layout'
 import { getLayoutProps } from 'utils/ui/getLayoutProps'
+import { CurrentUserProvider } from 'context/currentUser'
 
 const WrappedApp = ({ Component, pageProps }) => {
     const { pathname } = useRouter()
@@ -20,9 +21,11 @@ const WrappedApp = ({ Component, pageProps }) => {
     return (
         <FirebaseProvider>
             <MuiThemeProvider theme={theme}>
-                <Layout {...layoutProps}>
-                    <Component {...pageProps} />
-                </Layout>
+                <CurrentUserProvider>
+                    <Layout {...layoutProps}>
+                        <Component {...pageProps} />
+                    </Layout>
+                </CurrentUserProvider>
             </MuiThemeProvider>
         </FirebaseProvider>
     )
