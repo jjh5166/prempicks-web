@@ -1,5 +1,3 @@
-import React from 'react'
-
 import UserForm from '../Base/'
 import { initialValues, signupFields, signupFn } from './formConfig'
 import { validationSchema } from './validate'
