@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Router from 'next/router'
 import axios from 'axios'
-import Loader from 'react-loader-spinner'
 
 import useAuthUser from 'redux/hooks/useAuthUser'
 import { serverUrl } from 'constants/index'
 import { UserMyPicks } from 'components/MyPicks'
+import { LoadingIndicator } from 'components/LoadingIndicator'
 import { setErrorAlert } from 'redux/actions/alert'
 
 const MyPicksPage = () => {
@@ -43,7 +43,7 @@ const MyPicksPage = () => {
     return (
         <>
             {isLoading ? (
-                <Loader type="Bars" color="#00BFFF" height={80} width={80} />
+                <LoadingIndicator />
             ) : (
                 <UserMyPicks
                     initialValues={picks}

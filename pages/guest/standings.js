@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import Loader from 'react-loader-spinner'
 
-import { updateMatchday, initGuestStandings } from '../../redux/thunks'
-import { useGuestUser } from '../../redux/hooks'
-import { pluckPicks } from '../../utils/guest'
-import StandingsTable from '../../components/Tables/userStandings'
-import GuestInfo from '../../components/GuestInfo'
+import { updateMatchday, initGuestStandings } from 'redux/thunks'
+import { useGuestUser } from 'redux/hooks'
+import { pluckPicks } from 'utils/guest'
+import StandingsTable from 'components/Tables/userStandings'
+import GuestInfo from 'components/GuestInfo'
+import { LoadingIndicator } from 'components/LoadingIndicator'
 
 const informationText = `The Standings table displays picks in descending order so the most recent matchday is shown first 
 throughout the season. This data has been randomly generated. If you skip ahead your picks will be made automatically.`
@@ -33,7 +33,7 @@ export default function GuestStandingsPage() {
     return (
         <>
             {isLoading ? (
-                <Loader type="Bars" color="#00BFFF" height={80} width={80} />
+                <LoadingIndicator />
             ) : (
                 standings && (
                     <>

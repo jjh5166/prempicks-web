@@ -19,7 +19,7 @@ import {
 const MatchdaySchedule = ({ matchday, matches, changeMatchday }) => {
     const listedDates = []
     return (
-        <Fragment>
+        <>
             <MatchdayTitle>
                 {matchday > 1 && (
                     <FontAwesomeIcon
@@ -89,7 +89,7 @@ const MatchdaySchedule = ({ matchday, matches, changeMatchday }) => {
                     )
                 })}
             </ScheduleContainer>
-        </Fragment>
+        </>
     )
 }
 

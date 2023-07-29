@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { RulesTableEl } from './styled'
 
 export default function RulesTable() {

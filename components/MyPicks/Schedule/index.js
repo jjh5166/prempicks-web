@@ -1,4 +1,4 @@
-import React, { useContext, forwardRef } from 'react'
+import { useContext, forwardRef, memo } from 'react'
 
 import { teamsMap } from '../../../constants'
 import { ScoreContainer } from '../../Container'
@@ -80,4 +80,4 @@ const Match = ({ match }) => (
     </MatchSingle>
 )
 
-export default React.memo(MyPicksSchedule)
+export default memo(MyPicksSchedule)

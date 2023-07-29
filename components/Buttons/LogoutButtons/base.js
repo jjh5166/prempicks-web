@@ -1,4 +1,3 @@
-import React from 'react'
 import Nav from 'react-bootstrap/Nav'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'

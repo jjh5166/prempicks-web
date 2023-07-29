@@ -1,4 +1,3 @@
-import React from 'react'
 import { useRouter } from 'next/router'
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import { config } from '@fortawesome/fontawesome-svg-core'

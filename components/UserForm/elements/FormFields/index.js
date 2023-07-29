@@ -1,7 +1,4 @@
-import React from 'react'
-
 import TxtField from '../TxtField'
-
 import { FieldsContainer } from './styled'
 
 const FormFields = ({ fields }) => {

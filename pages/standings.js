@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 // import { useDispatch } from 'react-redux'
 import Router from 'next/router'
 import axios from 'axios'
-import Loader from 'react-loader-spinner'
 
 // import { setSuccessAlert } from 'redux/actions/alert'
 // import { triggerScoring } from '../utils/footballApi'
@@ -13,8 +12,9 @@ import {
     // teamsMap,
 } from '../constants'
 import useAuthUser from '../redux/hooks/useAuthUser'
-import StandingsTable from '../components/Tables/userStandings'
+import StandingsTable from 'components/Tables/userStandings'
 import { TeamListTable } from 'components/Tables/TeamListTable'
+import { LoadingIndicator } from 'components/LoadingIndicator'
 
 export default function StandingsPage() {
     const [isLoading, setIsLoading] = useState(false)
@@ -72,7 +72,7 @@ export default function StandingsPage() {
     return (
         <>
             {isLoading ? (
-                <Loader type="Bars" color="#00BFFF" height={80} width={80} />
+                <LoadingIndicator />
             ) : (
                 standings && (
                     <>

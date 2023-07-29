@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import Router from 'next/router'
 import axios from 'axios'
-import Loader from 'react-loader-spinner'
 
 import useAuthUser from '../../redux/hooks/useAuthUser'
 import { serverUrl } from '../../constants'
 import UpdateAccountForm from '../../components/UserForm/Update'
+import { LoadingIndicator } from 'components/LoadingIndicator'
 
 const initialValues = {
     first_name: '',
@@ -42,7 +42,7 @@ const UpdateAccountPage = () => {
     return (
         <>
             {isLoading ? (
-                <Loader type="Bars" color="#00BFFF" height={80} width={80} />
+                <LoadingIndicator />
             ) : (
                 <UpdateAccountForm initialValues={userData} />
             )}
