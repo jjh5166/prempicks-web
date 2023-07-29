@@ -1,7 +1,5 @@
-import { Fragment } from 'react'
-
-import { showScore } from '../../../utils/footballApi'
-import { getTimeFromUtc } from '../../../utils/time'
+import { showScore } from 'utils/footballApi'
+import { getTimeFromUtc } from 'utils/time'
 import { ScoreFlexContainer, SelfCenteredSpan } from './styled'
 
 export const ScoreContainer = ({
@@ -13,7 +11,7 @@ export const ScoreContainer = ({
 }) => {
     const showIt = showScore(status)
     return (
-        <Fragment>
+        <>
             {showIt ? (
                 <ScoreFlexContainer
                     isOver={status === ('FINISHED' || 'AWARDED')}
@@ -30,7 +28,7 @@ export const ScoreContainer = ({
             ) : (
                 <MatchText status={status} kickOffTime={kickOffTime} />
             )}
-        </Fragment>
+        </>
     )
 }
 
