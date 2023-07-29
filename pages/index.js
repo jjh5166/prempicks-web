@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Router from 'next/router'
-import Loader from 'react-loader-spinner'
 
 import { serverUrl } from 'constants/index'
 import LandingPage from 'components/LandingPage'
 import { useFirebase } from 'components/Firebase/context'
 import { useAuthUser } from 'redux/hooks'
+import { LoadingIndicator } from 'components/LoadingIndicator'
 
 export default function Home() {
     const authUser = useAuthUser()
@@ -47,13 +47,5 @@ export default function Home() {
         }
     }, [authUser])
 
-    return (
-        <>
-            {isLoading ? (
-                <Loader type="Bars" color="#00BFFF" height={80} width={80} />
-            ) : (
-                <LandingPage />
-            )}
-        </>
-    )
+    return <>{isLoading ? <LoadingIndicator /> : <LandingPage />}</>
 }
