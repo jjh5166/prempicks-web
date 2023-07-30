@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-// import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import Router from 'next/router'
 import axios from 'axios'
 
@@ -11,29 +11,27 @@ import {
     // footballApiBaseUrl,
     // teamsMap,
 } from '../constants'
-import useAuthUser from '../redux/hooks/useAuthUser'
 import StandingsTable from 'components/Tables/userStandings'
 import { TeamListTable } from 'components/Tables/TeamListTable'
 import { LoadingIndicator } from 'components/LoadingIndicator'
+import { useCurrentUser } from 'context/currentUser'
+import { setErrorAlert } from 'redux/actions/alert'
 
 export default function StandingsPage() {
     const [isLoading, setIsLoading] = useState(false)
     const [standings, setStandings] = useState(null)
     // const [scores, setScores] = useState()
-    // const dispatch = useDispatch()
-    const authUser = useAuthUser()
+    const dispatch = useDispatch()
+    const { idToken, currentUser } = useCurrentUser()
 
     useEffect(() => {
-        if (!authUser) {
-            Router.push('/user/login')
-        }
         const fetchData = async () => {
             setIsLoading(true)
 
             await axios
                 .get(
                     `${serverUrl}/v1/standings`,
-                    { params: { idToken: authUser.idToken } },
+                    { params: { idToken: idToken } },
                     { headers: { 'Content-Type': 'application/json' } }
                 )
                 .then(res => {
@@ -41,12 +39,18 @@ export default function StandingsPage() {
                     setIsLoading(false)
                     // setScores(res.data.scores)
                 })
-                .catch(err => console.log(err.response))
+                .catch(err => {
+                    dispatch(setErrorAlert('There was an error fetching data'))
+                    console.log(err.response)
+                })
         }
-        if (authUser) {
+
+        if (idToken && currentUser) {
             fetchData()
+        } else {
+            Router.push('/')
         }
-    }, [authUser])
+    }, [])
 
     // useEffect(() => {
     //     if (scores) {
