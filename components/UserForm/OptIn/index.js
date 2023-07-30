@@ -6,22 +6,22 @@ import { serverUrl } from 'constants/index'
 import Bttn from '../elements/Bttn'
 import { FormContainer } from '../Base/styled'
 import { setErrorAlert, setSuccessAlert } from 'redux/actions/alert'
-import { useFirebase } from 'components/Firebase/context'
+import { useCurrentUser } from 'context/currentUser'
 
 const OptInForm = () => {
     const dispatch = useDispatch()
-    const firebase = useFirebase()
+    const { idToken, setCurrentUser } = useCurrentUser()
     const handleClick = async () => {
         await axios
             .post(
                 `${serverUrl}/v1/user/opt-in`,
                 {
-                    idToken: await firebase.retrieveToken(),
+                    idToken: idToken,
                 },
                 { headers: { 'Content-Type': 'application/json' } }
             )
-            .then(res => {
-                console.log(res)
+            .then(data => {
+                setCurrentUser(data.res)
                 dispatch(setSuccessAlert("You're in! Good Luck!"))
                 Router.push('/mypicks')
             })
