@@ -14,9 +14,9 @@ import { useGuestUser } from 'redux/hooks'
 import { UserLogout, GuestLogout } from 'components/Buttons'
 import { StyledNavBar, StyledBrand } from './styled'
 
-const NavBarLink = ({ href, children }) => (
+const NavBarLink = ({ href, onClick, children }) => (
     <Link href={href} passHref>
-        <Nav.Link>{children}</Nav.Link>
+        <Nav.Link onClick={onClick}>{children}</Nav.Link>
     </Link>
 )
 const NavBar = () => {
@@ -27,6 +27,9 @@ const NavBar = () => {
         if (navRef.current.contains(e.target)) {
             return
         }
+        setIsExpanded(false)
+    }
+    const handleNavLinkClick = () => {
         setIsExpanded(false)
     }
     useEffect(() => {
@@ -63,24 +66,34 @@ const NavBar = () => {
                 <Navbar.Collapse className="collapseNav w-50 order-1 order-md-0">
                     <Nav>
                         <NavBarLink
+                            onClick={handleNavLinkClick}
                             href={isGuest ? '/guest/standings' : '/standings'}
                         >
                             Standings
                         </NavBarLink>
                         <NavBarLink
+                            onClick={handleNavLinkClick}
                             href={isGuest ? '/guest/mypicks' : '/mypicks'}
                         >
                             My Picks
                         </NavBarLink>
-                        <NavBarLink href="/epl/table">EPL Table</NavBarLink>
-                        <NavBarLink href="/epl/schedule">
+                        <NavBarLink
+                            onClick={handleNavLinkClick}
+                            href="/epl/table"
+                        >
+                            EPL Table
+                        </NavBarLink>
+                        <NavBarLink
+                            onClick={handleNavLinkClick}
+                            href="/epl/schedule"
+                        >
                             <FontAwesomeIcon icon={faCalendarAlt} size="2x" />
                         </NavBarLink>
                     </Nav>
                 </Navbar.Collapse>
                 <Navbar.Collapse className="collapseNav w-50 order-2">
                     <Nav className="ml-auto">
-                        <NavBarLink href="/rules">
+                        <NavBarLink onClick={handleNavLinkClick} href="/rules">
                             <FontAwesomeIcon icon={faGavel} size="2x" />
                         </NavBarLink>
 
@@ -88,7 +101,10 @@ const NavBar = () => {
                             <GuestLogout />
                         ) : (
                             <>
-                                <NavBarLink href="/user/account">
+                                <NavBarLink
+                                    onClick={handleNavLinkClick}
+                                    href="/user/account"
+                                >
                                     <FontAwesomeIcon icon={faUser} size="2x" />
                                 </NavBarLink>
                                 <UserLogout />
