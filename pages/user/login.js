@@ -1,5 +1,16 @@
+import { useEffect } from 'react'
+import Router from 'next/router'
+
 import LoginForm from 'components/UserForm/Login'
+import { useCurrentUser } from 'context/currentUser'
 
-const LoginPage = () => <LoginForm />
+export default function LoginPage() {
+    const { idToken, currentUser } = useCurrentUser()
+    useEffect(() => {
+        if (idToken && currentUser?.live) {
+            Router.push('/mypicks')
+        }
+    }, [])
 
-export default LoginPage
+    return <LoginForm />
+}
