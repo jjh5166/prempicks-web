@@ -27,3 +27,16 @@ export const getEplSchedule = async idToken => {
         console.log('Error retrieving EPL schedule')
     }
 }
+
+export const getEplTable = async idToken => {
+    try {
+        const response = await axios.get(
+            `${serverURL}/v1/epl/table`,
+            { params: { idToken } },
+            { headers: { 'Content-Type': 'application/json' } }
+        )
+        return response.data.standings
+    } catch (error) {
+        console.log('Error retrieving EPL schedule')
+    }
+}
