@@ -17,7 +17,7 @@ export function useCurrentUser() {
 export function CurrentUserProvider({ children }) {
     const [currentUser, setCurrentUser] = useLocalStorageState(
         'currentUser',
-        undefined
+        null
     )
 
     const value = {

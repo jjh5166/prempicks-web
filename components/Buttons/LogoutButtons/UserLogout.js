@@ -10,7 +10,7 @@ function UserLogoutButton() {
     return (
         <LogoutButtonBase
             logoutFn={async () => {
-                setCurrentUser(undefined)
+                setCurrentUser(null)
                 await firebase.doSignOut()
                 await Router.push('/')
             }}
