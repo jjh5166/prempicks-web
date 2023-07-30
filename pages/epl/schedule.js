@@ -1,44 +1,44 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 
-import { footballApiKey, footballApiBaseUrl } from 'constants/index'
 import MatchdaySchedule from 'components/MatchdaySchedule'
+import { getEplSchedule } from 'services/prempicks'
+import { LoadingIndicator } from 'components/LoadingIndicator'
 
-const EplSchedulePage = ({ matchData }) => {
+export default function EplSchedulePage() {
+    const [isLoading, setIsLoading] = useState(true)
     const [currentMatchday, setCurrentMatchday] = useState()
+    const [matchData, setMatchData] = useState(null)
 
     const changeMatchday = matchday => () => {
         setCurrentMatchday(matchday)
     }
 
     useEffect(() => {
-        setCurrentMatchday(matchData.matches[0]['season']['currentMatchday'])
+        async function fetchData() {
+            setIsLoading(true)
+            const matchData = await getEplSchedule()
+            setMatchData(matchData)
+            setCurrentMatchday(
+                matchData.matches[0]['season']['currentMatchday']
+            )
+            setIsLoading(false)
+        }
+        fetchData()
     }, [])
 
     return (
-        <MatchdaySchedule
-            matchday={currentMatchday}
-            matches={matchData.matches.filter(
-                m => m.matchday == currentMatchday
+        <>
+            {isLoading ? (
+                <LoadingIndicator />
+            ) : (
+                <MatchdaySchedule
+                    matchday={currentMatchday}
+                    matches={matchData.matches.filter(
+                        m => m.matchday == currentMatchday
+                    )}
+                    changeMatchday={changeMatchday}
+                />
             )}
-            changeMatchday={changeMatchday}
-        />
+        </>
     )
 }
-
-export async function getServerSideProps() {
-    const response = await axios.get(
-        `${footballApiBaseUrl}/competitions/2021/matches`,
-        {
-            headers: { 'X-Auth-Token': footballApiKey },
-        }
-    )
-
-    return {
-        props: {
-            matchData: response.data,
-        },
-    }
-}
-
-export default EplSchedulePage
