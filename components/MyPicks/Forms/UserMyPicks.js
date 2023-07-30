@@ -5,9 +5,11 @@ import MyPicksFormBase from './base'
 import { serverUrl } from 'constants/index'
 import { setPickSubmission } from 'utils/picks'
 import { setSuccessAlert, setErrorAlert } from 'redux/actions/alert'
+import { useCurrentUser } from 'context/currentUser'
 
-const UserMyPicks = ({ authUser, initialValues, scheduleData }) => {
+const UserMyPicks = ({ initialValues, scheduleData }) => {
     const dispatch = useDispatch()
+    const { idToken } = useCurrentUser()
     const userSubmit = async data => {
         // only send changed values
         const picksToSubmit = data.picks.filter(x => !initialValues.includes(x))
@@ -15,7 +17,7 @@ const UserMyPicks = ({ authUser, initialValues, scheduleData }) => {
             .patch(
                 `${serverUrl}/v1/mypicks`,
                 {
-                    idToken: authUser.idToken,
+                    idToken: idToken,
                     picks: setPickSubmission(picksToSubmit),
                 },
                 { headers: { 'Content-Type': 'application/json' } }

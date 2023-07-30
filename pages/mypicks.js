@@ -2,27 +2,25 @@ import { useEffect, useState } from 'react'
 import Router from 'next/router'
 import axios from 'axios'
 
-import useAuthUser from 'redux/hooks/useAuthUser'
 import { serverUrl } from 'constants/index'
 import { UserMyPicks } from 'components/MyPicks'
 import { LoadingIndicator } from 'components/LoadingIndicator'
 import { setErrorAlert } from 'redux/actions/alert'
+import { useCurrentUser } from 'context/currentUser'
 
 const MyPicksPage = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [picks, setPicks] = useState(null)
     const [scheduleData, setScheduleData] = useState(null)
-    const authUser = useAuthUser()
+    const { idToken, currentUser } = useCurrentUser()
+
     useEffect(() => {
-        if (!authUser) {
-            Router.push('/user/login')
-        }
         const fetchData = async () => {
             setIsLoading(true)
             try {
                 const response = await axios.get(
                     `${serverUrl}/v1/mypicks`,
-                    { params: { idToken: authUser.idToken } },
+                    { params: { idToken: idToken } },
                     { headers: { 'Content-Type': 'application/json' } }
                 )
 
@@ -37,9 +35,12 @@ const MyPicksPage = () => {
             }
             setIsLoading(false)
         }
-
-        fetchData()
-    }, [authUser])
+        if (idToken && currentUser) {
+            fetchData()
+        } else {
+            Router.push('/')
+        }
+    }, [])
     return (
         <>
             {isLoading ? (
@@ -47,7 +48,6 @@ const MyPicksPage = () => {
             ) : (
                 <UserMyPicks
                     initialValues={picks}
-                    authUser={authUser}
                     scheduleData={scheduleData}
                 />
             )}
