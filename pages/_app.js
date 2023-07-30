@@ -18,15 +18,15 @@ const WrappedApp = ({ Component, pageProps }) => {
     const layoutProps = getLayoutProps(pathname)
 
     return (
-        <FirebaseProvider>
-            <MuiThemeProvider theme={theme}>
-                <CurrentUserProvider>
+        <CurrentUserProvider>
+            <FirebaseProvider>
+                <MuiThemeProvider theme={theme}>
                     <Layout {...layoutProps}>
                         <Component {...pageProps} />
                     </Layout>
-                </CurrentUserProvider>
-            </MuiThemeProvider>
-        </FirebaseProvider>
+                </MuiThemeProvider>
+            </FirebaseProvider>
+        </CurrentUserProvider>
     )
 }
 
