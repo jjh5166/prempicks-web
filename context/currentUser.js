@@ -19,10 +19,13 @@ export function CurrentUserProvider({ children }) {
         'currentUser',
         null
     )
+    const [idToken, setIdToken] = useLocalStorageState('idToken', null)
 
     const value = {
         currentUser,
         setCurrentUser,
+        idToken,
+        setIdToken,
     }
 
     return (
