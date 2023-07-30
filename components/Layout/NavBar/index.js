@@ -10,8 +10,8 @@ import {
     faCalendarAlt,
 } from '@fortawesome/free-solid-svg-icons'
 
-import { useGuestUser } from '../../../redux/hooks'
-import { UserLogout, GuestLogout } from '../../Buttons'
+import { useGuestUser } from 'redux/hooks'
+import { UserLogout, GuestLogout } from 'components/Buttons'
 import { StyledNavBar, StyledBrand } from './styled'
 
 const NavBarLink = ({ href, children }) => (
@@ -83,12 +83,17 @@ const NavBar = () => {
                         <NavBarLink href="/rules">
                             <FontAwesomeIcon icon={faGavel} size="2x" />
                         </NavBarLink>
-                        {!isGuest && (
-                            <NavBarLink href="/user/account">
-                                <FontAwesomeIcon icon={faUser} size="2x" />
-                            </NavBarLink>
+
+                        {isGuest ? (
+                            <GuestLogout />
+                        ) : (
+                            <>
+                                <NavBarLink href="/user/account">
+                                    <FontAwesomeIcon icon={faUser} size="2x" />
+                                </NavBarLink>
+                                <UserLogout />
+                            </>
                         )}
-                        {isGuest ? <GuestLogout /> : <UserLogout />}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

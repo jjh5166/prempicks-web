@@ -1,4 +1,6 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext } from 'react'
+
+import { useLocalStorageState } from 'hooks/useLocalStorageState'
 
 const CurrentUserContext = createContext()
 
@@ -13,11 +15,17 @@ export function useCurrentUser() {
 }
 
 export function CurrentUserProvider({ children }) {
-    const [currentUser, setCurrentUser] = useState(undefined)
+    const [currentUser, setCurrentUser] = useLocalStorageState(
+        'currentUser',
+        null
+    )
+    const [idToken, setIdToken] = useLocalStorageState('idToken', null)
 
     const value = {
         currentUser,
         setCurrentUser,
+        idToken,
+        setIdToken,
     }
 
     return (

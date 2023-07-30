@@ -1,8 +1,7 @@
 import { useEffect, createContext, useContext } from 'react'
-import { useDispatch } from 'react-redux'
 
-import { updateAuth, logout } from 'redux/actions/authUser'
 import Firebase from './firebase'
+import { useCurrentUser } from 'context/currentUser'
 
 const FirebaseContext = createContext(null)
 
@@ -12,16 +11,18 @@ export const useFirebase = () => {
 
 export function FirebaseProvider({ children }) {
     const firebase = new Firebase()
-    const dispatch = useDispatch()
+    const { setCurrentUser, setIdToken } = useCurrentUser()
     useEffect(() => {
         // Listen authenticated user
         const unsubscriber = firebase.auth.onAuthStateChanged(async user => {
             try {
                 if (user) {
                     const idToken = await firebase.retrieveToken()
-                    dispatch(updateAuth(idToken))
+                    setIdToken(idToken)
                 } else {
-                    dispatch(logout())
+                    setCurrentUser(null)
+                    setIdToken(null)
+                    firebase.doSignOut()
                 }
             } catch (error) {
                 // Most probably a connection error. Handle appropriately.

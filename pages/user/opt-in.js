@@ -1,16 +1,27 @@
 import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import Router from 'next/router'
 
 import OptInForm from 'components/UserForm/OptIn'
-import useAuthUser from 'redux/hooks/useAuthUser'
+import { useCurrentUser } from 'context/currentUser'
+import { setSuccessAlert } from 'redux/actions/alert'
 
 const OptInPage = () => {
-    const authUser = useAuthUser()
+    const dispatch = useDispatch()
+    const { idToken, currentUser } = useCurrentUser()
+
     useEffect(() => {
-        if (!authUser) {
+        if (idToken && currentUser) {
+            if (currentUser?.live) {
+                dispatch(
+                    setSuccessAlert("You've already opted in this season!")
+                )
+                Router.push('/mypicks')
+            }
+        } else {
             Router.push('/')
         }
-    }, [authUser])
+    }, [])
 
     return <OptInForm />
 }
