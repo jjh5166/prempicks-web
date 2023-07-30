@@ -11,9 +11,7 @@ import { MyPicksContext, ScheduleDataContext } from '../../Context'
 
 const MyPicksFormBase = ({ initialValues, scheduleData, submitFn }) => {
     const currentMDRef = useRef()
-    // temporary until data fetching moved to back end
-    const initHalf = 1
-    // const initHalf = scheduleData?.currentMatchday > 19 ? 1 : 0
+    const initHalf = scheduleData?.currentMatchday > 19 ? 1 : 0
 
     const [showHalf, setShowHalf] = useState(initHalf)
     const mpContextValue = {
