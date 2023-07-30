@@ -4,7 +4,7 @@ import Router from 'next/router'
 import UpdateAccountForm from 'components/UserForm/Update'
 import { useCurrentUser } from 'context/currentUser'
 
-const UpdateAccountPage = () => {
+export default function UpdateAccountPage() {
     const { idToken, currentUser } = useCurrentUser()
 
     useEffect(() => {
@@ -14,5 +14,3 @@ const UpdateAccountPage = () => {
     }, [])
     return <UpdateAccountForm initialValues={currentUser} />
 }
-
-export default UpdateAccountPage
