@@ -14,3 +14,16 @@ export const getUser = async idToken => {
         console.log('Error retrieving User')
     }
 }
+
+export const getEplSchedule = async idToken => {
+    try {
+        const response = await axios.get(
+            `${serverURL}/v1/epl/schedule`,
+            { params: { idToken } },
+            { headers: { 'Content-Type': 'application/json' } }
+        )
+        return response.data
+    } catch (error) {
+        console.log('Error retrieving EPL schedule')
+    }
+}
