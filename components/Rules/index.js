@@ -5,6 +5,8 @@ import RulesTable from './RulesTable'
 import { RulesSection } from './styled'
 
 export default function Rules() {
+    const topSix = 'MCI, ARS, MUN, NEW, LIV, BHA'
+    const newlyPromoted = 'BUR, SHE, LUT'
     return (
         <TextContainer>
             <RulesSection>
@@ -32,7 +34,7 @@ export default function Rules() {
                         </li>
                         <li>
                             Top 6 Loss: Any time a{' '}
-                            <Tooltip title="MCI, MUN, LIV, CHE, LEI, WHU">
+                            <Tooltip title={topSix}>
                                 <span>
                                     <strong>top 6 team</strong>
                                 </span>
@@ -42,7 +44,7 @@ export default function Rules() {
                         </li>
                         <li>
                             Beat a Top Six: Any time the team you select beats a{' '}
-                            <Tooltip title="MCI, MUN, LIV, CHE, LEI, WHU">
+                            <Tooltip title={topSix}>
                                 <span>
                                     <strong>top 6 team</strong>
                                 </span>
@@ -51,7 +53,7 @@ export default function Rules() {
                         </li>
                         <li>
                             Newly Promoted Win: If you pick any of the{' '}
-                            <Tooltip title="NOR, WAT, BRE">
+                            <Tooltip title={newlyPromoted}>
                                 <span>
                                     <strong>newly promoted teams</strong>
                                 </span>
