@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import { Formik } from 'formik'
 
 import MyPicksFields from '../../Fields'
@@ -16,11 +16,9 @@ const MyPicksFormBase = ({ initialValues, scheduleData, submitFn }) => {
     const [showHalf, setShowHalf] = useState(initHalf)
     const mpContextValue = {
         showHalf: showHalf,
-        currentMatches: currentMDRef,
+        currentMatches: currentMDRef, //currently not used to auto scroll
     }
-    useEffect(() => {
-        if (currentMDRef.current) currentMDRef.current.scrollIntoView()
-    }, [])
+
     return (
         <Formik
             enableReinitialize
