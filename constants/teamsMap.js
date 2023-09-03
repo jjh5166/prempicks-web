@@ -191,6 +191,6 @@ export const teamsMap = {
         short: 'Luton',
         abv: 'LUT',
         crestURL:
-            'https://upload.wikimedia.org/wikipedia/en/8/8b/LutonTownFC2009.png',
+            'https://upload.wikimedia.org/wikipedia/en/9/9d/Luton_Town_logo.svg',
     },
 }
