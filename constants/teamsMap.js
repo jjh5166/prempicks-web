@@ -87,7 +87,7 @@ export const teamsMap = {
         short: 'Burnley',
         abv: 'BUR',
         crestURL:
-            'https://upload.wikimedia.org/wikipedia/en/0/02/Burnley_FC_badge.png',
+            'https://upload.wikimedia.org/wikipedia/en/6/6d/Burnley_FC_Logo.svg',
     },
     338: {
         name: 'Leicester City',
