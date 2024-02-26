@@ -35,7 +35,8 @@ export default function EplTablePage() {
                         eplStandings={
                             showHalf === 0 ? lastYearStandings : standingsData
                         }
-                        showForm={showHalf === 1}
+                        hideGames={showHalf === 0}
+                        // showForm={showHalf === 1}
                     />
                 </>
             )}

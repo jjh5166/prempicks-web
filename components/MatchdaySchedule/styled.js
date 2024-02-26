@@ -20,7 +20,7 @@ export const ScheduleContainer = styled.div`
     flex-wrap: wrap;
     outline: solid #000 2px;
     background-color: rgba(244, 244, 244, 0.5);
-    overflow: scroll;
+    overflow: hidden;
     @media (min-width: 580px) and (orientation: landscape) {
         flex-direction: row;
         ${MatchContainer} {

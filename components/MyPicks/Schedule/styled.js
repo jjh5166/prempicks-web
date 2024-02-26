@@ -7,7 +7,7 @@ export const MyPicksScheduleContainer = styled.div`
     grid-row-start: 1;
     grid-row-end: 20;
     outline: 1px solid #000;
-    overflow: scroll;
+    overflow: hidden;
     display: grid;
     grid-row-start: 1;
     grid-row-end: 20;
@@ -27,7 +27,7 @@ export const MatchdayScroll = styled.div`
     padding-bottom: 50px;
     overflow-y: hidden;
     overflow-x: scroll;
-    overflow: -moz-scrollbars-none;
+    scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none;
     scroll-snap-type: x mandatory;
     &::-webkit-scrollbar {

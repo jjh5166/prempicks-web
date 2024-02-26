@@ -11,7 +11,8 @@ export const MyPicksContainer = styled.div`
     grid-template-columns: 25% 75%;
     outline: solid #000 2px;
     background-color: rgba(244, 244, 244, 0.5);
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     @media (orientation: landscape) {
         height: 65vh;
     }
