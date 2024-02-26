@@ -22,15 +22,18 @@ class Firebase {
 
     retrieveToken = async () => {
         let token = null
-        await this.auth.currentUser
-            .getIdToken(true)
-            .then(idToken => {
-                token = idToken
-            })
-            .catch(err => {
-                console.log(err)
-            })
-        return token
+        const currentUser = this.auth.currentUser
+        if (currentUser) {
+            await currentUser
+                .getIdToken(true)
+                .then(idToken => {
+                    token = idToken
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+            return token
+        }
     }
 
     doCreateUserWithEmailAndPassword = (email, password) =>
