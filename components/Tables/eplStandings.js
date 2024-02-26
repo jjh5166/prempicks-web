@@ -12,7 +12,7 @@ import {
     StyledTableContainer,
 } from './elements'
 
-const EplTable = ({ eplStandings, showForm = false }) => {
+const EplTable = ({ eplStandings, hideGames = false, showForm = false }) => {
     const totalStandings = eplStandings.find(
         element => element.type === 'TOTAL'
     ).table
@@ -23,7 +23,9 @@ const EplTable = ({ eplStandings, showForm = false }) => {
                     <TableRow>
                         <TableCell colSpan={2} />
                         {showForm && <TableCell align="center">Form</TableCell>}
-                        <TableCell align="center">Games</TableCell>
+                        {!hideGames && (
+                            <TableCell align="center">Games</TableCell>
+                        )}
                         <TableCell align="center">Goals</TableCell>
                         <TableCell align="center">Points</TableCell>
                     </TableRow>
@@ -34,9 +36,11 @@ const EplTable = ({ eplStandings, showForm = false }) => {
                             <TableCell>{team.position}</TableCell>
                             <TeamCell team={team.team.id} />
                             {showForm && <FormCell form={team.form} />}
-                            <TableCell align="center">
-                                {team.playedGames}
-                            </TableCell>
+                            {!hideGames && (
+                                <TableCell align="center">
+                                    {team.playedGames}
+                                </TableCell>
+                            )}
                             <NoWrapCell align="center">{`${team.goalsFor} : ${team.goalsAgainst}`}</NoWrapCell>
                             <TableCell align="center">{team.points}</TableCell>
                         </TableRow>
