@@ -1,5 +1,5 @@
-import Loader from 'react-loader-spinner'
+import { Bars } from 'react-loader-spinner'
 
 export function LoadingIndicator() {
-    return <Loader type="Bars" color="#00BFFF" height={80} width={80} />
+    return <Bars height="80" width="80" color="#00BFFF" />
 }
