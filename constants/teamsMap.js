@@ -193,4 +193,11 @@ export const teamsMap = {
         crestURL:
             'https://upload.wikimedia.org/wikipedia/en/9/9d/Luton_Town_logo.svg',
     },
+    349: {
+        name: 'Ipswich Town',
+        shortName: 'Ipswich',
+        abv: 'IPS',
+        crestURL:
+            'https://upload.wikimedia.org/wikipedia/en/4/43/Ipswich_Town.svg',
+    },
 }
