@@ -35,9 +35,9 @@ const OptInForm = () => {
     }
     return (
         <FormContainer>
-            <h2>Welcome Back!</h2>
+            <h2>{`Welcome Back!`}</h2>
             <p style={{ textAlign: 'center' }}>
-                Click the button below to opt in for the 2023-2024 season
+                {`Click the button below to opt in for the 2024-2025 season`}
             </p>
 
             <Bttn onClick={handleClick} text="I'm in" />

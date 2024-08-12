@@ -29,12 +29,20 @@ export default function LoginForm() {
         if (idToken) {
             try {
                 const user = await getUser(idToken)
-                setCurrentUser(user)
-                if (user.live) {
-                    dispatch(setSuccessAlert('Welcome Back!'))
-                    Router.push('/mypicks')
+
+                if (!user) {
+                    dispatch(
+                        setErrorAlert('There was an Error contact the admin')
+                    )
+                    return
                 } else {
-                    Router.push('/user/opt-in')
+                    setCurrentUser(user)
+                    if (user.live) {
+                        dispatch(setSuccessAlert('Welcome Back!'))
+                        Router.push('/mypicks')
+                    } else {
+                        Router.push('/user/opt-in')
+                    }
                 }
             } catch (e) {
                 dispatch(setErrorAlert('There was an Error contact the admin'))

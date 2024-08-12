@@ -28,7 +28,13 @@ export function FirebaseProvider({ children }) {
 
     const refreshIdToken = async () => {
         const idToken = await firebase.retrieveToken()
-        setIdToken(idToken)
+        if (idToken) {
+            setIdToken(idToken)
+        } else {
+            setCurrentUser(null)
+            setIdToken(null)
+            firebase.doSignOut()
+        }
     }
     useEffect(() => {
         // Listen authenticated user
