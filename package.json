@@ -1,45 +1,45 @@
 {
-  "name": "prempicks-next",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev -p 3030",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.30",
-    "@fortawesome/free-solid-svg-icons": "^5.14.0",
-    "@fortawesome/react-fontawesome": "^0.1.11",
-    "@material-ui/core": "^4.11.0",
-    "@material-ui/lab": "^4.0.0-alpha.57",
-    "axios": "^0.21.1",
-    "bootstrap": "^4.5.2",
-    "faker": "^5.1.0",
-    "firebase": "^7.19.1",
-    "formik": "^2.1.5",
-    "next": "^10.0.1",
-    "next-redux-wrapper": "^6.0.2",
-    "popper.js": "^1.16.1",
-    "react": "17.0.2",
-    "react-bootstrap": "^1.3.0",
-    "react-dom": "17.0.2",
-    "react-is": "^16.13.1",
-    "react-loader-spinner": "^3.1.14",
-    "react-redux": "^7.2.2",
-    "redux": "^4.0.5",
-    "redux-devtools-extension": "^2.13.8",
-    "redux-thunk": "^2.3.0",
-    "styled-components": "^5.1.1",
-    "yup": "^0.29.3"
-  },
-  "devDependencies": {
-    "babel-plugin-styled-components": "^1.11.1",
-    "eslint": "^8.21.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.30.1",
-    "prettier": "^2.7.1",
-    "redux-logger": "^3.0.6"
-  }
+    "name": "prempicks-next",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev -p 3030",
+        "build": "next build",
+        "start": "next start"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^1.2.30",
+        "@fortawesome/free-solid-svg-icons": "^5.14.0",
+        "@fortawesome/react-fontawesome": "^0.1.11",
+        "@material-ui/core": "^4.11.0",
+        "@material-ui/lab": "^4.0.0-alpha.57",
+        "axios": "^0.21.1",
+        "bootstrap": "^4.5.2",
+        "eslint-config-next": "12",
+        "faker": "^5.1.0",
+        "firebase": "^7.19.1",
+        "formik": "^2.1.5",
+        "next": "12",
+        "next-redux-wrapper": "^6.0.2",
+        "react": "17.0.2",
+        "react-bootstrap": "^1.3.0",
+        "react-dom": "17.0.2",
+        "react-is": "^16.13.1",
+        "react-loader-spinner": "^6.1.6",
+        "react-redux": "^7.2.2",
+        "redux": "4.2.1",
+        "redux-devtools-extension": "^2.13.8",
+        "redux-thunk": "^2.3.0",
+        "styled-components": "^5.1.1",
+        "yup": "^0.29.3"
+    },
+    "devDependencies": {
+        "babel-plugin-styled-components": "^1.11.1",
+        "eslint": "^8.21.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "eslint-plugin-react": "^7.30.1",
+        "prettier": "^2.7.1",
+        "redux-logger": "^3.0.6"
+    }
 }
