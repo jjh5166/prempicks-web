@@ -27,6 +27,9 @@ export default function Rules() {
                     <RulesTable />
                     <ul>
                         <li>
+                            {`Away Win:  If the team you pick wins away from home, you will be awarded an additional half point.`}
+                        </li>
+                        <li>
                             {`Goal Difference Factor:  If the team you pick wins by
                             3 or more goals, you receive a bonus point. If the
                             team you pick loses by 3 or more goals, you are
