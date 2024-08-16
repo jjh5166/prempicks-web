@@ -5,8 +5,8 @@ import RulesTable from './RulesTable'
 import { RulesSection } from './styled'
 
 export default function Rules() {
-    const topSix = 'MCI, ARS, MUN, NEW, LIV, BHA'
-    const newlyPromoted = 'BUR, SHE, LUT'
+    const topSix = 'MCI, ARS, LIV, AVL, TOT, CHE'
+    const newlyPromoted = 'LEI, IPS, SOU'
     return (
         <TextContainer>
             <RulesSection>
