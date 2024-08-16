@@ -5,8 +5,8 @@ import RulesTable from './RulesTable'
 import { RulesSection } from './styled'
 
 export default function Rules() {
-    const topSix = 'MCI, ARS, MUN, NEW, LIV, BHA'
-    const newlyPromoted = 'BUR, SHE, LUT'
+    const topSix = 'MCI, ARS, LIV, AVL, TOT, CHE'
+    const newlyPromoted = 'LEI, IPS, SOU'
     return (
         <TextContainer>
             <RulesSection>
@@ -26,6 +26,9 @@ export default function Rules() {
                 <div>
                     <RulesTable />
                     <ul>
+                        <li>
+                            {`Away Win:  If the team you pick wins away from home, you will be awarded an additional half point.`}
+                        </li>
                         <li>
                             {`Goal Difference Factor:  If the team you pick wins by
                             3 or more goals, you receive a bonus point. If the
