@@ -12,7 +12,15 @@ const UserMyPicks = ({ initialValues, scheduleData }) => {
     const { idToken } = useCurrentUser()
     const userSubmit = async data => {
         // only send changed values
-        const picksToSubmit = data.picks.filter(x => !initialValues.includes(x))
+        const picksToSubmit = data.picks.filter(
+            x =>
+                !initialValues.some(
+                    initial =>
+                        initial.matchday === x.matchday &&
+                        initial.team_id === x.team_id
+                )
+        )
+
         await axios
             .patch(
                 `${serverUrl}/v1/mypicks`,
