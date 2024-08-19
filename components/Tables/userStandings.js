@@ -41,7 +41,9 @@ const StandingsTable = ({ standingsData }) => {
             picks: team.picks,
         }
         team.picks.forEach(pick => {
-            const thisScore = standingsData.scores[pick.matchday][pick.team_id]
+            const thisScore = parseFloat(
+                standingsData.scores[pick.matchday][pick.team_id]
+            )
             teamObj.season += thisScore
             if (pick.matchday < 20) {
                 teamObj.firstHalf += thisScore
