@@ -29,6 +29,17 @@ export const MpSubmitButton = styled.button`
     width: 90%;
     max-width: 1060px;
     margin-top: 2px;
+
+    &:disabled {
+        background-color: #e0e0e0;
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
+
+    &:focus {
+        outline: 2px solid #0066cc;
+        outline-offset: 2px;
+    }
 `
 export const MpForm = styled.form`
     width: 100%;

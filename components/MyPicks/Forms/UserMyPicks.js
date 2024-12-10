@@ -7,7 +7,7 @@ import { setPickSubmission } from 'utils/picks'
 import { setSuccessAlert, setErrorAlert } from 'redux/actions/alert'
 import { useCurrentUser } from 'context/currentUser'
 
-const UserMyPicks = ({ initialValues, scheduleData }) => {
+const UserMyPicks = ({ initialValues, scheduleData, setPicks }) => {
     const dispatch = useDispatch()
     const { idToken } = useCurrentUser()
     const userSubmit = async data => {
@@ -30,8 +30,9 @@ const UserMyPicks = ({ initialValues, scheduleData }) => {
                 },
                 { headers: { 'Content-Type': 'application/json' } }
             )
-            .then(() => {
+            .then(res => {
                 dispatch(setSuccessAlert('Picks Updated'))
+                setPicks(res.data.picks)
             })
             .catch(() =>
                 dispatch(setErrorAlert('There was an error. Try Again.'))

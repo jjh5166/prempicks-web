@@ -49,6 +49,7 @@ const MyPicksPage = () => {
                 <UserMyPicks
                     initialValues={picks}
                     scheduleData={scheduleData}
+                    setPicks={setPicks}
                 />
             )}
         </>
