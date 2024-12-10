@@ -15,6 +15,29 @@ import {
     BoldingSpan,
 } from './elements'
 
+const calculateStreak = (picks, scores) => {
+    let currentStreak = 0
+    let maxStreak = 0
+
+    // Go through picks in chronological order
+    Array.from(picks)
+        .reverse()
+        .forEach(pick => {
+            const score = parseFloat(scores[pick.matchday][pick.team_id])
+
+            if (score > 1) {
+                // Win
+                currentStreak++
+                maxStreak = Math.max(maxStreak, currentStreak)
+            } else {
+                // Loss or Draw
+                currentStreak = 0
+            }
+        })
+
+    return maxStreak
+}
+
 const StandingsTable = ({ standingsData }) => {
     const initTable =
         standingsData?.standings[0]?.picks[0]?.matchday > 19 ? 1 : 0
@@ -35,6 +58,7 @@ const StandingsTable = ({ standingsData }) => {
             firstHalf: 0,
             secondHalf: 0,
             season: 0,
+            streak: calculateStreak(team.picks, standingsData.scores),
             picks: team.picks,
         }
         team.picks.forEach(pick => {
@@ -76,6 +100,7 @@ const StandingsTable = ({ standingsData }) => {
                     <TableHead>
                         <TableRow>
                             <StickyHeaderCell colSpan={2} />
+                            <TableCell align="center">Streak</TableCell>
                             {standingsData.standings[0].picks.map(
                                 pick =>
                                     !(
@@ -128,6 +153,9 @@ const StandingsTable = ({ standingsData }) => {
                                             : row.secondHalf}
                                     </BoldingSpan>
                                 </StickyTd>
+                                <TableCell align="center">
+                                    {row.streak}
+                                </TableCell>
                                 {row.picks.map(
                                     (pick, i) =>
                                         !(
