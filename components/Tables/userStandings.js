@@ -99,7 +99,8 @@ const StandingsTable = ({ standingsData }) => {
                 <Table stickyHeader size="small">
                     <TableHead>
                         <TableRow>
-                            <StickyHeaderCell colSpan={2} />
+                            <StickyHeaderCell>Team</StickyHeaderCell>
+                            <StickyHeaderCell>Points</StickyHeaderCell>
                             <TableCell align="center">Streak</TableCell>
                             {standingsData.standings[0].picks.map(
                                 pick =>
