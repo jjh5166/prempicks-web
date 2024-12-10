@@ -16,8 +16,8 @@ import {
 } from './elements'
 
 const StandingsTable = ({ standingsData }) => {
-    const maxMatchday = standingsData?.standings[0]?.picks[0]['matchday'] || 0 // use to conditionally render ThreeButtons
-    const initTable = maxMatchday > 19 ? 1 : 0
+    const initTable =
+        standingsData?.standings[0]?.picks[0]?.matchday > 19 ? 1 : 0
     const [whichTable, switchTable] = useState(initTable)
     const totals = []
     const firstColumn = useRef(null)
@@ -28,9 +28,6 @@ const StandingsTable = ({ standingsData }) => {
                 .getComputedStyle(firstColumn.current, null)
                 .getPropertyValue('width')
         )
-    }
-    const setTableStart = () => {
-        switchTable(initTable)
     }
     standingsData.standings.forEach(team => {
         let teamObj = {
@@ -60,8 +57,8 @@ const StandingsTable = ({ standingsData }) => {
     } else {
         totals.sort((a, b) => b.season - a.season)
     }
+
     useEffect(() => {
-        setTableStart()
         if (firstColumn) setStickyColumn()
     }, [])
 
