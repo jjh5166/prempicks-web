@@ -37,6 +37,12 @@ export const StickyTd = styled(StickyCell)`
 `
 export const StickyHeaderCell = styled(StickyCell)`
     z-index: 3 !important;
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.04);
+    }
 `
 
 export const BoldingSpan = styled.span`
