@@ -45,6 +45,19 @@ const StandingsTable = ({ standingsData }) => {
     const totals = []
     const firstColumn = useRef(null)
     const [secondColumnLeft, setSecondColumn] = useState(null)
+    const [sortConfig, setSortConfig] = useState({
+        key: null,
+        direction: 'ascending',
+    })
+
+    const requestSort = key => {
+        let direction = 'ascending'
+        if (sortConfig.key === key && sortConfig.direction === 'ascending') {
+            direction = 'descending'
+        }
+        setSortConfig({ key, direction })
+    }
+
     const setStickyColumn = () => {
         setSecondColumn(
             window
@@ -74,12 +87,40 @@ const StandingsTable = ({ standingsData }) => {
         })
         totals.push(teamObj)
     })
-    if (whichTable === 0) {
-        totals.sort((a, b) => b.firstHalf - a.firstHalf)
-    } else if (whichTable === 2) {
-        totals.sort((a, b) => b.secondHalf - a.secondHalf)
+    const sortedTotals = [...totals]
+    if (sortConfig.key) {
+        sortedTotals.sort((a, b) => {
+            // Special handling for points based on which table is showing
+            if (sortConfig.key === 'points') {
+                const getValue = obj => {
+                    if (whichTable === 0) return obj.firstHalf
+                    if (whichTable === 2) return obj.secondHalf
+                    return obj.season
+                }
+                const aValue = getValue(a)
+                const bValue = getValue(b)
+                return sortConfig.direction === 'ascending'
+                    ? aValue - bValue
+                    : bValue - aValue
+            }
+
+            // Handle other columns
+            if (a[sortConfig.key] < b[sortConfig.key]) {
+                return sortConfig.direction === 'ascending' ? -1 : 1
+            }
+            if (a[sortConfig.key] > b[sortConfig.key]) {
+                return sortConfig.direction === 'ascending' ? 1 : -1
+            }
+            return 0
+        })
     } else {
-        totals.sort((a, b) => b.season - a.season)
+        if (whichTable === 0) {
+            sortedTotals.sort((a, b) => b.firstHalf - a.firstHalf)
+        } else if (whichTable === 2) {
+            sortedTotals.sort((a, b) => b.secondHalf - a.secondHalf)
+        } else {
+            sortedTotals.sort((a, b) => b.season - a.season)
+        }
     }
 
     useEffect(() => {
@@ -99,9 +140,43 @@ const StandingsTable = ({ standingsData }) => {
                 <Table stickyHeader size="small">
                     <TableHead>
                         <TableRow>
-                            <StickyHeaderCell>Team</StickyHeaderCell>
-                            <StickyHeaderCell>Points</StickyHeaderCell>
-                            <TableCell align="center">Streak</TableCell>
+                            <StickyHeaderCell
+                                onClick={() => requestSort('name')}
+                            >
+                                <span>Team</span>
+                                {sortConfig.key === 'name' && (
+                                    <span style={{ marginLeft: '4px' }}>
+                                        {sortConfig.direction === 'ascending'
+                                            ? '↑'
+                                            : '↓'}
+                                    </span>
+                                )}
+                            </StickyHeaderCell>
+                            <StickyHeaderCell
+                                onClick={() => requestSort('points')}
+                            >
+                                <span>Points</span>
+                                {sortConfig.key === 'points' && (
+                                    <span style={{ marginLeft: '4px' }}>
+                                        {sortConfig.direction === 'ascending'
+                                            ? '↑'
+                                            : '↓'}
+                                    </span>
+                                )}
+                            </StickyHeaderCell>
+                            <TableCell
+                                align="center"
+                                onClick={() => requestSort('streak')}
+                            >
+                                <span>Streak</span>
+                                {sortConfig.key === 'streak' && (
+                                    <span style={{ marginLeft: '4px' }}>
+                                        {sortConfig.direction === 'ascending'
+                                            ? '↑'
+                                            : '↓'}
+                                    </span>
+                                )}
+                            </TableCell>
                             {standingsData.standings[0].picks.map(
                                 pick =>
                                     !(
@@ -122,7 +197,7 @@ const StandingsTable = ({ standingsData }) => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {totals.map((row, i) => (
+                        {sortedTotals.map((row, i) => (
                             <TableRow key={row.name} hover={true}>
                                 <StickyTd
                                     scope="row"
